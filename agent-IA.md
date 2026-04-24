@@ -1,53 +1,127 @@
-# Agent IA - Guide de Configuration
+# Agent IA - Capteur Biologique de Suivi
 
-## 🤖 Vue d'Ensemble
+## Vue d'ensemble
 
-Ce document configure un agent IA Copilot pour assister au développement du projet Youth for Bioeconomy 2026. L'agent est optimisé pour les bonnes pratiques Next.js, la performance web, l'accessibilité et la sécurité.
+Cet agent IA est conçu pour assister dans le développement et la maintenance du site vitrine du **Capteur Biologique de Suivi**, une solution innovante de traçabilité en temps réel pour produits alimentaires utilisant des capteurs biologiques nouvelle génération.
 
-## 📋 Directives Principales de l'Agent
+## Fonctionnalités principales
 
-### 1. Expertise Cible
+### 1. Développement Frontend
+- **Framework**: Next.js 15 avec App Router
+- **Langage**: TypeScript strict
+- **Styling**: CSS Variables avec design system responsive
+- **Animations**: Intégration Lottie pour visualisations interactives
 
-L'agent doit avoir une expertise approfondie en :
-
-- **Next.js 15+** : App Router, Server Components, Image Optimization
-- **React 19+** : Hooks, Performance Optimization
-- **TypeScript** : Strict mode, types génériques
-- **Performance Web** : Core Web Vitals, Lighthouse
-- **Accessibilité (A11y)** : WCAG 2.1 AA, ARIA
-- **SEO** : Métadonnées, Sitemap, Structured Data
-- **Sécurité Web** : CSP, XSS, CSRF, Headers
-
-### 2. Normes de Code
-
-L'agent doit appliquer :
-
-```typescript
-// ✅ BON - TypeScript strict
-interface ComponentProps {
-  title: string;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
-
-// ❌ MAUVAIS - Types implicites
-const Component = ({ title, onClick }) => {
-  // ...
-};
-```
-
-- ESLint configuration stricte
-- Prettier formatting (100 chars width)
-- Pas de `any`, utiliser les types génériques
-- Nommage descriptif des variables/fonctions
-- Commentaires JSDoc pour les exports publics
-
-### 3. Structure des Fichiers
-
+### 2. Architecture du projet
 ```
 src/
-├── app/                          # Routes et layouts
-│   ├── (group)/                  # Route groups
-│   ├── api/                      # API routes (si nécessaire)
+├── app/                    # Pages Next.js (App Router)
+│   ├── layout.tsx         # Layout racine avec métadonnées SEO
+│   ├── page.tsx           # Page d'accueil principale
+│   └── globals.css        # Styles globaux
+├── components/            # Composants réutilisables
+│   └── sections/          # Sections de la page d'accueil
+│       ├── Hero.tsx       # Section d'accueil avec animation Lottie
+│       ├── Features.tsx   # Avantages du capteur
+│       └── CTA.tsx        # Appel à l'action avec formulaire
+├── lib/                   # Utilitaires et configurations
+│   └── config.ts          # Configuration globale du site
+└── types/                 # Définitions TypeScript
+    └── index.ts           # Interfaces et types
+```
+
+### 3. Technologies utilisées
+- **Next.js 15**: Framework React avec App Router
+- **TypeScript**: Typage strict pour la sécurité
+- **React 19**: Composants fonctionnels avec hooks
+- **Lottie React**: Animations vectorielles interactives
+- **CSS Variables**: Design system maintenable
+
+## Instructions de développement
+
+### Bonnes pratiques
+1. **Commentaires**: Tout le code doit être commenté en français
+2. **Typage**: Utiliser TypeScript strict pour tous les composants
+3. **Responsive**: Design mobile-first avec breakpoints adaptés
+4. **Performance**: Optimisation des images et lazy loading
+5. **SEO**: Métadonnées optimisées pour les moteurs de recherche
+
+### Structure des composants
+Chaque composant doit suivre cette structure :
+```typescript
+/**
+ * Description du composant en français
+ * Fonctionnalités et responsabilités
+ */
+export function ComponentName() {
+  // États et hooks
+  // Logique métier
+  // Rendu JSX avec commentaires
+}
+```
+
+### Gestion des styles
+- Utiliser les variables CSS définies dans `globals.css`
+- Classes sémantiques et maintenables
+- Animations fluides avec CSS transitions
+- Design responsive avec media queries
+
+## Déploiement et maintenance
+
+### Build et déploiement
+```bash
+# Installation des dépendances
+npm install
+
+# Développement local
+npm run dev
+
+# Build de production
+npm run build
+
+# Démarrage en production
+npm start
+```
+
+### Optimisations
+- **Images**: Utiliser Next.js Image component pour l'optimisation
+- **Bundle**: Code splitting automatique avec Next.js
+- **SEO**: Métadonnées dynamiques et structured data
+- **Performance**: Core Web Vitals optimisés
+
+## Fonctionnalités du capteur
+
+### Surveillance en temps réel
+- Données actualisées chaque minute
+- Transmission sécurisée des informations
+- Interface utilisateur intuitive
+
+### Technologie biologique
+- Détection via biomarqueurs innovants
+- Précision élevée des mesures
+- Compatibilité multi-produits
+
+### Traçabilité complète
+- Historique détaillé du produit
+- De la production à la consommation
+- Conformité réglementaire
+
+## Support et évolution
+
+### Maintenance
+- Mise à jour régulière des dépendances
+- Monitoring des performances
+- Tests automatisés (à implémenter)
+
+### Évolutions futures
+- Dashboard d'administration
+- API REST pour intégrations
+- Application mobile compagnon
+- Intelligence artificielle prédictive
+
+---
+
+*Agent IA développé pour Youth for Bioeconomy 2026 - Solution de traçabilité alimentaire innovante*
 │   ├── layout.tsx                # Root layout
 │   └── page.tsx                  # Home page
 ├── components/

@@ -1,53 +1,48 @@
+/**
+ * Composant Features - Section des avantages clés du capteur
+ * Affiche 3 avantages principaux en cartes animées
+ */
 export function Features() {
+  // Définition des avantages du capteur biologique
   const features = [
     {
       id: 1,
-      title: 'Capteur Biologique Avancé',
-      description: 'Technologie brevetée détectant les marqueurs biologiques pour une analyse précise en temps réel',
-      icon: '🔬',
+      title: 'Surveillance en Temps Réel',
+      description: 'Données actualisées chaque minute pour un suivi continu',
+      icon: '📡',
     },
     {
       id: 2,
-      title: 'Traçabilité Complète',
-      description: 'Suivi du produit du fabricant au consommateur avec historique détaillé de chaque étape',
-      icon: '📍',
+      title: 'Technologie Biologique',
+      description: 'Détection précise via biomarqueurs innovants',
+      icon: '🔬',
     },
     {
       id: 3,
-      title: 'Conformité Sanitaire',
-      description: 'Garantit le respect des normes HACCP et réglementations alimentaires internationales',
+      title: 'Traçabilité Complète',
+      description: 'Historique détaillé de chaque produit du début à la fin',
       icon: '✓',
-    },
-    {
-      id: 4,
-      title: 'Prévention Fraude',
-      description: 'Authentification de produits et détection instantanée de contrefaçons ou altérations',
-      icon: '🛡️',
-    },
-    {
-      id: 5,
-      title: 'Réduction Gaspillage',
-      description: 'Optimisation de la durée de vie produit et diminution du gaspillage alimentaire',
-      icon: '♻️',
-    },
-    {
-      id: 6,
-      title: 'Dashboard Intégré',
-      description: 'Interface intuitive pour monitorer tous les produits et générer des rapports détaillés',
-      icon: '📊',
     },
   ];
 
   return (
     <section id="benefits" className="features">
       <div className="container">
-        <h2>Avantages du Capteur BioTrack</h2>
-        <p className="section-subtitle">Une solution complète pour la traçabilité intelligente</p>
+        {/* Titre de la section */}
+        <h2>Avantages du Capteur</h2>
+        {/* Sous-titre descriptif */}
+        <p className="section-subtitle">Solution complète de traçabilité</p>
+
+        {/* Conteneur en grille pour afficher les avantages */}
         <div className="features-grid">
+          {/* Itération sur chaque avantage */}
           {features.map((feature) => (
             <div key={feature.id} className="feature-card">
+              {/* Icône représentant l'avantage */}
               <div className="feature-icon">{feature.icon}</div>
+              {/* Titre du feature */}
               <h3>{feature.title}</h3>
+              {/* Description du feature */}
               <p>{feature.description}</p>
             </div>
           ))}

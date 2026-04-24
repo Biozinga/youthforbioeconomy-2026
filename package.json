@@ -21,6 +21,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "lottie-react": "^2.4.1",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
