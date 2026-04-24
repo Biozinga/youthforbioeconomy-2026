@@ -6,7 +6,7 @@ import { useState } from 'react';
 // Import du composant Lottie pour afficher l'animation JSON illustrant la boucle biologique.
 import Lottie from 'lottie-react';
 // Import des données d'animation Lottie placées dans le dossier public.
-import sensorAnimation from '../../../public/sensor-animation.json';
+import cycleAnimation from '../../../public/cycle-animation.json';
 
 /**
  * Composant Hero - Section d'accueil principale avec présentation de la plateforme
@@ -44,11 +44,11 @@ export function Hero() {
         {/* Animation Lottie représentant la boucle de revalorisation. */}
         <div className="hero-image">
           {/* Zone de cadrage de l'animation pour garder une taille stable. */}
-          <div className="sensor-visualization">
+          <div className="cycle-visualization">
             {/* Animation principale de la boucle biologique. */}
             <Lottie
-              // Données JSON importées depuis public/sensor-animation.json.
-              animationData={sensorAnimation}
+              // Données JSON importées depuis public/cycle-animation.json.
+              animationData={cycleAnimation}
               // Répète l'animation en continu.
               loop={true}
               // Lance automatiquement l'animation au chargement.
@@ -79,7 +79,7 @@ export function Hero() {
               {/* Version réduite de l'animation pour illustrer le formulaire. */}
               <Lottie
                 // Réutilise la même animation que la section hero.
-                animationData={sensorAnimation}
+                animationData={cycleAnimation}
                 // Répète l'animation dans la modale.
                 loop={true}
                 // Lance l'animation dès l'ouverture de la modale.

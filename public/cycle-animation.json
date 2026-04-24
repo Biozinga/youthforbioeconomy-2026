@@ -8,7 +8,7 @@
   "op": 60,
   "w": 400,
   "h": 400,
-  "nm": "Capteur Animation",
+  "nm": "Cycle Animation",
   "ddd": 0,
   "assets": [],
   "layers": [
@@ -16,7 +16,7 @@
       "ddd": 0,
       "ind": 1,
       "ty": 4,
-      "nm": "Capteur",
+      "nm": "Cycle",
       "sr": 1,
       "ks": {
         "o": { "a": 0, "k": 100, "ix": 11 },

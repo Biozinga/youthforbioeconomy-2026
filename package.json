@@ -1,7 +1,7 @@
 {
   "name": "youthforbioeconomy-2026",
   "version": "1.0.0",
-  "description": "Site vitrine Youth for Bioeconomy 2026 - Next.js sans backend",
+  "description": "Site vitrine pour une plateforme de revalorisation agricole circulaire",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
@@ -15,6 +15,10 @@
   "keywords": [
     "youth",
     "bioeconomy",
+    "agriculture",
+    "revalorisation",
+    "dechets-agricoles",
+    "economie-circulaire",
     "nextjs",
     "vitrine"
   ],

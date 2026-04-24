@@ -239,7 +239,7 @@ img {
   min-height: 400px;
 }
 
-.sensor-visualization {
+.cycle-visualization {
   /* Sert de repère de positionnement pour les animations internes. */
   position: relative;
   /* Largeur stable de la visualisation de la boucle. */
@@ -248,7 +248,7 @@ img {
   height: 300px;
 }
 
-.sensor-core {
+.cycle-core {
   position: absolute;
   width: 100px;
   height: 100px;
@@ -261,7 +261,7 @@ img {
   animation: pulse 2s ease-in-out infinite;
 }
 
-.sensor-ring {
+.cycle-ring {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -920,7 +920,7 @@ img {
   }
 
   /* Réduit la zone de visualisation de la boucle sur mobile. */
-  .sensor-visualization {
+  .cycle-visualization {
     width: 250px;
     height: 250px;
   }
