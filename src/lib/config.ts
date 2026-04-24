@@ -1,18 +1,19 @@
 export const siteConfig = {
-  name: 'Youth for Bioeconomy 2026',
-  description: 'Une plateforme dédiée aux jeunes engagés pour une bioéconomie durable',
-  url: 'https://youthforbioeconomy.com',
-  ogImage: 'https://youthforbioeconomy.com/og-image.png',
+  name: 'BioTrack - Capteur Biologique de Suivi',
+  description: 'Solution innovante de traçabilité en temps réel pour produits alimentaires avec capteur biologique nouvelle génération',
+  url: 'https://biotrack-sensor.com',
+  ogImage: 'https://biotrack-sensor.com/og-image.png',
   links: {
-    twitter: 'https://twitter.com',
-    github: 'https://github.com',
-    linkedin: 'https://linkedin.com',
+    twitter: 'https://twitter.com/biotrack',
+    github: 'https://github.com/biotrack',
+    linkedin: 'https://linkedin.com/company/biotrack',
   },
 };
 
 export const navigation = [
   { label: 'Accueil', href: '/' },
-  { label: 'À Propos', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Technologie', href: '#technology' },
+  { label: 'Avantages', href: '#benefits' },
+  { label: 'Cas d\'Usages', href: '#usecases' },
+  { label: 'Contact', href: '#contact' },
 ];

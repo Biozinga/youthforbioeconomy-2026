@@ -2,15 +2,28 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Youth for Bioeconomy 2026',
+  title: 'BioTrack | Capteur Biologique Intelligent pour la Traçabilité Alimentaire',
   description:
-    'Une plateforme dédiée aux jeunes engagés pour une bioéconomie durable et innovante.',
-  keywords: ['bioeconomy', 'youth', 'sustainability', 'innovation'],
+    'Solution révolutionnaire de traçabilité en temps réel pour produits alimentaires. Capteur biologique nouvelle génération, surveillance continue, garantie de qualité.',
+  keywords: [
+    'capteur biologique',
+    'traçabilité alimentaire',
+    'surveillance qualité',
+    'technologie innovation',
+    'produits frais',
+    'IoT',
+    'bioéconomie',
+  ],
   openGraph: {
-    title: 'Youth for Bioeconomy 2026',
+    title: 'BioTrack | Capteur Biologique pour la Traçabilité',
     description:
-      'Une plateforme dédiée aux jeunes engagés pour une bioéconomie durable et innovante.',
+      'Solution innovante de traçabilité en temps réel pour produits alimentaires avec capteur biologique nouvelle génération',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
