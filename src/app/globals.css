@@ -242,10 +242,10 @@ img {
 .cycle-visualization {
   /* Sert de repère de positionnement pour les animations internes. */
   position: relative;
-  /* Largeur stable de la visualisation de la boucle. */
-  width: 300px;
-  /* Hauteur stable de la visualisation de la boucle. */
-  height: 300px;
+  /* Largeur stable de la visualisation agricole à droite du hero. */
+  width: 420px;
+  /* Hauteur stable de la visualisation agricole à droite du hero. */
+  height: 420px;
 }
 
 .cycle-core {
@@ -849,6 +849,54 @@ img {
   color: var(--color-gray-900);
 }
 
+.modal-intro {
+  color: var(--color-gray-600);
+  margin-bottom: var(--spacing-xl);
+}
+
+.modal-choice-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.choice-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-sm) var(--spacing-md);
+  align-items: center;
+  width: 100%;
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--border-radius-xl);
+  background: var(--color-gray-50);
+  color: var(--color-gray-900);
+  text-align: left;
+}
+
+.choice-card:hover {
+  border-color: var(--color-primary);
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.choice-icon {
+  grid-row: span 2;
+  font-size: var(--font-size-2xl);
+}
+
+.choice-title {
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.choice-description {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
 .demo-form {
   display: flex;
   flex-direction: column;
@@ -921,8 +969,8 @@ img {
 
   /* Réduit la zone de visualisation de la boucle sur mobile. */
   .cycle-visualization {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
   }
 
   /* Empile les boutons du hero verticalement si plusieurs boutons sont affichés. */
