@@ -1,27 +1,70 @@
 /**
- * Page d'accueil principale - Vitrine du capteur biologique
- * Regroupe les sections Hero, Features et CTA pour une présentation complète
+ * Page d'accueil principale - Vitrine de la plateforme de revalorisation agricole
+ * Regroupe les sections Hero et Features pour une présentation complète
  */
 
+// Import du composant Image de Next.js pour optimiser automatiquement le logo du footer.
+import Image from 'next/image';
+// Import de la section d'accueil, qui contient le titre principal et l'animation de la boucle.
 import { Hero } from '@/components/sections/Hero';
+// Import de la section listant les étapes principales de la plateforme.
 import { Features } from '@/components/sections/Features';
-import { CTA } from '@/components/sections/CTA';
 
 /**
  * Composant racine de la page d'accueil
  * @returns JSX de la page complète
  */
 export default function Home() {
+  // Retourne un fragment React pour pouvoir afficher le contenu principal et le footer côte à côte.
   return (
-    <main>
-      {/* Section d'accueil avec visualisation du capteur */}
-      <Hero />
-      
-      {/* Section des avantages du capteur */}
-      <Features />
-      
-      {/* Section d'appel à l'action et formulaire de contact */}
-      <CTA />
-    </main>
+    // Fragment React invisible dans le DOM, utilisé car le composant renvoie plusieurs blocs voisins.
+    <>
+      {/* Zone principale de la page, réservée au contenu éditorial et fonctionnel. */}
+      <main>
+        {/* Section d'accueil avec visualisation de la boucle de revalorisation */}
+        <Hero />
+
+        {/* Section des avantages et étapes de la plateforme */}
+        <Features />
+      </main>
+
+      {/* Pied de page institutionnel affiché sous le contenu principal. */}
+      <footer className="site-footer">
+        {/* Conteneur centré qui aligne le texte à gauche et les logos à droite sur grand écran. */}
+        <div className="container site-footer-content">
+          {/* Mention du contexte de présentation du projet. */}
+          <p>Projet présenté dans le cadre du hackathon HACKATHON #YOUTHFORBIOECONOMY 2026</p>
+          {/* Groupe des logos partenaires stockés dans le dossier public/images. */}
+          <div className="site-footer-logos">
+            {/* Logo de l'Université Paris-Saclay. */}
+            <Image
+              // Chemin public du logo, servi directement depuis le dossier public de Next.js.
+              src="/images/Logo_Université_Paris-Saclay_2019-12.svg.png"
+              // Texte alternatif lu par les lecteurs d'écran et affiché si l'image ne charge pas.
+              alt="Université Paris-Saclay"
+              // Largeur réelle du fichier source, utilisée par Next.js pour calculer le ratio d'image.
+              width={1280}
+              // Hauteur réelle du fichier source, utilisée avec la largeur pour préserver les proportions.
+              height={450}
+              // Classe CSS qui contrôle la taille visuelle du logo dans le footer.
+              className="site-footer-logo site-footer-logo-saclay"
+            />
+            {/* Logo AGPB. */}
+            <Image
+              // Chemin public du logo AGPB, servi depuis le dossier public de Next.js.
+              src="/images/logo_agpb.png"
+              // Texte alternatif lu par les lecteurs d'écran et affiché si l'image ne charge pas.
+              alt="AGPB"
+              // Largeur réelle du fichier source, utilisée par Next.js pour calculer le ratio d'image.
+              width={175}
+              // Hauteur réelle du fichier source, utilisée avec la largeur pour préserver les proportions.
+              height={171}
+              // Classe CSS qui contrôle la taille visuelle du logo dans le footer.
+              className="site-footer-logo site-footer-logo-agpb"
+            />
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }

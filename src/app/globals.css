@@ -63,28 +63,41 @@
 }
 
 * {
+  /* Supprime les marges par défaut de tous les éléments pour partir d'une base stable. */
   margin: 0;
+  /* Supprime les espacements internes par défaut de tous les éléments. */
   padding: 0;
+  /* Inclut bordures et padding dans le calcul des largeurs/hauteurs. */
   box-sizing: border-box;
 }
 
 html {
+  /* Rend les déplacements vers les ancres internes plus fluides. */
   scroll-behavior: smooth;
 }
 
 body {
+  /* Définit une pile de polices système rapide et lisible. */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  /* Améliore le rendu des polices sur les navigateurs WebKit. */
   -webkit-font-smoothing: antialiased;
+  /* Améliore le rendu des polices sur Firefox/macOS. */
   -moz-osx-font-smoothing: grayscale;
+  /* Définit le fond global du site. */
   background-color: var(--color-white);
+  /* Définit la couleur de texte par défaut. */
   color: var(--color-gray-900);
+  /* Définit une hauteur de ligne confortable pour le texte courant. */
   line-height: 1.6;
 }
 
 .container {
+  /* Limite la largeur du contenu pour éviter des lignes trop longues. */
   max-width: 1200px;
+  /* Centre horizontalement le conteneur. */
   margin: 0 auto;
+  /* Ajoute une marge intérieure latérale, utile surtout sur mobile. */
   padding: 0 var(--spacing-lg);
 }
 
@@ -94,72 +107,102 @@ h3,
 h4,
 h5,
 h6 {
+  /* Resserre la hauteur de ligne des titres pour améliorer leur densité visuelle. */
   line-height: 1.2;
+  /* Applique une graisse commune aux titres. */
   font-weight: 600;
 }
 
 h1 {
+  /* Taille du titre principal de la page. */
   font-size: var(--font-size-4xl);
 }
 
 h2 {
+  /* Taille des titres de section. */
   font-size: var(--font-size-3xl);
+  /* Espacement sous chaque titre de section. */
   margin-bottom: var(--spacing-md);
 }
 
 h3 {
+  /* Taille des titres de sous-section ou de carte. */
   font-size: var(--font-size-2xl);
 }
 
 p {
+  /* Hauteur de ligne spécifique aux paragraphes pour améliorer la lecture. */
   line-height: 1.75;
 }
 
 a {
+  /* Couleur principale des liens. */
   color: var(--color-primary);
+  /* Supprime le soulignement par défaut pour un style plus sobre. */
   text-decoration: none;
+  /* Anime le changement de couleur au survol. */
   transition: color var(--transition-base) ease-in-out;
 }
 
 a:hover {
+  /* Assombrit les liens au survol pour signaler l'interactivité. */
   color: var(--color-primary-dark);
 }
 
 button {
+  /* Affiche un curseur de clic sur tous les boutons. */
   cursor: pointer;
+  /* Hérite de la police globale pour garder une typographie cohérente. */
   font-family: inherit;
+  /* Supprime les bordures natives des boutons. */
   border: none;
+  /* Anime les changements visuels des boutons. */
   transition: all var(--transition-base) ease-in-out;
 }
 
 img {
+  /* Empêche les images de dépasser leur conteneur. */
   max-width: 100%;
+  /* Préserve les proportions des images quand leur largeur change. */
   height: auto;
 }
 
 /* HERO SECTION */
 .hero {
+  /* Ajoute de l'espace vertical autour de la section d'accueil. */
   padding: var(--spacing-3xl) 0;
+  /* Crée un fond clair légèrement contrasté. */
   background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-gray-100) 100%);
+  /* Masque tout débordement visuel éventuel de l'animation. */
   overflow: hidden;
 }
 
 .hero-content {
+  /* Place le texte et l'illustration sur une grille. */
   display: grid;
+  /* Répartit la grille en deux colonnes égales sur grand écran. */
   grid-template-columns: 1fr 1fr;
+  /* Espace les deux colonnes. */
   gap: var(--spacing-3xl);
+  /* Centre verticalement le contenu de chaque colonne. */
   align-items: center;
 }
 
 .hero-text h1 {
+  /* Espace le titre principal du sous-titre. */
   margin-bottom: var(--spacing-md);
+  /* Applique une couleur très lisible au titre. */
   color: var(--color-gray-900);
 }
 
 .hero-subtitle {
+  /* Donne au sous-titre une taille supérieure au texte courant. */
   font-size: var(--font-size-xl);
+  /* Utilise un gris plus doux pour hiérarchiser le texte. */
   color: var(--color-gray-600);
+  /* Espace le sous-titre des boutons. */
   margin-bottom: var(--spacing-lg);
+  /* Garde une lecture confortable sur plusieurs lignes. */
   line-height: 1.6;
 }
 
@@ -179,21 +222,29 @@ img {
 }
 
 .hero-buttons {
+  /* Aligne les boutons d'action sur une ligne. */
   display: flex;
+  /* Espace les boutons entre eux. */
   gap: var(--spacing-md);
+  /* Autorise le retour à la ligne si la largeur manque. */
   flex-wrap: wrap;
 }
 
 .hero-image {
+  /* Centre l'animation horizontalement et verticalement. */
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Réserve une hauteur minimale pour stabiliser la section. */
   min-height: 400px;
 }
 
 .sensor-visualization {
+  /* Sert de repère de positionnement pour les animations internes. */
   position: relative;
+  /* Largeur stable de la visualisation de la boucle. */
   width: 300px;
+  /* Hauteur stable de la visualisation de la boucle. */
   height: 300px;
 }
 
@@ -258,20 +309,29 @@ img {
 
 /* BUTTONS */
 .btn {
+  /* Définit l'espace intérieur des boutons. */
   padding: var(--spacing-md) var(--spacing-xl);
+  /* Arrondit les boutons. */
   border-radius: var(--border-radius-xl);
+  /* Renforce la lisibilité du texte de bouton. */
   font-weight: 600;
+  /* Définit une taille de texte cohérente avec le corps du site. */
   font-size: var(--font-size-base);
+  /* Permet au bouton de respecter padding et dimensions comme un bloc inline. */
   display: inline-block;
 }
 
 .btn-primary {
+  /* Couleur de fond du bouton principal. */
   background-color: var(--color-primary);
+  /* Couleur du texte du bouton principal. */
   color: var(--color-white);
 }
 
 .btn-primary:hover {
+  /* Assombrit le bouton principal au survol. */
   background-color: var(--color-primary-dark);
+  /* Ajoute une ombre pour donner un retour visuel. */
   box-shadow: var(--shadow-lg);
 }
 
@@ -288,34 +348,51 @@ img {
 
 /* FEATURES SECTION */
 .features {
+  /* Ajoute de l'espace vertical autour de la section avantages. */
   padding: var(--spacing-3xl) 0;
+  /* Garde un fond blanc pour faire respirer les cartes. */
   background-color: var(--color-white);
 }
 
 .section-subtitle {
+  /* Taille du sous-titre commun aux sections. */
   font-size: var(--font-size-lg);
+  /* Couleur secondaire pour ne pas concurrencer le titre. */
   color: var(--color-gray-600);
+  /* Espace le sous-titre de la grille qui suit. */
   margin-bottom: var(--spacing-2xl);
+  /* Centre le sous-titre sous le titre de section. */
   text-align: center;
 }
 
 .features-grid {
+  /* Affiche les cartes dans une grille responsive. */
   display: grid;
+  /* Crée autant de colonnes que possible avec une largeur minimale de 300px. */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* Espace les cartes entre elles. */
   gap: var(--spacing-2xl);
 }
 
 .feature-card {
+  /* Ajoute de l'espace intérieur dans chaque carte. */
   padding: var(--spacing-2xl);
+  /* Donne un fond légèrement dégradé aux cartes. */
   background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-gray-100) 100%);
+  /* Arrondit les cartes. */
   border-radius: var(--border-radius-2xl);
+  /* Anime les effets de survol. */
   transition: all var(--transition-base) ease-in-out;
+  /* Délimite subtilement chaque carte. */
   border: 1px solid var(--color-gray-200);
 }
 
 .feature-card:hover {
+  /* Soulève légèrement la carte au survol. */
   transform: translateY(-5px);
+  /* Renforce la profondeur visuelle au survol. */
   box-shadow: var(--shadow-lg);
+  /* Teinte la bordure avec la couleur principale au survol. */
   border-color: var(--color-primary);
 }
 
@@ -620,6 +697,72 @@ img {
   font-weight: 500;
 }
 
+/* FOOTER */
+.site-footer {
+  /* Ajoute de l'espace vertical dans le pied de page. */
+  padding: var(--spacing-xl) 0;
+  /* Sépare visuellement le footer du contenu principal. */
+  border-top: 1px solid var(--color-gray-200);
+  /* Garde un fond blanc cohérent avec la section précédente. */
+  background: var(--color-white);
+}
+
+.site-footer-content {
+  /* Aligne le texte et les logos sur une ligne en grand écran. */
+  display: flex;
+  /* Centre verticalement les éléments du footer. */
+  align-items: center;
+  /* Pousse le texte à gauche et les logos à droite. */
+  justify-content: space-between;
+  /* Ajoute un espace minimal entre le texte et les logos. */
+  gap: var(--spacing-xl);
+}
+
+.site-footer p {
+  /* Limite la longueur de ligne pour garder une lecture confortable. */
+  max-width: 620px;
+  /* Utilise un gris lisible mais moins fort que le noir principal. */
+  color: var(--color-gray-700);
+  /* Garde une taille de texte standard. */
+  font-size: var(--font-size-base);
+  /* Met légèrement en avant la mention institutionnelle. */
+  font-weight: 500;
+}
+
+.site-footer-logos {
+  /* Aligne les logos partenaires côte à côte. */
+  display: flex;
+  /* Centre verticalement les logos malgré leurs ratios différents. */
+  align-items: center;
+  /* Espace les logos entre eux. */
+  gap: var(--spacing-lg);
+  /* Évite que les logos soient trop serrés si la largeur manque. */
+  flex-wrap: wrap;
+  /* Aligne le groupe de logos à droite sur grand écran. */
+  justify-content: flex-end;
+}
+
+.site-footer-logo {
+  /* Préserve le ratio original du logo. */
+  height: auto;
+  /* Ajuste le logo dans son cadre sans le déformer. */
+  object-fit: contain;
+}
+
+.site-footer-logo-saclay {
+  /* Définit une largeur responsive avec une limite maximale pour Paris-Saclay. */
+  width: min(240px, 38vw);
+  /* Empêche le logo horizontal de devenir trop haut. */
+  max-height: 78px;
+}
+
+.site-footer-logo-agpb {
+  /* Définit une taille compacte pour le logo AGPB, qui est presque carré. */
+  width: 76px;
+  /* Empêche le logo carré de dominer le footer. */
+  max-height: 76px;
+}
+
 .cta-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -644,37 +787,61 @@ img {
 
 /* MODAL */
 .modal-overlay {
+  /* Place l'overlay au-dessus de toute la page. */
   position: fixed;
+  /* Colle l'overlay au bord supérieur de la fenêtre. */
   top: 0;
+  /* Colle l'overlay au bord gauche de la fenêtre. */
   left: 0;
+  /* Colle l'overlay au bord droit de la fenêtre. */
   right: 0;
+  /* Colle l'overlay au bord inférieur de la fenêtre. */
   bottom: 0;
+  /* Assombrit l'arrière-plan derrière la modale. */
   background: rgba(0, 0, 0, 0.7);
+  /* Centre la modale avec Flexbox. */
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Garantit que la modale passe au-dessus du contenu. */
   z-index: 1000;
+  /* Anime l'apparition de l'overlay. */
   animation: fadeIn var(--transition-base) ease-in;
 }
 
 .modal {
+  /* Donne un fond blanc au panneau de la modale. */
   background: var(--color-white);
+  /* Ajoute de l'espace intérieur au formulaire. */
   padding: var(--spacing-2xl);
+  /* Arrondit le panneau de la modale. */
   border-radius: var(--border-radius-2xl);
+  /* Limite la largeur maximale de la modale. */
   max-width: 500px;
+  /* Rend la modale responsive sur petits écrans. */
   width: 90%;
+  /* Sert de repère au bouton de fermeture positionné absolument. */
   position: relative;
+  /* Anime l'arrivée verticale de la modale. */
   animation: slideUp var(--transition-base) ease-out;
 }
 
 .modal-close {
+  /* Positionne le bouton de fermeture dans la modale. */
   position: absolute;
+  /* Place le bouton à distance du bord haut. */
   top: var(--spacing-md);
+  /* Place le bouton à distance du bord droit. */
   right: var(--spacing-md);
+  /* Supprime le fond natif du bouton. */
   background: none;
+  /* Supprime la bordure native du bouton. */
   border: none;
+  /* Agrandit la croix de fermeture. */
   font-size: var(--font-size-2xl);
+  /* Indique que la croix est cliquable. */
   cursor: pointer;
+  /* Donne une couleur discrète à la croix. */
   color: var(--color-gray-600);
 }
 
@@ -727,35 +894,43 @@ img {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  /* Ajuste la taille du titre principal sur tablette et mobile. */
   h1 {
     font-size: var(--font-size-3xl);
   }
 
+  /* Ajuste la taille des titres de section sur tablette et mobile. */
   h2 {
     font-size: var(--font-size-2xl);
   }
 
+  /* Ajuste la taille des titres de carte sur tablette et mobile. */
   h3 {
     font-size: var(--font-size-xl);
   }
 
+  /* Empile le texte et l'animation du hero sur une seule colonne. */
   .hero-content {
     grid-template-columns: 1fr;
   }
 
+  /* Réduit la hauteur minimale réservée à l'animation du hero. */
   .hero-image {
     min-height: 300px;
   }
 
+  /* Réduit la zone de visualisation de la boucle sur mobile. */
   .sensor-visualization {
     width: 250px;
     height: 250px;
   }
 
+  /* Empile les boutons du hero verticalement si plusieurs boutons sont affichés. */
   .hero-buttons {
     flex-direction: column;
   }
 
+  /* Transforme les boutons en pleine largeur pour faciliter le tap mobile. */
   .btn {
     width: 100%;
     text-align: center;
@@ -770,10 +945,31 @@ img {
     gap: var(--spacing-md);
   }
 
+  .site-footer-content {
+    /* Empile le texte et les logos dans le footer sur mobile. */
+    flex-direction: column;
+    /* Aligne le contenu du footer à gauche sur mobile. */
+    align-items: flex-start;
+  }
+
+  .site-footer-logos {
+    /* Aligne les logos à gauche sous le texte sur mobile. */
+    justify-content: flex-start;
+  }
+
+  .site-footer-logo-saclay {
+    /* Limite le logo Paris-Saclay à la largeur disponible sur mobile. */
+    width: min(240px, 100%);
+  }
+
+  .site-footer-logo-agpb {
+    /* Réduit légèrement le logo AGPB sur mobile. */
+    width: 68px;
+  }
+
   .features-grid,
   .tech-grid,
   .usecases-grid {
     grid-template-columns: 1fr;
   }
 }
-
