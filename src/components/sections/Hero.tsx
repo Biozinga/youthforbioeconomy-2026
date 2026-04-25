@@ -3,10 +3,10 @@
 
 // Import du hook useState pour ouvrir ou fermer la fenêtre modale de contact.
 import { useState } from 'react';
-// Import du composant Lottie pour afficher l'animation JSON illustrant l'agriculture connectée.
+// Import du composant Lottie pour afficher l'animation JSON de la section principale.
 import Lottie from 'lottie-react';
-// Import des données d'animation Lottie représentant une ferme connectée avec drone.
-import farmingAnimation from '../../../lottiefiles/IoT digital farming with drone.json';
+// Import des données d'animation Lottie retenues pour la page d'accueil.
+import farmingAnimation from '../../../lottiefiles/Animation - 1706084188549.json';
 
 /**
  * Composant Hero - Section d'accueil principale avec présentation de la plateforme
@@ -41,13 +41,13 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Animation Lottie représentant l'agriculture connectée et la valorisation des flux. */}
+        {/* Animation Lottie représentant la valorisation des flux agricoles. */}
         <div className="hero-image">
           {/* Zone de cadrage de l'animation pour garder une taille stable. */}
           <div className="cycle-visualization">
-            {/* Animation principale de la ferme connectée avec drone. */}
+            {/* Animation principale de la section hero. */}
             <Lottie
-              // Données JSON importées depuis lottiefiles/IoT digital farming with drone.json.
+              // Données JSON importées depuis lottiefiles/Animation - 1706084188549.json.
               animationData={farmingAnimation}
               // Répète l'animation en continu.
               loop={true}

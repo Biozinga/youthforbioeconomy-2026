@@ -9,6 +9,8 @@ import Image from 'next/image';
 import { Hero } from '@/components/sections/Hero';
 // Import de la section listant les étapes principales de la plateforme.
 import { Features } from '@/components/sections/Features';
+// Import de la section expliquant la conversion biologique par les larves.
+import { BioConversion } from '@/components/sections/BioConversion';
 
 /**
  * Composant racine de la page d'accueil
@@ -26,6 +28,9 @@ export default function Home() {
 
         {/* Section des avantages et étapes de la plateforme */}
         <Features />
+
+        {/* Section de fond expliquant la conversion des biodéchets par le vivant */}
+        <BioConversion />
       </main>
 
       {/* Pied de page institutionnel affiché sous le contenu principal. */}
