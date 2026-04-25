@@ -1,12 +1,21 @@
+// Directive Next.js: cette section observe le viewport pour déclencher son graphique animé.
+'use client';
+
+// Import du hook qui limite les animations au moment où la section devient visible.
+import { useInView } from '@/hooks/useInView';
+
 /**
  * Composant BioConversion - Section éditoriale avec image de fond
  * Explique comment les biodéchets agricoles sont convertis en protéines par les larves
  */
 export function BioConversion() {
+  // Observe la section pour déclencher les courbes uniquement quand l'utilisateur arrive dessus.
+  const { ref, isInView } = useInView<HTMLElement>({ threshold: 0.25 });
+
   // Retourne une section immersive avec texte posé sur l'image de fond.
   return (
     // Section dédiée à la transformation biologique des déchets agricoles.
-    <section id="conversion" className="bio-conversion">
+    <section id="conversion" className={`bio-conversion ${isInView ? 'is-in-view' : ''}`} ref={ref}>
       {/* Voile sombre qui garantit la lisibilité du texte sur l'image. */}
       <div className="bio-conversion-overlay">
         {/* Conteneur central qui place le texte à gauche et le graphique à droite. */}
@@ -16,15 +25,15 @@ export function BioConversion() {
             {/* Petit libellé qui introduit le sujet de la section. */}
             <p className="bio-conversion-kicker">La biologie comme moteur industriel</p>
             {/* Titre principal de la section. */}
-            <h2>Le vivant comme technologie de transformation</h2>
+            <h2>Une chaîne biotech pour transformer la biomasse</h2>
             {/* Texte explicatif sur le rôle des larves dans la revalorisation. */}
             <p>
               Les coproduits végétaux sont broyés, humidifiés et préparés pour devenir un substrat
               que les insectes savent convertir avec une efficacité biologique remarquable.
             </p>
-            {/* Texte positionnant le vivant comme technologie avancée. */}
+            {/* Texte positionnant la biologie comme technologie avancée. */}
             <p>
-              Cette machinerie vivante, guidée par le code génétique, transforme une biomasse
+              Cette machinerie biologique, guidée par le code génétique, transforme une biomasse
               sous-exploitée en protéines pour volailles, réduit la dépendance au soja importé et
               referme la boucle avec un fertilisant organique restitué aux sols.
             </p>

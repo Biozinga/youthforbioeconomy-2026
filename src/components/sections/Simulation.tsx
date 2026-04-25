@@ -7,17 +7,30 @@ import type { FormEvent } from 'react';
 import { useEffect, useState } from 'react';
 // Import du composant Lottie pour afficher l'animation de ferme connectée.
 import Lottie from 'lottie-react';
+// Import du hook qui démarre l'animation quand la section est visible.
+import { useInView } from '@/hooks/useInView';
 // Import de l'animation de ferme connectée avec drone.
 import droneFarmAnimation from '../../../lottiefiles/IoT digital farming with drone.json';
 
 // Types de cultures proposés dans le simulateur temporaire.
 type CropType = 'ble' | 'mais';
 
-// Étapes possibles dans la pop-up de simulation.
-type SimulationStep = 'choice' | 'cereal-form' | 'cereal-result';
+// Types de volailles proposés dans le simulateur.
+type PoultryType = 'poulet_chair' | 'poule_pondeuse';
 
-// Structure du résultat temporaire affiché à l'utilisateur.
-type SimulationResult = {
+// Types de traitement proposés pour les déchets biologiques de volaille.
+type ProcessingType = 'fraiche' | 'compostee' | 'granule';
+
+// Étapes possibles dans la pop-up de simulation.
+type SimulationStep =
+  | 'choice'
+  | 'cereal-form'
+  | 'cereal-result'
+  | 'poultry-form'
+  | 'poultry-result';
+
+// Structure du résultat céréales affiché à l'utilisateur.
+type CerealSimulationResult = {
   amount: number;
   residueTons: number;
   pricePerTon: number;
@@ -25,6 +38,21 @@ type SimulationResult = {
   bonusEuros: number;
   bonusPct: number;
   residuePerHa: number;
+};
+
+// Structure du résultat volaille affiché à l'utilisateur.
+type PoultrySimulationResult = {
+  amount: number;
+  rawFienteKg: number;
+  processedKg: number;
+  processedTonnes: number;
+  pricePerTon: number;
+  revenueLowEuros: number;
+  revenueHighEuros: number;
+  nitrogenKg: number;
+  phosphorusKg: number;
+  equivalentUreaKg: number;
+  co2SavedKg: number;
 };
 
 // Formateur euro centralisé pour afficher les montants de façon lisible.
@@ -40,11 +68,27 @@ const cropLabels: Record<CropType, string> = {
   mais: 'Maïs',
 };
 
+// Libellés visibles associés aux espèces de volaille.
+const poultryLabels: Record<PoultryType, string> = {
+  poulet_chair: 'Poulet de chair',
+  poule_pondeuse: 'Poule pondeuse',
+};
+
+// Libellés visibles associés aux traitements de fientes.
+const processingLabels: Record<ProcessingType, string> = {
+  fraiche: 'Fiente fraîche',
+  compostee: 'Fiente compostée',
+  granule: 'Granulé séché',
+};
+
 /**
  * Composant Simulation - Dernière section de la page
  * Propose une entrée de simulation pour revendre des déchets agricoles ou avicoles
  */
 export function Simulation() {
+  // Observe la section pour ne pas lancer l'animation Lottie hors écran.
+  const { ref, isInView } = useInView<HTMLElement>({ threshold: 0.25 });
+
   // État qui indique si la pop-up de choix de simulation est ouverte.
   const [isOpen, setIsOpen] = useState(false);
   // Étape active dans la pop-up: choix initial, formulaire céréales ou résultat.
@@ -53,8 +97,16 @@ export function Simulation() {
   const [cropType, setCropType] = useState<CropType>('ble');
   // Surface saisie sous forme de chaîne pour garder le contrôle du champ input.
   const [hectares, setHectares] = useState('25');
-  // Résultat temporaire calculé après validation du formulaire.
-  const [result, setResult] = useState<SimulationResult | null>(null);
+  // Type de volaille sélectionné par défaut.
+  const [poultryType, setPoultryType] = useState<PoultryType>('poulet_chair');
+  // Traitement sélectionné par défaut pour la fiente.
+  const [processingType, setProcessingType] = useState<ProcessingType>('compostee');
+  // Nombre d'animaux saisi sous forme de chaîne pour garder le contrôle du champ input.
+  const [animals, setAnimals] = useState('500');
+  // Résultat céréales calculé après validation du formulaire.
+  const [result, setResult] = useState<CerealSimulationResult | null>(null);
+  // Résultat volaille calculé après validation du formulaire.
+  const [poultryResult, setPoultryResult] = useState<PoultrySimulationResult | null>(null);
   // Montant affiché progressivement pour créer un effet compteur jusqu'à la vraie valeur.
   const [animatedAmount, setAnimatedAmount] = useState(0);
   // État de chargement pendant l'appel au calcul serveur.
@@ -64,13 +116,25 @@ export function Simulation() {
 
   // Convertit la surface saisie en nombre utilisable par la simulation.
   const parsedHectares = Number(hectares);
+  // Convertit le nombre d'animaux saisi en nombre utilisable par la simulation.
+  const parsedAnimals = Number(animals);
   // Vérifie que la surface est bien positive avant d'autoriser le calcul.
   const canCalculate = Number.isFinite(parsedHectares) && parsedHectares > 0;
+  // Vérifie que le nombre d'animaux est positif avant d'autoriser le calcul volaille.
+  const canCalculatePoultry = Number.isFinite(parsedAnimals) && parsedAnimals > 0;
 
   // Anime le montant dès que l'écran résultat reçoit une nouvelle estimation.
   useEffect(() => {
+    // Montant final affiché par le compteur, selon le type de résultat actif.
+    const targetAmount =
+      step === 'cereal-result'
+        ? result?.amount
+        : step === 'poultry-result'
+          ? poultryResult?.amount
+          : null;
+
     // Ne lance l'animation que lorsque le résultat est visible et disponible.
-    if (step !== 'cereal-result' || !result) {
+    if (!targetAmount) {
       return;
     }
 
@@ -92,7 +156,7 @@ export function Simulation() {
       // Progression comprise entre 0 et 1.
       const progress = Math.min(1, (now - startedAt) / duration);
       // Valeur intermédiaire affichée dans le compteur.
-      const nextAmount = result.amount * easeOutCubic(progress);
+      const nextAmount = targetAmount * easeOutCubic(progress);
 
       setAnimatedAmount(nextAmount);
 
@@ -100,7 +164,7 @@ export function Simulation() {
       if (progress < 1) {
         frameId = requestAnimationFrame(animateAmount);
       } else {
-        setAnimatedAmount(result.amount);
+        setAnimatedAmount(targetAmount);
       }
     };
 
@@ -109,12 +173,13 @@ export function Simulation() {
 
     // Nettoie l'animation si l'utilisateur ferme ou modifie la simulation.
     return () => cancelAnimationFrame(frameId);
-  }, [result, step]);
+  }, [poultryResult, result, step]);
 
   // Ouvre la pop-up en revenant toujours au choix initial.
   const openSimulation = () => {
     setStep('choice');
     setResult(null);
+    setPoultryResult(null);
     setCalculationError('');
     setIsOpen(true);
   };
@@ -128,6 +193,15 @@ export function Simulation() {
   const startCerealSimulation = () => {
     setStep('cereal-form');
     setResult(null);
+    setPoultryResult(null);
+    setCalculationError('');
+  };
+
+  // Lance le parcours dédié aux déchets biologiques de volaille.
+  const startPoultrySimulation = () => {
+    setStep('poultry-form');
+    setResult(null);
+    setPoultryResult(null);
     setCalculationError('');
   };
 
@@ -169,7 +243,7 @@ export function Simulation() {
       }
 
       // Lit le résultat calculé côté serveur.
-      const serverResult = (await response.json()) as SimulationResult;
+      const serverResult = (await response.json()) as CerealSimulationResult;
 
       setResult(serverResult);
       setAnimatedAmount(0);
@@ -183,10 +257,59 @@ export function Simulation() {
     }
   };
 
+  // Calcule la valorisation des déchets biologiques de volaille puis affiche le résultat.
+  const submitPoultrySimulation = async (event: FormEvent<HTMLFormElement>) => {
+    // Empêche le rechargement complet de la page lors de la validation.
+    event.preventDefault();
+
+    // Bloque la simulation si le nombre d'animaux n'est pas exploitable.
+    if (!canCalculatePoultry) {
+      return;
+    }
+
+    // Affiche un état de calcul pendant que le serveur exécute le moteur volaille.
+    setIsCalculating(true);
+    // Supprime l'ancien message d'erreur avant une nouvelle tentative.
+    setCalculationError('');
+
+    try {
+      // Le calcul réel reste côté serveur afin de ne pas exposer les hypothèses métier au frontend.
+      const response = await fetch('/api/simulations/poultry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          poultryType,
+          processingType,
+          animals: parsedAnimals,
+        }),
+      });
+
+      // Remonte une erreur lisible si le serveur refuse ou échoue au calcul.
+      if (!response.ok) {
+        throw new Error('Le calcul serveur a échoué.');
+      }
+
+      // Lit le résultat calculé côté serveur.
+      const serverResult = (await response.json()) as PoultrySimulationResult;
+
+      setPoultryResult(serverResult);
+      setAnimatedAmount(0);
+      setStep('poultry-result');
+    } catch {
+      // Affiche une erreur douce sans fermer la modale.
+      setCalculationError('Impossible de calculer la valorisation pour le moment.');
+    } finally {
+      // Termine l'état de chargement dans tous les cas.
+      setIsCalculating(false);
+    }
+  };
+
   // Retourne la section de simulation et sa pop-up moderne.
   return (
     // Section finale qui invite l'utilisateur à lancer une simulation.
-    <section id="simulation" className="simulation">
+    <section id="simulation" className="simulation" ref={ref}>
       {/* Conteneur central pour garder le contenu aligné avec le reste de la page. */}
       <div className="container simulation-content">
         {/* Bloc texte principal de la section. */}
@@ -204,16 +327,18 @@ export function Simulation() {
         <div className="simulation-action">
           {/* Animation illustrative placée dans la section de simulation. */}
           <div className="simulation-animation">
-            <Lottie
-              // Données JSON importées depuis lottiefiles/IoT digital farming with drone.json.
-              animationData={droneFarmAnimation}
-              // Répète l'animation pour garder une interface vivante.
-              loop={true}
-              // Lance automatiquement l'animation quand la section est visible.
-              autoplay={true}
-              // L'animation remplit son cadre CSS.
-              style={{ width: '100%', height: '100%' }}
-            />
+            {isInView && (
+              <Lottie
+                // Données JSON importées depuis lottiefiles/IoT digital farming with drone.json.
+                animationData={droneFarmAnimation}
+                // Répète l'animation pour garder une interface vivante.
+                loop={true}
+                // Lance automatiquement l'animation quand la section est visible.
+                autoplay={true}
+                // L'animation remplit son cadre CSS.
+                style={{ width: '100%', height: '100%' }}
+              />
+            )}
           </div>
 
           {/* Bouton principal qui ouvre la pop-up de simulation. */}
@@ -271,7 +396,7 @@ export function Simulation() {
                   <button
                     className="simulation-choice-card"
                     type="button"
-                    onClick={closeSimulation}
+                    onClick={startPoultrySimulation}
                   >
                     <span className="simulation-choice-label">Élevage de volaille</span>
                     <span className="simulation-choice-title">
@@ -339,6 +464,103 @@ export function Simulation() {
                   </label>
 
                   {/* Bouton de calcul temporaire. */}
+                  <button
+                    className="btn btn-primary simulation-form-submit"
+                    type="submit"
+                    disabled={isCalculating}
+                  >
+                    {isCalculating ? 'Calcul en cours...' : 'Estimer la valorisation'}
+                  </button>
+                  {/* Message d'erreur affiché seulement si le calcul serveur échoue. */}
+                  {calculationError && (
+                    <p className="simulation-error" role="alert">
+                      {calculationError}
+                    </p>
+                  )}
+                </form>
+              </>
+            )}
+
+            {/* Étape formulaire: collecte des entrées nécessaires au moteur volaille. */}
+            {step === 'poultry-form' && (
+              <>
+                {/* Bouton secondaire pour revenir au choix des flux. */}
+                <button className="simulation-back" type="button" onClick={() => setStep('choice')}>
+                  Retour
+                </button>
+
+                {/* Titre du formulaire volaille. */}
+                <h2>Élevage de volaille</h2>
+                {/* Explication courte du calcul volaille. */}
+                <p className="modal-intro">
+                  Indiquez votre élevage et le traitement envisagé. Le calcul utilise le moteur
+                  serveur basé sur la production annuelle de fientes, la réduction de masse et les
+                  prix des engrais organiques.
+                </p>
+
+                {/* Formulaire qui prépare les entrées du moteur volaille côté serveur. */}
+                <form className="simulation-form" onSubmit={submitPoultrySimulation}>
+                  {/* Groupe de sélection de l'espèce de volaille. */}
+                  <div className="simulation-field">
+                    <span className="simulation-field-label">Type d&apos;élevage</span>
+                    <div
+                      className="simulation-segmented"
+                      role="group"
+                      aria-label="Type de volaille"
+                    >
+                      {(['poulet_chair', 'poule_pondeuse'] as PoultryType[]).map((type) => (
+                        <button
+                          key={type}
+                          className={`simulation-segment ${
+                            poultryType === type ? 'simulation-segment-active' : ''
+                          }`}
+                          type="button"
+                          onClick={() => setPoultryType(type)}
+                        >
+                          {poultryLabels[type]}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Groupe de sélection de la méthode de traitement. */}
+                  <div className="simulation-field">
+                    <span className="simulation-field-label">Traitement du déchet</span>
+                    <div
+                      className="simulation-segmented simulation-segmented-three"
+                      role="group"
+                      aria-label="Traitement de la fiente"
+                    >
+                      {(['fraiche', 'compostee', 'granule'] as ProcessingType[]).map((type) => (
+                        <button
+                          key={type}
+                          className={`simulation-segment ${
+                            processingType === type ? 'simulation-segment-active' : ''
+                          }`}
+                          type="button"
+                          onClick={() => setProcessingType(type)}
+                        >
+                          {processingLabels[type]}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Champ de saisie du nombre d'animaux. */}
+                  <label className="simulation-field">
+                    <span className="simulation-field-label">Nombre d&apos;animaux</span>
+                    <input
+                      className="simulation-input"
+                      type="number"
+                      min="1"
+                      step="1"
+                      value={animals}
+                      onChange={(event) => setAnimals(event.target.value)}
+                      placeholder="Exemple : 500"
+                    />
+                  </label>
+
+                  {/* Bouton de calcul volaille. */}
                   <button
                     className="btn btn-primary simulation-form-submit"
                     type="submit"
@@ -426,6 +648,80 @@ export function Simulation() {
                       })}{' '}
                       kg
                     </strong>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* Étape résultat: visualisation moderne du revenu potentiel des fientes. */}
+            {step === 'poultry-result' && poultryResult && (
+              <>
+                {/* Bouton secondaire pour modifier les valeurs d'entrée. */}
+                <button
+                  className="simulation-back"
+                  type="button"
+                  onClick={() => setStep('poultry-form')}
+                >
+                  Modifier
+                </button>
+
+                {/* Titre du résultat de simulation. */}
+                <h2>Potentiel de revalorisation</h2>
+                {/* Phrase de contexte du résultat volaille. */}
+                <p className="modal-intro">
+                  Estimation pour {parsedAnimals.toLocaleString('fr-FR')} animaux en{' '}
+                  {poultryLabels[poultryType].toLowerCase()}, avec traitement{' '}
+                  {processingLabels[processingType].toLowerCase()}.
+                </p>
+
+                {/* Carte visuelle principale qui met en avant le revenu estimé. */}
+                <div className="simulation-result-card">
+                  <span className="simulation-result-kicker">Revenu potentiel</span>
+                  <strong className="simulation-result-amount">
+                    {euroFormatter.format(animatedAmount)}
+                  </strong>
+                  <span className="simulation-result-note">
+                    Calcul basé sur la production annuelle de fientes, la masse après traitement et
+                    les prix indicatifs des engrais organiques.
+                  </span>
+                  {/* Barre décorative proportionnelle pour donner une lecture visuelle du potentiel. */}
+                  <div className="simulation-result-meter" aria-hidden="true">
+                    <span
+                      style={{
+                        width: `${Math.min(100, Math.max(18, poultryResult.amount / 18))}%`,
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* Indicateurs secondaires qui détaillent le résultat. */}
+                <div className="simulation-result-grid">
+                  <div>
+                    <span>Masse traitée</span>
+                    <strong>{poultryResult.processedTonnes.toFixed(1).replace('.', ',')} t</strong>
+                  </div>
+                  <div>
+                    <span>Prix retenu</span>
+                    <strong>{euroFormatter.format(poultryResult.pricePerTon)} / t</strong>
+                  </div>
+                  <div>
+                    <span>Fourchette marché</span>
+                    <strong>
+                      {euroFormatter.format(poultryResult.revenueLowEuros)} -{' '}
+                      {euroFormatter.format(poultryResult.revenueHighEuros)}
+                    </strong>
+                  </div>
+                  <div>
+                    <span>Azote organique</span>
+                    <strong>{poultryResult.nitrogenKg.toFixed(0)} kg</strong>
+                  </div>
+                  <div>
+                    <span>Phosphore P2O5</span>
+                    <strong>{poultryResult.phosphorusKg.toFixed(0)} kg</strong>
+                  </div>
+                  <div>
+                    <span>CO2 évité estimé</span>
+                    <strong>{poultryResult.co2SavedKg.toFixed(0)} kg</strong>
                   </div>
                 </div>
               </>

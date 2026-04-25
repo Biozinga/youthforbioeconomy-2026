@@ -53,7 +53,16 @@ export default function Home() {
         {/* Conteneur centré qui aligne le texte à gauche et les logos à droite sur grand écran. */}
         <div className="container site-footer-content">
           {/* Mention du contexte de présentation du projet. */}
-          <p>Projet présenté dans le cadre du HACKATHON #YOUTHFORBIOECONOMY 2026</p>
+          <p>
+            Projet présenté dans le cadre du{' '}
+            <a
+              href="https://www.universite-paris-saclay.fr/evenements/hackathon-youthforbioeconomy-2026"
+              target="_blank"
+              rel="noreferrer"
+            >
+              HACKATHON #YOUTHFORBIOECONOMY 2026
+            </a>
+          </p>
           {/* Groupe des logos partenaires stockés dans le dossier public/images. */}
           <div className="site-footer-logos">
             {/* Logo de l'Université Paris-Saclay. */}

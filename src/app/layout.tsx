@@ -64,13 +64,50 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // Retourne la structure HTML commune à toutes les pages de l'application.
   return (
     // Définit la langue principale du document pour l'accessibilité et le SEO.
-    <html lang="fr">
+    <html lang="fr" className="preload-scroll-lock" suppressHydrationWarning>
       {/* En-tête technique du document HTML. */}
       <head>
         {/* Encodage UTF-8 pour les caractères spéciaux */}
         <meta charSet="utf-8" />
         {/* Configuration du viewport pour mobile */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Masque brièvement le body pendant le verrouillage initial du scroll pour éviter tout flash de position restaurée. */}
+        <style>{`
+          html.preload-scroll-lock body {
+            visibility: hidden;
+          }
+        `}</style>
+        {/* Coupe la restauration automatique du scroll avant l'hydratation React pour éviter un flash en bas de page. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                if ('scrollRestoration' in window.history) {
+                  window.history.scrollRestoration = 'manual';
+                }
+
+                if (window.location.hash) {
+                  window.history.replaceState(null, '', window.location.pathname + window.location.search);
+                }
+
+                window.scrollTo(0, 0);
+
+                var revealAtTop = function () {
+                  window.scrollTo(0, 0);
+                  document.documentElement.classList.remove('preload-scroll-lock');
+                };
+
+                if (document.readyState === 'loading') {
+                  document.addEventListener('DOMContentLoaded', function () {
+                    requestAnimationFrame(revealAtTop);
+                  }, { once: true });
+                } else {
+                  requestAnimationFrame(revealAtTop);
+                }
+              })();
+            `,
+          }}
+        />
       </head>
       {/* Body contenant le contenu de la page */}
       {/* children représente la page active injectée par le routeur App Router de Next.js. */}

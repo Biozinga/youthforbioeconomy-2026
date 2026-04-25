@@ -2,7 +2,9 @@
 'use client';
 
 // Import des hooks React nécessaires au montage du viewer moléculaire.
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+// Import du hook qui attend l'arrivée de la carte dans le viewport.
+import { useInView } from '@/hooks/useInView';
 
 // Structure décrivant une enzyme affichée dans la section.
 type Molecule = {
@@ -33,7 +35,7 @@ const molecules: Molecule[] = [
   {
     name: 'Cellulase',
     pdbPath: '/1EG1.pdb',
-    role: 'Elle ouvre les fibres de cellulose et rend les résidus végétaux plus accessibles au vivant.',
+    role: 'Elle ouvre les fibres de cellulose et rend les résidus végétaux plus accessibles à la bioconversion.',
     accent: '#10b981',
   },
   {
@@ -53,7 +55,10 @@ const molecules: Molecule[] = [
 // Composant 3Dmol.js qui affiche une vraie structure protéique en rendu cartoon.
 function MoleculeViewer({ molecule }: { molecule: Molecule }) {
   // Référence vers le conteneur DOM où 3Dmol.js injecte son canvas WebGL.
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const { ref: containerRef, isInView } = useInView<HTMLDivElement>({
+    threshold: 0.35,
+    once: true,
+  });
 
   // Monte le viewer moléculaire au rendu client.
   useEffect(() => {
@@ -62,6 +67,11 @@ function MoleculeViewer({ molecule }: { molecule: Molecule }) {
 
     // Stoppe si le conteneur n'est pas encore disponible.
     if (!container) {
+      return;
+    }
+
+    // Attend que la carte moléculaire soit visible avant de charger et animer la structure.
+    if (!isInView) {
       return;
     }
 
@@ -137,13 +147,13 @@ function MoleculeViewer({ molecule }: { molecule: Molecule }) {
       // Vide le conteneur, y compris le canvas créé par 3Dmol.js.
       container.replaceChildren();
     };
-  }, [molecule]);
+  }, [containerRef, isInView, molecule]);
 
   // Retourne le conteneur visuel de la molécule.
   return <div className="molecule-viewer" ref={containerRef} aria-hidden="true" />;
 }
 
-// Section présentant la machinerie moléculaire du vivant.
+// Section présentant la machinerie moléculaire de la biologie.
 export function Molecules() {
   // Retourne une section avant la simulation pour installer le récit biomoléculaire.
   return (
@@ -152,10 +162,8 @@ export function Molecules() {
       <div className="container">
         {/* En-tête éditorial de la section. */}
         <div className="molecules-header">
-          {/* Petit label de contexte scientifique. */}
-          <span className="section-badge">Machinerie moléculaire</span>
           {/* Titre de la section. */}
-          <h2>Le vivant a déjà conçu les meilleurs outils de transformation.</h2>
+          <h2>Des enzymes optimisées par l&apos;évolution pour transformer la matière.</h2>
           {/* Texte court expliquant notre rôle dans la boucle. */}
           <p>
             Pendant des milliers d&apos;années, l&apos;évolution a optimisé des biomolécules

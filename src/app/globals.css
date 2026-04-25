@@ -173,18 +173,37 @@ img {
 
 /* HEADER */
 .site-header {
-  /* Rend le header visible quand l'utilisateur descend légèrement dans la page. */
+  /* Garde le header au-dessus de la page, puis permet de le masquer au scroll. */
   position: sticky;
   /* Colle le header en haut de la fenêtre. */
   top: 0;
   /* Place le header au-dessus du contenu. */
   z-index: 100;
-  /* Utilise un fond clair simple pour un header sobre. */
-  background: rgba(255, 255, 255, 0.94);
-  /* Ajoute un léger flou quand le contenu passe derrière le header. */
-  backdrop-filter: blur(12px);
+  /* Utilise un verre clair pour un header moderne et léger. */
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(236, 253, 245, 0.86)),
+    rgba(255, 255, 255, 0.88);
+  /* Ajoute un flou premium quand le contenu passe derrière le header. */
+  backdrop-filter: blur(18px);
   /* Sépare discrètement le header du contenu. */
-  border-bottom: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  /* Donne une profondeur légère au header sans l'alourdir. */
+  box-shadow: 0 12px 34px rgba(15, 23, 42, 0.08);
+  /* Anime la disparition du header lors du scroll descendant. */
+  transition:
+    transform var(--transition-base) ease,
+    opacity var(--transition-base) ease;
+  /* Optimise l'animation de déplacement. */
+  will-change: transform, opacity;
+}
+
+.site-header-hidden {
+  /* Déplace le header hors de l'écran quand l'utilisateur descend. */
+  transform: translateY(-100%);
+  /* Rend la disparition plus douce. */
+  opacity: 0;
+  /* Évite les clics sur un header masqué. */
+  pointer-events: none;
 }
 
 .site-header-content {
@@ -210,7 +229,9 @@ img {
   /* Utilise une couleur sombre pour le nom du projet. */
   color: var(--color-gray-900);
   /* Renforce le poids du nom. */
-  font-weight: 700;
+  font-weight: 800;
+  /* Ajoute une taille légèrement plus statutaire au nom TerraLoop. */
+  font-size: var(--font-size-lg);
 }
 
 .site-brand:hover {
@@ -220,20 +241,22 @@ img {
 
 .site-brand-mark {
   /* Crée une pastille courte pour identifier visuellement le projet. */
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   /* Centre les lettres dans la pastille. */
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* Donne une forme ronde à la pastille. */
-  border-radius: 50%;
-  /* Utilise la couleur principale de la charte. */
-  background: var(--color-primary);
+  /* Donne une forme arrondie plus contemporaine à la pastille. */
+  border-radius: 14px;
+  /* Utilise un dégradé de marque pour un rendu plus premium. */
+  background: linear-gradient(135deg, var(--color-primary), #0f766e);
   /* Rend les lettres lisibles sur le fond vert. */
   color: var(--color-white);
   /* Taille compacte pour les initiales. */
   font-size: var(--font-size-sm);
+  /* Ajoute un halo doux autour de la marque. */
+  box-shadow: 0 12px 28px rgba(5, 150, 105, 0.25);
 }
 
 .site-nav {
@@ -242,22 +265,30 @@ img {
   /* Centre verticalement les liens. */
   align-items: center;
   /* Espace les liens. */
-  gap: var(--spacing-lg);
+  gap: var(--spacing-xs);
   /* Autorise le retour à la ligne si nécessaire. */
   flex-wrap: wrap;
+  /* Place les liens dans une capsule discrète. */
+  padding: 5px;
+  /* Fond translucide pour un effet barre de navigation. */
+  background: rgba(255, 255, 255, 0.64);
+  /* Bordure subtile de la capsule. */
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  /* Arrondit la capsule de navigation. */
+  border-radius: 999px;
 }
 
 .site-nav a {
   /* Donne une couleur sobre aux liens du header. */
   color: var(--color-gray-700);
-  /* Ajoute un contour discret pour conserver l'effet bouton. */
-  border: 1px solid var(--color-gray-200);
-  /* Ajoute un fond clair pour des boutons lisibles. */
-  background: var(--color-white);
+  /* Supprime le contour individuel pour privilégier la capsule globale. */
+  border: 1px solid transparent;
+  /* Ajoute un fond transparent au repos. */
+  background: transparent;
   /* Ajoute un espace intérieur qui transforme les liens en boutons discrets. */
   padding: var(--spacing-sm) var(--spacing-md);
-  /* Arrondit légèrement les boutons du header. */
-  border-radius: var(--border-radius-lg);
+  /* Arrondit les liens comme des segments doux. */
+  border-radius: 999px;
   /* Taille compacte pour une navigation discrète. */
   font-size: var(--font-size-sm);
   /* Renforce légèrement les libellés. */
@@ -268,15 +299,17 @@ img {
   /* Met les liens en vert au survol. */
   color: var(--color-primary);
   /* Garde un fond clair au survol. */
-  background: var(--color-gray-50);
+  background: var(--color-white);
   /* Teinte la bordure avec la couleur de marque. */
-  border-color: var(--color-primary);
+  border-color: rgba(5, 150, 105, 0.16);
+  /* Soulève visuellement le lien actif. */
+  box-shadow: var(--shadow-sm);
 }
 
 /* HERO SECTION */
 .hero {
-  /* Ajoute de l'espace vertical généreux autour de la section d'accueil. */
-  padding: calc(var(--spacing-3xl) + var(--spacing-xl)) 0 var(--spacing-3xl);
+  /* Réduit l'espace entre le header et la section d'accueil. */
+  padding: var(--spacing-2xl) 0 var(--spacing-3xl);
   /* Crée un fond éditorial clair avec des touches végétales et céréalières. */
   background:
     radial-gradient(circle at 88% 18%, rgba(245, 158, 11, 0.2), transparent 28%),
@@ -320,31 +353,6 @@ img {
   z-index: 1;
 }
 
-.hero-eyebrow {
-  /* Affiche un label de contexte avant le titre. */
-  display: inline-flex;
-  /* Centre le texte du label. */
-  align-items: center;
-  /* Ajoute une respiration horizontale. */
-  padding: var(--spacing-xs) var(--spacing-md);
-  /* Espace le label du titre. */
-  margin-bottom: var(--spacing-lg);
-  /* Fond blanc translucide pour un effet premium. */
-  background: rgba(255, 255, 255, 0.74);
-  /* Bordure fine qui détache le label du fond. */
-  border: 1px solid rgba(5, 150, 105, 0.18);
-  /* Arrondit le label en pilule. */
-  border-radius: 999px;
-  /* Couleur de marque lisible. */
-  color: var(--color-primary-dark);
-  /* Renforce le label sans le rendre massif. */
-  font-weight: 700;
-  /* Taille compacte de label. */
-  font-size: var(--font-size-sm);
-  /* Ajoute une ombre très douce. */
-  box-shadow: var(--shadow-sm);
-}
-
 .hero-text h1 {
   /* Espace le titre principal du sous-titre. */
   margin-bottom: var(--spacing-lg);
@@ -369,19 +377,6 @@ img {
   margin-bottom: var(--spacing-lg);
   /* Garde une lecture confortable sur plusieurs lignes. */
   line-height: 1.6;
-}
-
-.hero-manifesto {
-  /* Met en avant la phrase conceptuelle du hero. */
-  max-width: 680px;
-  /* Ajoute une respiration avant les indicateurs. */
-  margin-bottom: var(--spacing-xl);
-  /* Utilise une couleur plus sombre que le sous-titre pour porter l'idée. */
-  color: var(--color-gray-800);
-  /* Taille intermédiaire pour une lecture premium. */
-  font-size: var(--font-size-lg);
-  /* Garde un rythme de lecture confortable. */
-  line-height: 1.7;
 }
 
 .hero-features {
@@ -420,6 +415,35 @@ img {
   box-shadow: 0 0 0 5px rgba(245, 158, 11, 0.16);
 }
 
+.hero.is-in-view .hero-features span::before {
+  /* Anime les puces en vague seulement quand le hero est visible. */
+  animation: hero-feature-pulse 1.8s ease-in-out infinite;
+}
+
+.hero.is-in-view .hero-features span:nth-child(2)::before {
+  /* Décale la deuxième puce pour créer l'effet vague. */
+  animation-delay: 0.28s;
+}
+
+.hero.is-in-view .hero-features span:nth-child(3)::before {
+  /* Décale la troisième puce pour fermer l'effet vague. */
+  animation-delay: 0.56s;
+}
+
+@keyframes hero-feature-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 5px rgba(245, 158, 11, 0.16);
+    opacity: 0.78;
+  }
+  45% {
+    transform: scale(1.38);
+    box-shadow: 0 0 0 9px rgba(245, 158, 11, 0.08);
+    opacity: 1;
+  }
+}
+
 .hero-buttons {
   /* Aligne les boutons d'action sur une ligne. */
   display: flex;
@@ -435,14 +459,14 @@ img {
   align-items: center;
   justify-content: center;
   /* Réserve une hauteur minimale pour stabiliser la section. */
-  min-height: 520px;
+  min-height: 580px;
 }
 
 .hero-visual-card {
   /* Encadre l'animation comme un module central de plateforme. */
-  width: min(100%, 520px);
+  width: min(100%, 620px);
   /* Ajoute de l'espace intérieur autour de l'animation. */
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg);
   /* Fond blanc vitré pour contraster avec le fond éditorial. */
   background: rgba(255, 255, 255, 0.82);
   /* Bordure subtile façon interface moderne. */
@@ -455,41 +479,13 @@ img {
   backdrop-filter: blur(18px);
 }
 
-.hero-visual-label {
-  /* Affiche le chemin de transformation au-dessus de l'animation. */
-  display: flex;
-  /* Autorise le retour à la ligne si la carte rétrécit. */
-  flex-wrap: wrap;
-  /* Espace les labels. */
-  gap: var(--spacing-sm);
-  /* Espace le bandeau de l'animation. */
-  margin-bottom: var(--spacing-md);
-}
-
-.hero-visual-label span {
-  /* Crée des tags discrets pour chaque étape de la boucle. */
-  padding: var(--spacing-xs) var(--spacing-sm);
-  /* Fond clair légèrement chaud. */
-  background: #fff7ed;
-  /* Bordure assortie au fond. */
-  border: 1px solid #fed7aa;
-  /* Arrondit les tags. */
-  border-radius: 999px;
-  /* Couleur lisible et chaleureuse. */
-  color: #9a3412;
-  /* Taille compacte. */
-  font-size: var(--font-size-xs);
-  /* Renforce les tags. */
-  font-weight: 700;
-}
-
 .cycle-visualization {
   /* Sert de repère de positionnement pour les animations internes. */
   position: relative;
   /* Largeur stable de la visualisation agricole à droite du hero. */
   width: 100%;
   /* Hauteur stable de la visualisation agricole à droite du hero. */
-  height: 400px;
+  height: 500px;
   /* Centre l'animation dans sa carte. */
   display: flex;
   align-items: center;
@@ -905,7 +901,10 @@ img {
   /* Prépare l'animation de dessin de courbe. */
   stroke-dasharray: 520;
   stroke-dashoffset: 520;
-  /* Anime l'apparition de la courbe. */
+}
+
+.bio-conversion.is-in-view .bio-chart-line {
+  /* Anime l'apparition de la courbe quand le graphique arrive dans le viewport. */
   animation: bio-chart-draw 2.8s ease-in-out infinite alternate;
 }
 
@@ -919,6 +918,9 @@ img {
 .bio-chart-line-passive {
   /* Courbe de dégradation passive. */
   stroke: rgba(255, 255, 255, 0.56);
+}
+
+.bio-conversion.is-in-view .bio-chart-line-passive {
   /* Animation légèrement plus lente pour marquer le contraste. */
   animation-duration: 3.4s;
 }
@@ -1027,12 +1029,13 @@ img {
 .molecules-header {
   /* Limite la largeur du récit pour garder une lecture élégante. */
   max-width: 880px;
-  /* Place le texte à droite pour alterner avec la section précédente. */
+  /* Centre le bloc de texte dans la section. */
   margin-left: auto;
+  margin-right: auto;
   /* Espace l'en-tête de la grille moléculaire. */
   margin-bottom: var(--spacing-2xl);
-  /* Aligne le texte à droite pour créer une respiration différente. */
-  text-align: right;
+  /* Centre le texte demandé dans la section. */
+  text-align: center;
 }
 
 .section-badge {
@@ -1221,7 +1224,14 @@ img {
 
 .simulation-modal {
   /* Agrandit la pop-up par rapport à la modale générique. */
-  max-width: 760px;
+  max-width: 720px;
+  /* Réduit légèrement le padding pour garder la simulation dans la fenêtre. */
+  padding: var(--spacing-xl);
+}
+
+.simulation-modal .modal-intro {
+  /* Resserre l'introduction pour limiter la hauteur totale de la pop-up. */
+  margin-bottom: var(--spacing-lg);
 }
 
 .simulation-choice-grid {
@@ -1350,6 +1360,11 @@ img {
   border-radius: var(--border-radius-xl);
 }
 
+.simulation-segmented-three {
+  /* Affiche trois options de traitement dans le même contrôle segmenté. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .simulation-segment {
   /* Transforme chaque culture en segment cliquable. */
   padding: var(--spacing-md);
@@ -1431,7 +1446,7 @@ img {
 
 .simulation-result-card {
   /* Crée une carte résultat plus visuelle que les cartes de choix. */
-  padding: var(--spacing-2xl);
+  padding: var(--spacing-xl);
   /* Mélange un vert profond et un vert clair pour suggérer la valeur circulaire. */
   background:
     radial-gradient(circle at top right, rgba(16, 185, 129, 0.32), transparent 34%),
@@ -1465,7 +1480,7 @@ img {
   /* Donne toute l'importance au montant estimé. */
   display: block;
   /* Grande taille de montant, sans dépendre de la largeur viewport. */
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-3xl);
   /* Hauteur compacte pour un rendu dashboard. */
   line-height: 1;
   /* Espace le montant de la note. */
@@ -1483,9 +1498,9 @@ img {
 
 .simulation-result-meter {
   /* Crée le rail de progression visuelle. */
-  height: 10px;
+  height: 8px;
   /* Espace la barre du texte. */
-  margin-top: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
   /* Fond translucide pour voir la progression. */
   background: rgba(255, 255, 255, 0.22);
   /* Arrondit complètement la barre. */
@@ -1511,20 +1526,20 @@ img {
   /* Trois indicateurs équilibrés sur desktop. */
   grid-template-columns: repeat(3, minmax(0, 1fr));
   /* Espace les indicateurs. */
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   /* Éloigne les indicateurs de la carte principale. */
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-md);
 }
 
 .simulation-result-grid div {
   /* Crée une tuile claire pour chaque indicateur. */
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   /* Fond neutre pour ne pas concurrencer le montant principal. */
   background: var(--color-gray-50);
   /* Bordure discrète de dashboard. */
   border: 1px solid var(--color-gray-200);
   /* Arrondit les tuiles. */
-  border-radius: var(--border-radius-xl);
+  border-radius: var(--border-radius-lg);
 }
 
 .simulation-result-grid span {
@@ -1533,7 +1548,7 @@ img {
   /* Couleur secondaire. */
   color: var(--color-gray-600);
   /* Petite taille pour les labels. */
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   /* Espace le label de la valeur. */
   margin-bottom: var(--spacing-xs);
 }
@@ -1542,7 +1557,9 @@ img {
   /* Donne du poids aux valeurs secondaires. */
   color: var(--color-gray-900);
   /* Taille confortable pour les valeurs. */
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-base);
+  /* Autorise les longues valeurs à rester dans leur tuile. */
+  overflow-wrap: anywhere;
 }
 
 /* TECHNOLOGY SECTION */
@@ -1863,6 +1880,24 @@ img {
   font-weight: 500;
 }
 
+.site-footer p a {
+  /* Rend le nom du hackathon cliquable sans casser la ligne institutionnelle. */
+  color: var(--color-primary-dark);
+  /* Renforce le lien pour qu'il soit identifiable. */
+  font-weight: 800;
+  /* Souligne légèrement le lien avec une ligne moderne. */
+  text-decoration: underline;
+  text-decoration-color: rgba(5, 150, 105, 0.34);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.site-footer p a:hover {
+  /* Accentue le lien au survol. */
+  color: var(--color-primary);
+  text-decoration-color: currentColor;
+}
+
 .site-footer-logos {
   /* Aligne les logos partenaires côte à côte. */
   display: flex;
@@ -1944,6 +1979,8 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Garde une marge respirante autour de la pop-up sur les petits écrans. */
+  padding: var(--spacing-md);
   /* Garantit que la modale passe au-dessus du contenu. */
   z-index: 1000;
   /* Anime l'apparition de l'overlay. */
@@ -1960,7 +1997,11 @@ img {
   /* Limite la largeur maximale de la modale. */
   max-width: 500px;
   /* Rend la modale responsive sur petits écrans. */
-  width: 90%;
+  width: min(100%, 90vw);
+  /* Empêche la pop-up de dépasser verticalement de la fenêtre. */
+  max-height: min(88vh, 860px);
+  /* Permet de parcourir le contenu si le résultat est dense. */
+  overflow-y: auto;
   /* Sert de repère au bouton de fermeture positionné absolument. */
   position: relative;
   /* Anime l'arrivée verticale de la modale. */
