@@ -8,7 +8,7 @@ export const siteConfig = {
   // Nom du site affiché dans le titre
   name: 'Plateforme de Revalorisation Agricole',
   // Description courte pour SEO
-  description: 'Transformation des déchets céréaliers en tokens, larves et engrais organiques',
+  description: 'Bioconversion des coproduits du blé en protéines avicoles et fertilisants',
   // URL de base du site
   url: 'https://revalorisation-agricole.com',
   // Image pour les réseaux sociaux
@@ -27,9 +27,11 @@ export const siteConfig = {
 // Navigation principale du site
 export const navigation = [
   // Lien vers le haut de la page d'accueil.
-  { label: 'Accueil', href: '/' },
+  { label: 'Accueil', href: '#top' },
   // Lien vers la section présentant le fonctionnement de la boucle.
   { label: 'Fonctionnement', href: '#benefits' },
-  // Lien vers la section contact si le composant CTA est réactivé.
-  { label: 'Contact', href: '#contact' },
+  // Lien vers la section expliquant la conversion biologique des déchets.
+  { label: 'Conversion', href: '#conversion' },
+  // Lien vers la section finale de simulation.
+  { label: 'Simulation', href: '#simulation' },
 ];

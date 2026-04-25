@@ -167,6 +167,108 @@ img {
   height: auto;
 }
 
+/* HEADER */
+.site-header {
+  /* Rend le header visible quand l'utilisateur descend légèrement dans la page. */
+  position: sticky;
+  /* Colle le header en haut de la fenêtre. */
+  top: 0;
+  /* Place le header au-dessus du contenu. */
+  z-index: 100;
+  /* Utilise un fond clair simple pour un header sobre. */
+  background: rgba(255, 255, 255, 0.94);
+  /* Ajoute un léger flou quand le contenu passe derrière le header. */
+  backdrop-filter: blur(12px);
+  /* Sépare discrètement le header du contenu. */
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.site-header-content {
+  /* Aligne la marque et la navigation sur une ligne. */
+  display: flex;
+  /* Centre verticalement les éléments du header. */
+  align-items: center;
+  /* Place la marque à gauche et la navigation à droite. */
+  justify-content: space-between;
+  /* Espace les éléments si la largeur devient étroite. */
+  gap: var(--spacing-lg);
+  /* Définit une hauteur confortable pour l'en-tête. */
+  min-height: 72px;
+}
+
+.site-brand {
+  /* Aligne la pastille et le nom du site. */
+  display: inline-flex;
+  /* Centre verticalement les éléments de marque. */
+  align-items: center;
+  /* Espace la pastille du texte. */
+  gap: var(--spacing-sm);
+  /* Utilise une couleur sombre pour le nom du projet. */
+  color: var(--color-gray-900);
+  /* Renforce le poids du nom. */
+  font-weight: 700;
+}
+
+.site-brand:hover {
+  /* Garde la marque sombre au survol pour éviter un effet trop décoratif. */
+  color: var(--color-gray-900);
+}
+
+.site-brand-mark {
+  /* Crée une pastille courte pour identifier visuellement le projet. */
+  width: 38px;
+  height: 38px;
+  /* Centre les lettres dans la pastille. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Donne une forme ronde à la pastille. */
+  border-radius: 50%;
+  /* Utilise la couleur principale de la charte. */
+  background: var(--color-primary);
+  /* Rend les lettres lisibles sur le fond vert. */
+  color: var(--color-white);
+  /* Taille compacte pour les initiales. */
+  font-size: var(--font-size-sm);
+}
+
+.site-nav {
+  /* Aligne les liens de navigation horizontalement. */
+  display: flex;
+  /* Centre verticalement les liens. */
+  align-items: center;
+  /* Espace les liens. */
+  gap: var(--spacing-lg);
+  /* Autorise le retour à la ligne si nécessaire. */
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  /* Donne une couleur sobre aux liens du header. */
+  color: var(--color-gray-700);
+  /* Ajoute un contour discret pour conserver l'effet bouton. */
+  border: 1px solid var(--color-gray-200);
+  /* Ajoute un fond clair pour des boutons lisibles. */
+  background: var(--color-white);
+  /* Ajoute un espace intérieur qui transforme les liens en boutons discrets. */
+  padding: var(--spacing-sm) var(--spacing-md);
+  /* Arrondit légèrement les boutons du header. */
+  border-radius: var(--border-radius-lg);
+  /* Taille compacte pour une navigation discrète. */
+  font-size: var(--font-size-sm);
+  /* Renforce légèrement les libellés. */
+  font-weight: 600;
+}
+
+.site-nav a:hover {
+  /* Met les liens en vert au survol. */
+  color: var(--color-primary);
+  /* Garde un fond clair au survol. */
+  background: var(--color-gray-50);
+  /* Teinte la bordure avec la couleur de marque. */
+  border-color: var(--color-primary);
+}
+
 /* HERO SECTION */
 .hero {
   /* Ajoute de l'espace vertical autour de la section d'accueil. */
@@ -506,6 +608,129 @@ img {
   font-size: var(--font-size-lg);
   /* Espace les paragraphes. */
   margin-bottom: var(--spacing-md);
+}
+
+/* SIMULATION SECTION */
+.simulation {
+  /* Ajoute une respiration forte avant le footer. */
+  padding: var(--spacing-3xl) 0;
+  /* Utilise un fond clair pour revenir à une interface d'action après l'image immersive. */
+  background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+}
+
+.simulation-content {
+  /* Place le texte et le bouton sur une ligne en desktop. */
+  display: flex;
+  /* Centre verticalement le bouton par rapport au texte. */
+  align-items: center;
+  /* Sépare clairement le texte et l'action. */
+  justify-content: space-between;
+  /* Garde de l'espace si la largeur devient limitée. */
+  gap: var(--spacing-2xl);
+  /* Encadre subtilement la section comme un outil sans créer une page marketing. */
+  padding: var(--spacing-2xl);
+  /* Fond blanc pour donner une surface de simulation propre. */
+  background: var(--color-white);
+  /* Bordure discrète pour délimiter le module. */
+  border: 1px solid var(--color-gray-200);
+  /* Rayon contenu et moderne. */
+  border-radius: var(--border-radius-2xl);
+  /* Ombre légère pour hiérarchiser cette dernière action. */
+  box-shadow: var(--shadow-md);
+}
+
+.simulation-copy {
+  /* Limite la largeur du texte pour garder des lignes lisibles. */
+  max-width: 680px;
+}
+
+.simulation-copy h2 {
+  /* Réduit l'espace sous le titre pour garder le module dense. */
+  margin-bottom: var(--spacing-sm);
+}
+
+.simulation-copy p {
+  /* Utilise un gris lisible pour le texte d'aide. */
+  color: var(--color-gray-600);
+}
+
+.simulation-button {
+  /* Empêche le bouton de s'écraser dans la mise en page flex. */
+  flex-shrink: 0;
+}
+
+.simulation-modal {
+  /* Agrandit la pop-up par rapport à la modale générique. */
+  max-width: 760px;
+}
+
+.simulation-choice-grid {
+  /* Affiche les deux choix côte à côte en desktop. */
+  display: grid;
+  /* Deux colonnes équilibrées pour comparer les options. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Espace les cartes de choix. */
+  gap: var(--spacing-lg);
+}
+
+.simulation-choice-card {
+  /* Aligne les textes de chaque choix en colonne. */
+  display: flex;
+  flex-direction: column;
+  /* Donne une hauteur régulière aux deux cartes. */
+  min-height: 220px;
+  /* Ajoute de l'espace intérieur confortable. */
+  padding: var(--spacing-xl);
+  /* Aligne le texte à gauche pour faciliter la lecture. */
+  text-align: left;
+  /* Fond clair légèrement teinté. */
+  background: var(--color-gray-50);
+  /* Bordure discrète au repos. */
+  border: 1px solid var(--color-gray-200);
+  /* Coins modernes mais mesurés. */
+  border-radius: var(--border-radius-xl);
+  /* Couleur de texte principale. */
+  color: var(--color-gray-900);
+}
+
+.simulation-choice-card:hover {
+  /* Met en avant la carte survolée. */
+  background: var(--color-white);
+  /* Utilise le vert de marque pour signaler l'interaction. */
+  border-color: var(--color-primary);
+  /* Ajoute une profondeur légère au survol. */
+  box-shadow: var(--shadow-lg);
+  /* Soulève la carte de façon subtile. */
+  transform: translateY(-3px);
+}
+
+.simulation-choice-label {
+  /* Affiche la catégorie du flux sous forme de petit label. */
+  color: var(--color-primary);
+  /* Rend le label lisible. */
+  font-weight: 700;
+  /* Taille compacte pour le label. */
+  font-size: var(--font-size-sm);
+  /* Espace le label du titre. */
+  margin-bottom: var(--spacing-md);
+}
+
+.simulation-choice-title {
+  /* Donne de l'impact au choix principal. */
+  font-size: var(--font-size-xl);
+  /* Renforce le titre de la carte. */
+  font-weight: 700;
+  /* Garde une hauteur de ligne compacte. */
+  line-height: 1.3;
+  /* Espace le titre de la description. */
+  margin-bottom: var(--spacing-md);
+}
+
+.simulation-choice-description {
+  /* Utilise un gris secondaire pour la description. */
+  color: var(--color-gray-600);
+  /* Garde une lecture confortable. */
+  line-height: 1.6;
 }
 
 /* TECHNOLOGY SECTION */
@@ -951,49 +1176,6 @@ img {
   margin-bottom: var(--spacing-xl);
 }
 
-.modal-choice-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-md);
-}
-
-.choice-card {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--spacing-sm) var(--spacing-md);
-  align-items: center;
-  width: 100%;
-  padding: var(--spacing-lg);
-  border: 1px solid var(--color-gray-200);
-  border-radius: var(--border-radius-xl);
-  background: var(--color-gray-50);
-  color: var(--color-gray-900);
-  text-align: left;
-}
-
-.choice-card:hover {
-  border-color: var(--color-primary);
-  background: var(--color-white);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.choice-icon {
-  grid-row: span 2;
-  font-size: var(--font-size-2xl);
-}
-
-.choice-title {
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.choice-description {
-  color: var(--color-gray-600);
-  font-size: var(--font-size-sm);
-  line-height: 1.5;
-}
-
 .demo-form {
   display: flex;
   flex-direction: column;
@@ -1052,6 +1234,33 @@ img {
   /* Ajuste la taille des titres de carte sur tablette et mobile. */
   h3 {
     font-size: var(--font-size-xl);
+  }
+
+  /* Empile le texte et l'animation du hero sur une seule colonne. */
+  .site-header-content {
+    /* Empile la marque et la navigation sur mobile. */
+    flex-direction: column;
+    /* Garde les éléments centrés dans le header. */
+    justify-content: center;
+    /* Réduit l'espace vertical du header. */
+    gap: var(--spacing-sm);
+    /* Ajoute une hauteur plus souple sur mobile. */
+    min-height: auto;
+    /* Donne de l'air autour du contenu du header. */
+    padding-top: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+  }
+
+  .site-brand {
+    /* Centre le nom du projet sur mobile. */
+    text-align: center;
+  }
+
+  .site-nav {
+    /* Centre les liens sous la marque. */
+    justify-content: center;
+    /* Réduit l'espacement entre les liens sur mobile. */
+    gap: var(--spacing-md);
   }
 
   /* Empile le texte et l'animation du hero sur une seule colonne. */
@@ -1159,6 +1368,35 @@ img {
   .bio-conversion p {
     /* Garde les paragraphes lisibles sans surcharge sur mobile. */
     font-size: var(--font-size-base);
+  }
+
+  .simulation-content {
+    /* Empile le texte et le bouton sur mobile. */
+    flex-direction: column;
+    /* Aligne le contenu au centre pour un bloc d'action compact. */
+    align-items: stretch;
+    /* Réduit légèrement le padding sur petit écran. */
+    padding: var(--spacing-xl);
+  }
+
+  .simulation-copy {
+    /* Centre le texte du module de simulation sur mobile. */
+    text-align: center;
+  }
+
+  .simulation-button {
+    /* Donne au bouton toute la largeur disponible sur mobile. */
+    width: 100%;
+  }
+
+  .simulation-choice-grid {
+    /* Empile les deux choix dans la pop-up sur mobile. */
+    grid-template-columns: 1fr;
+  }
+
+  .simulation-choice-card {
+    /* Réduit la hauteur minimale pour éviter une pop-up trop longue. */
+    min-height: auto;
   }
 
   .features-grid,

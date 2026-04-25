@@ -1,21 +1,23 @@
 # Plateforme de Revalorisation Agricole
 
-**Site vitrine Next.js pour une plateforme circulaire qui transforme les déchets de l'agriculture céréalière en tokens, larves pour poulets et engrais organiques.**
+**Site vitrine Next.js pour une plateforme bio-circulaire territoriale qui transforme les coproduits du blé en protéines pour volailles et en fertilisants organiques.**
 
 Le projet a été présenté dans le cadre du hackathon **HACKATHON #YOUTHFORBIOECONOMY 2026**.
 
 ## Concept
 
-La plateforme centralise la collecte et la valorisation des déchets agricoles issus de la filière céréalière.
+La plateforme centralise la collecte et la valorisation des coproduits végétaux issus de la filière céréalière, notamment paille, sons et issues de nettoyage du blé.
+
+L'idée centrale est simple : **recycler, relier et relocaliser**. Les flux végétaux sous-exploités sont préparés puis transformés par bioconversion avec des insectes. Le vivant devient un moteur d'ingénierie capable de convertir une biomasse difficilement valorisable en protéines, lipides et fertilisants utiles localement.
 
 Le fonctionnement est simple :
 
-- les agriculteurs confient leurs déchets céréaliers à la plateforme ;
-- chaque apport génère des tokens ;
-- les tokens peuvent être utilisés pour récupérer des larves destinées à l'alimentation des poulets ;
-- les déchets biologiques des poulets sont transformés en engrais organiques ;
-- les engrais peuvent aussi être achetés avec les tokens ;
-- une petite part des larves et de l'engrais est conservée puis vendue sur le marché pour financer le modèle.
+- les agriculteurs confient leurs coproduits céréaliers à la plateforme ;
+- chaque apport est acheté en argent classique, selon la quantité et la qualité de la biomasse ;
+- la biomasse est préparée puis convertie par des larves en protéines et lipides ;
+- ces ingrédients peuvent remplacer une partie du soja importé dans l'alimentation avicole ;
+- les fientes et litières sont traitées en amendement organique sécurisé ;
+- la valeur économique reste davantage sur le territoire.
 
 ## Fonctionnalités du site
 
@@ -102,13 +104,13 @@ Présente la plateforme comme une boucle agricole qui transforme les déchets c�
 
 ### Features
 
-Explique les cinq étapes du modèle :
+Explique la boucle territoriale :
 
-- déchets agricoles valorisés ;
-- récompense en tokens ;
-- larves pour les poulets ;
-- engrais organiques ;
-- marge circulaire via vente d'une petite part de production.
+- coproduits du blé préparés ;
+- bioconversion par insectes ;
+- alimentation avicole locale ;
+- traitement des fientes ;
+- retour de matière organique aux sols.
 
 ### Footer
 

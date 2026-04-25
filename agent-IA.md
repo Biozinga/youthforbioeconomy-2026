@@ -4,14 +4,14 @@
 
 Cet agent IA assiste le développement et la maintenance du site vitrine de la **plateforme de revalorisation agricole Youth for Bioeconomy 2026**.
 
-Le projet présente une boucle circulaire appliquée à l'agriculture céréalière :
+Le projet présente une boucle bio-circulaire appliquée à l'agriculture céréalière :
 
-- collecte de déchets céréaliers ;
-- attribution de tokens aux agriculteurs contributeurs ;
-- échange des tokens contre des larves destinées à l'alimentation des poulets ;
-- transformation des déchets biologiques des poulets en engrais organiques ;
-- achat d'engrais avec des tokens ;
-- vente d'une petite part des larves et de l'engrais sur le marché pour générer une marge.
+- collecte de coproduits du blé : paille, sons, issues de nettoyage ;
+- préparation de la biomasse végétale : broyage, humidification, fermentation légère ;
+- bioconversion par insectes dans une unité contrôlée ;
+- intégration de protéines d'insectes dans l'alimentation avicole locale ;
+- traitement des fientes en amendement organique sécurisé ;
+- retour de matière organique et d'azote aux sols céréaliers.
 
 ## Architecture du Projet
 
@@ -45,7 +45,7 @@ src/
 
 1. Les commentaires de code doivent être rédigés en français.
 2. Le vocabulaire produit doit rester aligné avec la revalorisation agricole.
-3. Garder tous les textes centrés sur la boucle agricole, les tokens, les larves et les engrais.
+3. Mettre l'accent sur le vivant comme moteur d'ingénierie, la bioconversion, les larves, les volailles et la fertilité des sols.
 4. Garder le site simple, responsive et compréhensible pour un jury de hackathon.
 5. Vérifier les changements avec `npm run type-check`, `npm run lint` et `npm run format:check`.
 
@@ -53,11 +53,11 @@ src/
 
 ### Promesse
 
-Centraliser la revalorisation des déchets de l'agriculture céréalière pour créer une boucle locale de valeur entre agriculteurs, élevages de poulets, production de larves et engrais organiques.
+Recycler, relier et relocaliser : transformer les coproduits du blé en protéines pour volailles, puis restituer les nutriments aux sols sous forme d'amendement organique.
 
 ### Mécanisme économique
 
-Les déchets agricoles deviennent une ressource. Les agriculteurs reçoivent des tokens, récupèrent des intrants utiles avec ces tokens, et la plateforme finance son fonctionnement grâce à une part vendue sur le marché.
+Le modèle repose sur les coûts évités, soja importé, engrais chimiques, évacuation de déchets, et sur de nouveaux revenus locaux : volailles, œufs, fertilisants organiques et éventuels excédents de farine d'insectes.
 
 ### Sections du Site
 

@@ -40,13 +40,13 @@ export function Features() {
             <h2>Une boucle agricole complète</h2>
             {/* Sous-titre descriptif */}
             <p>
-              Des déchets céréaliers aux protéines animales, puis aux engrais organiques, la
-              plateforme crée une boucle de valeur simple pour les agriculteurs.
+              Les coproduits du blé, paille, sons et issues de nettoyage, sont préparés puis confiés
+              à une unité de bioconversion par insectes.
             </p>
             <p>
-              Les déchets deviennent des tokens, les tokens donnent accès à des larves pour
-              l&apos;alimentation des poulets, et les déchets biologiques sont transformés en
-              engrais.
+              Les larves convertissent cette biomasse en protéines et lipides pour l&apos;élevage
+              avicole local. Les fientes sont ensuite stabilisées en amendement organique, rendu aux
+              sols céréaliers.
             </p>
           </div>
         </div>

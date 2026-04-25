@@ -12,15 +12,15 @@ export const metadata: Metadata = {
   title: 'Revalorisation Agricole - Déchets, Larves et Engrais',
   // Description SEO courte du site.
   description:
-    "Plateforme circulaire qui transforme les déchets de l'agriculture céréalière en tokens, larves pour poulets et engrais organiques.",
+    'Plateforme bio-circulaire territoriale qui transforme les coproduits du blé par insectes en protéines pour volailles et en fertilisants organiques.',
   // Mots-clés associés au sujet du site.
   keywords: [
     // Mot-clé lié à la transformation des déchets agricoles.
     'revalorisation agricole',
     // Mot-clé lié à la filière céréalière visée.
-    'déchets céréaliers',
+    'coproduits du blé',
     // Mot-clé lié au mécanisme économique de la plateforme.
-    'tokens agricoles',
+    'bioconversion par insectes',
     // Mot-clé lié aux produits générés par la boucle biologique.
     'larves et engrais organiques',
   ],
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: 'Revalorisation Agricole - Déchets, Larves et Engrais',
     // Description OpenGraph affichée dans les aperçus de partage.
     description:
-      'Une plateforme qui échange les déchets agricoles contre des tokens, des larves pour poulets et des engrais organiques.',
+      'Recycler, relier et relocaliser: une boucle territoriale qui convertit les coproduits végétaux en protéines avicoles et fertilisants organiques.',
     // Type de contenu OpenGraph: ici un site web.
     type: 'website',
   },

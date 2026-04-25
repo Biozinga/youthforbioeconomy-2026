@@ -6,7 +6,7 @@ export function BioConversion() {
   // Retourne une section immersive avec texte posé sur l'image de fond.
   return (
     // Section dédiée à la transformation biologique des déchets agricoles.
-    <section className="bio-conversion">
+    <section id="conversion" className="bio-conversion">
       {/* Voile sombre qui garantit la lisibilité du texte sur l'image. */}
       <div className="bio-conversion-overlay">
         {/* Conteneur central qui limite la largeur du contenu textuel. */}
@@ -14,19 +14,17 @@ export function BioConversion() {
           {/* Petit libellé qui introduit le sujet de la section. */}
           <p className="bio-conversion-kicker">La biologie comme moteur industriel</p>
           {/* Titre principal de la section. */}
-          <h2>Transformer l&apos;inutilisable en ressources agricoles</h2>
+          <h2>Le vivant comme technologie de transformation</h2>
           {/* Texte explicatif sur le rôle des larves dans la revalorisation. */}
           <p>
-            Les biodéchets agricoles peuvent être difficiles à valoriser directement par les
-            élevages. Les larves jouent le rôle d&apos;intermédiaire biologique: elles métabolisent
-            cette matière organique et la transforment en protéines utilisables pour nourrir des
-            poules.
+            Les coproduits végétaux sont broyés, humidifiés et préparés pour devenir un substrat que
+            les insectes savent convertir avec une efficacité biologique remarquable.
           </p>
           {/* Texte positionnant le vivant comme technologie avancée. */}
           <p>
-            Nous nous appuyons sur la machinerie la plus avancée du monde: le vivant. Son code
-            génétique orchestre une transformation que les poules ne pourraient pas faire seules,
-            tout en créant une nouvelle valeur pour les agriculteurs.
+            Cette machinerie vivante, guidée par le code génétique, transforme une biomasse
+            sous-exploitée en protéines pour volailles, réduit la dépendance au soja importé et
+            referme la boucle avec un fertilisant organique restitué aux sols.
           </p>
         </div>
       </div>
