@@ -3,6 +3,10 @@
 
 // Import du hook useState pour contrôler l'ouverture de la pop-up.
 import { useState } from 'react';
+// Import du composant Lottie pour afficher l'animation de ferme connectée.
+import Lottie from 'lottie-react';
+// Import de l'animation de ferme connectée avec drone.
+import droneFarmAnimation from '../../../lottiefiles/IoT digital farming with drone.json';
 
 /**
  * Composant Simulation - Dernière section de la page
@@ -29,14 +33,31 @@ export function Simulation() {
           </p>
         </div>
 
-        {/* Bouton principal qui ouvre la pop-up de simulation. */}
-        <button
-          className="btn btn-primary simulation-button"
-          type="button"
-          onClick={() => setIsOpen(true)}
-        >
-          Lancer la simulation
-        </button>
+        {/* Colonne d'action qui place l'animation directement au-dessus du bouton. */}
+        <div className="simulation-action">
+          {/* Animation illustrative placée dans la section de simulation. */}
+          <div className="simulation-animation">
+            <Lottie
+              // Données JSON importées depuis lottiefiles/IoT digital farming with drone.json.
+              animationData={droneFarmAnimation}
+              // Répète l'animation pour garder une interface vivante.
+              loop={true}
+              // Lance automatiquement l'animation quand la section est visible.
+              autoplay={true}
+              // L'animation remplit son cadre CSS.
+              style={{ width: '100%', height: '100%' }}
+            />
+          </div>
+
+          {/* Bouton principal qui ouvre la pop-up de simulation. */}
+          <button
+            className="btn btn-primary simulation-button"
+            type="button"
+            onClick={() => setIsOpen(true)}
+          >
+            Lancer la simulation
+          </button>
+        </div>
       </div>
 
       {/* Pop-up affichée uniquement lorsque l'utilisateur lance la simulation. */}

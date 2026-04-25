@@ -619,12 +619,12 @@ img {
 }
 
 .simulation-content {
-  /* Place le texte et le bouton sur une ligne en desktop. */
-  display: flex;
-  /* Centre verticalement le bouton par rapport au texte. */
+  /* Place le texte et la zone d'action sur une grille en desktop. */
+  display: grid;
+  /* Réserve une colonne confortable à l'animation et au bouton. */
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  /* Centre verticalement les deux zones. */
   align-items: center;
-  /* Sépare clairement le texte et l'action. */
-  justify-content: space-between;
   /* Garde de l'espace si la largeur devient limitée. */
   gap: var(--spacing-2xl);
   /* Encadre subtilement la section comme un outil sans créer une page marketing. */
@@ -652,6 +652,24 @@ img {
 .simulation-copy p {
   /* Utilise un gris lisible pour le texte d'aide. */
   color: var(--color-gray-600);
+}
+
+.simulation-action {
+  /* Empile l'animation au-dessus du bouton de simulation. */
+  display: flex;
+  flex-direction: column;
+  /* Centre les éléments dans la colonne d'action. */
+  align-items: center;
+  /* Garde une respiration régulière entre l'animation et le bouton. */
+  gap: var(--spacing-lg);
+}
+
+.simulation-animation {
+  /* Définit une taille stable pour l'animation dans le module. */
+  width: 100%;
+  height: 230px;
+  /* Centre l'animation dans sa colonne. */
+  justify-self: center;
 }
 
 .simulation-button {
@@ -1058,8 +1076,8 @@ img {
   align-items: center;
   /* Espace les logos entre eux. */
   gap: var(--spacing-lg);
-  /* Évite que les logos soient trop serrés si la largeur manque. */
-  flex-wrap: wrap;
+  /* Garde les trois logos sur une même ligne horizontale. */
+  flex-wrap: nowrap;
   /* Aligne le groupe de logos à droite sur grand écran. */
   justify-content: flex-end;
 }
@@ -1073,9 +1091,16 @@ img {
 
 .site-footer-logo-saclay {
   /* Définit une largeur responsive avec une limite maximale pour Paris-Saclay. */
-  width: min(240px, 38vw);
+  width: min(192px, 30vw);
   /* Empêche le logo horizontal de devenir trop haut. */
-  max-height: 78px;
+  max-height: 62px;
+}
+
+.site-footer-logo-apt {
+  /* Définit une largeur responsive avec une limite maximale pour AgroParisTech. */
+  width: min(220px, 34vw);
+  /* Empêche le logo horizontal de devenir trop haut. */
+  max-height: 66px;
 }
 
 .site-footer-logo-agpb {
@@ -1309,16 +1334,25 @@ img {
   .site-footer-logos {
     /* Aligne les logos à gauche sous le texte sur mobile. */
     justify-content: flex-start;
+    /* Conserve les trois logos sur une seule ligne sur mobile. */
+    flex-wrap: nowrap;
+    /* Réduit l'écart pour que les trois logos tiennent mieux. */
+    gap: var(--spacing-md);
   }
 
   .site-footer-logo-saclay {
     /* Limite le logo Paris-Saclay à la largeur disponible sur mobile. */
-    width: min(240px, 100%);
+    width: min(116px, 27vw);
+  }
+
+  .site-footer-logo-apt {
+    /* Limite le logo AgroParisTech à la largeur disponible sur mobile. */
+    width: min(132px, 31vw);
   }
 
   .site-footer-logo-agpb {
     /* Réduit légèrement le logo AGPB sur mobile. */
-    width: 68px;
+    width: min(52px, 14vw);
   }
 
   .features-animation {
@@ -1371,9 +1405,9 @@ img {
   }
 
   .simulation-content {
-    /* Empile le texte et le bouton sur mobile. */
-    flex-direction: column;
-    /* Aligne le contenu au centre pour un bloc d'action compact. */
+    /* Empile le texte, l'animation et le bouton sur mobile. */
+    grid-template-columns: 1fr;
+    /* Aligne le contenu sur toute la largeur disponible. */
     align-items: stretch;
     /* Réduit légèrement le padding sur petit écran. */
     padding: var(--spacing-xl);
@@ -1387,6 +1421,11 @@ img {
   .simulation-button {
     /* Donne au bouton toute la largeur disponible sur mobile. */
     width: 100%;
+  }
+
+  .simulation-animation {
+    /* Réduit l'animation dans la section simulation sur mobile. */
+    height: 220px;
   }
 
   .simulation-choice-grid {

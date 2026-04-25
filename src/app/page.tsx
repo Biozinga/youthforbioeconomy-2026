@@ -48,7 +48,7 @@ export default function Home() {
         {/* Conteneur centré qui aligne le texte à gauche et les logos à droite sur grand écran. */}
         <div className="container site-footer-content">
           {/* Mention du contexte de présentation du projet. */}
-          <p>Projet présenté dans le cadre du hackathon HACKATHON #YOUTHFORBIOECONOMY 2026</p>
+          <p>Projet présenté dans le cadre du HACKATHON #YOUTHFORBIOECONOMY 2026</p>
           {/* Groupe des logos partenaires stockés dans le dossier public/images. */}
           <div className="site-footer-logos">
             {/* Logo de l'Université Paris-Saclay. */}
@@ -63,6 +63,19 @@ export default function Home() {
               height={450}
               // Classe CSS qui contrôle la taille visuelle du logo dans le footer.
               className="site-footer-logo site-footer-logo-saclay"
+            />
+            {/* Logo AgroParisTech. */}
+            <Image
+              // Chemin public du logo AgroParisTech, servi depuis le dossier public de Next.js.
+              src="/images/APT_Logo_RVB_Positif.png"
+              // Texte alternatif lu par les lecteurs d'écran et affiché si l'image ne charge pas.
+              alt="AgroParisTech"
+              // Largeur réelle du fichier source, utilisée par Next.js pour calculer le ratio d'image.
+              width={1280}
+              // Hauteur réelle du fichier source, utilisée avec la largeur pour préserver les proportions.
+              height={355}
+              // Classe CSS qui contrôle la taille visuelle du logo dans le footer.
+              className="site-footer-logo site-footer-logo-apt"
             />
             {/* Logo AGPB. */}
             <Image
