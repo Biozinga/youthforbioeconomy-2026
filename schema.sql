@@ -1,6 +1,16 @@
+-- UTILISATEUR (Authentification et Rôles)
+CREATE TABLE utilisateur (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    mot_de_passe_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(50) CHECK (role IN ('agriculteur', 'entreprise', 'admin')) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- AGRICULTEUR
 CREATE TABLE agriculteur (
     id SERIAL PRIMARY KEY,
+    utilisateur_id INT UNIQUE REFERENCES utilisateur(id) ON DELETE CASCADE,
     nom VARCHAR(100) NOT NULL,
     telephone VARCHAR(20)
 );
@@ -199,3 +209,57 @@ BEGIN
     RETURN p_quantite_dechets_kg * COALESCE(v_ratio, 0);
 END;
 $$ LANGUAGE plpgsql;
+
+
+-- ==============================================================================
+-- TABLEAUX DE BORD (DASHBOARDS)
+-- ==============================================================================
+
+-- Vue d'ensemble pour le Dashboard de l'Agriculteur
+-- Permet de visualiser rapidement les déchets produits, le stock disponible et le gain potentiel
+CREATE OR REPLACE VIEW vue_dashboard_agriculteur AS
+SELECT 
+    a.id AS agriculteur_id,
+    a.nom AS agriculteur_nom,
+    -- Statistiques globales
+    COUNT(DISTINCT t.id) AS nombre_terrains,
+    COALESCE(SUM(c.surface_utilisee), 0) AS surface_totale_cultivee_ha,
+    
+    -- Quantité de déchets en stock (non vendus)
+    COALESCE((
+        SELECT SUM(d.quantite_kg) 
+        FROM dechet d 
+        JOIN culture c2 ON d.culture_id = c2.id 
+        JOIN terrain t2 ON c2.terrain_id = t2.id 
+        WHERE t2.agriculteur_id = a.id
+        AND NOT EXISTS (
+            SELECT 1 FROM vente_dechet vd WHERE vd.dechet_id = d.id AND vd.statut = 'accepte'
+        )
+    ), 0) AS dechets_en_stock_kg,
+    
+    -- Gain potentiel estimé (Basé sur une moyenne de 0.20€ le kilo, modifiable)
+    COALESCE((
+        SELECT SUM(d.quantite_kg) * 0.20
+        FROM dechet d 
+        JOIN culture c2 ON d.culture_id = c2.id 
+        JOIN terrain t2 ON c2.terrain_id = t2.id 
+        WHERE t2.agriculteur_id = a.id
+        AND NOT EXISTS (
+            SELECT 1 FROM vente_dechet vd WHERE vd.dechet_id = d.id AND vd.statut = 'accepte'
+        )
+    ), 0) AS gain_potentiel_estime_euros,
+    
+    -- Gain déjà réalisé (Ventes acceptées)
+    COALESCE((
+        SELECT SUM(vd.prix)
+        FROM vente_dechet vd
+        JOIN dechet d ON vd.dechet_id = d.id
+        JOIN culture c2 ON d.culture_id = c2.id
+        JOIN terrain t2 ON c2.terrain_id = t2.id
+        WHERE t2.agriculteur_id = a.id AND vd.statut = 'accepte'
+    ), 0) AS gain_realise_euros
+
+FROM agriculteur a
+LEFT JOIN terrain t ON t.agriculteur_id = a.id
+LEFT JOIN culture c ON c.terrain_id = t.id
+GROUP BY a.id, a.nom;
