@@ -34,4 +34,6 @@ export const navigation = [
   { label: 'Conversion', href: '#conversion' },
   // Lien vers la section finale de simulation.
   { label: 'Simulation', href: '#simulation' },
+  // Lien vers la section de pilotage économique.
+  { label: 'Rentabilité', href: '#rentabilite' },
 ];

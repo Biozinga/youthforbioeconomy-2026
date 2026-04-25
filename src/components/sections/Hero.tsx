@@ -25,7 +25,12 @@ export function Hero() {
         {/* Contenu texte de la section accueil. */}
         <div className="hero-text">
           {/* Titre principal orienté vision plutôt que simple description produit. */}
-          <h1>Et si la bio-ingénierie révélait tout le potentiel de nos déchets agricoles ?</h1>
+          <h1>
+            <span className="hero-title-main">Et si la bio-ingénierie...</span>
+            <span className="hero-title-secondary">
+              révélait tout le potentiel de vos déchets agricoles ?
+            </span>
+          </h1>
           {/* Sous-titre qui précise la promesse utilisateur et le rôle de la plateforme. */}
           <p className="hero-subtitle">
             Nous connectons agriculteurs, éleveurs et insectes pour transformer les coproduits

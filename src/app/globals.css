@@ -171,6 +171,46 @@ img {
   height: auto;
 }
 
+.scroll-reveal {
+  /* État initial des titres et sous-titres avant leur apparition au scroll. */
+  opacity: 0;
+  /* Décale légèrement le texte vers le bas pour une entrée douce. */
+  transform: translateY(18px);
+  /* Prépare une animation premium mais discrète. */
+  transition:
+    opacity 760ms ease,
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+  /* Ajoute un délai doux pour créer une entrée progressive des blocs de texte. */
+  transition-delay: var(--scroll-reveal-delay, 0ms);
+  /* Optimise l'animation. */
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-visible {
+  /* Affiche les textes lorsqu'ils arrivent dans le viewport. */
+  opacity: 1;
+  /* Replace le texte à sa position naturelle. */
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    /* Respecte les utilisateurs qui réduisent les animations. */
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-title-main,
+  .hero-title-secondary,
+  .hero-subtitle {
+    /* Affiche directement le hero si l'utilisateur réduit les animations. */
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
 /* HEADER */
 .site-header {
   /* Garde le header au-dessus de la page, puis permet de le masquer au scroll. */
@@ -368,15 +408,62 @@ img {
   letter-spacing: 0;
 }
 
+.hero-title-main {
+  /* Affiche la première partie du titre comme bloc animé indépendant. */
+  display: block;
+  /* Cache le texte avant l'animation initiale. */
+  opacity: 0;
+  /* Prépare une entrée douce depuis le bas. */
+  transform: translateY(22px);
+  /* Première étape de la séquence hero. */
+  animation: hero-copy-rise 1.25s cubic-bezier(0.22, 1, 0.36, 1) 220ms forwards;
+}
+
+.hero-title-secondary {
+  /* Place la deuxième partie du titre sous l'accroche principale. */
+  display: block;
+  /* Réduit la taille pour créer une hiérarchie nette dans le hero. */
+  font-size: 0.56em;
+  /* Rend la ligne secondaire plus respirante. */
+  line-height: 1.08;
+  /* Saute visuellement une ligne après l'accroche. */
+  margin-top: var(--spacing-xl);
+  /* Utilise un gris profond pour hiérarchiser sans affaiblir le message. */
+  color: var(--color-gray-700);
+  /* Cache le texte avant l'animation initiale. */
+  opacity: 0;
+  /* Prépare une entrée douce depuis le bas. */
+  transform: translateY(22px);
+  /* Deuxième étape de la séquence hero. */
+  animation: hero-copy-rise 1.3s cubic-bezier(0.22, 1, 0.36, 1) 1120ms forwards;
+}
+
 .hero-subtitle {
   /* Donne au sous-titre une taille supérieure au texte courant. */
   font-size: var(--font-size-xl);
   /* Utilise un gris plus doux pour hiérarchiser le texte. */
   color: var(--color-gray-600);
+  /* Cache le paragraphe avant son arrivée dans la séquence. */
+  opacity: 0;
+  /* Prépare une entrée douce depuis le bas. */
+  transform: translateY(18px);
+  /* Troisième étape de la séquence hero. */
+  animation: hero-copy-rise 1.35s cubic-bezier(0.22, 1, 0.36, 1) 2050ms forwards;
   /* Espace le sous-titre des boutons. */
   margin-bottom: var(--spacing-lg);
   /* Garde une lecture confortable sur plusieurs lignes. */
   line-height: 1.6;
+}
+
+@keyframes hero-copy-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-features {
@@ -1222,6 +1309,412 @@ img {
   flex-shrink: 0;
 }
 
+/* PROFITABILITY SECTION */
+.profitability {
+  /* Ajoute une section claire dédiée au pilotage économique. */
+  padding: var(--spacing-3xl) 0;
+  /* Fond sobre avec une touche financière verte. */
+  background:
+    radial-gradient(circle at 14% 20%, rgba(16, 185, 129, 0.12), transparent 28%),
+    radial-gradient(circle at 92% 18%, rgba(245, 158, 11, 0.16), transparent 26%),
+    linear-gradient(135deg, var(--color-white) 0%, #f8fafc 54%, #ecfdf5 100%);
+}
+
+.profitability-grid {
+  /* Place le récit et le simulateur côte à côte sur desktop. */
+  display: grid;
+  /* Donne plus de largeur au panneau interactif. */
+  grid-template-columns: minmax(320px, 0.95fr) minmax(390px, 1.05fr);
+  /* Espace généreusement les deux colonnes. */
+  gap: var(--spacing-3xl);
+  /* Centre verticalement le contenu. */
+  align-items: center;
+}
+
+.section-kicker {
+  /* Crée un petit label éditorial réutilisable. */
+  margin-bottom: var(--spacing-md);
+  /* Couleur de marque. */
+  color: var(--color-primary-dark);
+  /* Renforce le label. */
+  font-weight: 800;
+  /* Taille compacte. */
+  font-size: var(--font-size-sm);
+  /* Majuscules pour hiérarchiser. */
+  text-transform: uppercase;
+  /* Garde un espacement neutre. */
+  letter-spacing: 0;
+}
+
+.profitability-copy h2 {
+  /* Aligne le titre avec les autres sections. */
+  margin-bottom: var(--spacing-lg);
+}
+
+.profitability-copy p:not(.section-kicker) {
+  /* Limite la largeur de lecture du texte. */
+  max-width: 560px;
+  /* Couleur secondaire. */
+  color: var(--color-gray-600);
+  /* Rythme confortable. */
+  line-height: 1.7;
+}
+
+.profitability-animation {
+  /* Réserve une zone stable à l'animation Finance. */
+  width: min(100%, 540px);
+  height: 360px;
+  /* Espace l'animation du texte. */
+  margin-top: var(--spacing-xl);
+}
+
+.profitability-panel {
+  /* Transforme le calculateur en tableau de bord moderne. */
+  padding: var(--spacing-lg);
+  /* Fond blanc vitré. */
+  background: rgba(255, 255, 255, 0.86);
+  /* Bordure subtile. */
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  /* Rayon cohérent avec les autres grands panneaux. */
+  border-radius: var(--border-radius-xl);
+  /* Ombre douce premium. */
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.12);
+  /* Flou de fond. */
+  backdrop-filter: blur(18px);
+}
+
+.profitability-tabs {
+  /* Affiche les modes sous forme de contrôle segmenté. */
+  display: grid;
+  /* Deux modes de même largeur. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Fond gris clair du contrôle. */
+  background: var(--color-gray-100);
+  /* Petite bordure interne. */
+  padding: 5px;
+  /* Arrondit le contrôle. */
+  border-radius: var(--border-radius-xl);
+  /* Espace le contrôle des champs. */
+  margin-bottom: var(--spacing-md);
+}
+
+.profitability-tabs button {
+  /* Rend chaque onglet confortable. */
+  padding: var(--spacing-sm) var(--spacing-md);
+  /* Fond transparent au repos. */
+  background: transparent;
+  /* Couleur secondaire. */
+  color: var(--color-gray-600);
+  /* Arrondit chaque onglet actif. */
+  border-radius: var(--border-radius-lg);
+  /* Renforce le libellé. */
+  font-weight: 800;
+}
+
+.profitability-tabs .profitability-tab-active {
+  /* Met en avant le mode actif. */
+  background: var(--color-white);
+  /* Couleur de marque. */
+  color: var(--color-primary-dark);
+  /* Ombre légère. */
+  box-shadow: var(--shadow-sm);
+}
+
+.profitability-controls {
+  /* Organise les entrées en grille dense. */
+  display: grid;
+  /* Deux colonnes sur desktop pour réduire la hauteur. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Espace les champs. */
+  gap: var(--spacing-sm);
+}
+
+.profitability-market-toggle {
+  /* Place le bouton sur toute la largeur de la grille. */
+  grid-column: 1 / -1;
+  /* Taille compacte pour une action secondaire. */
+  min-height: 38px;
+  /* Centre le libellé. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Fond clair cohérent avec le panneau. */
+  background: var(--color-gray-50);
+  /* Bordure discrète. */
+  border: 1px solid var(--color-gray-200);
+  /* Coins doux. */
+  border-radius: var(--border-radius-lg);
+  /* Couleur de marque. */
+  color: var(--color-primary-dark);
+  /* Rend l'action identifiable. */
+  font-weight: 800;
+}
+
+.profitability-market-toggle:hover {
+  /* Accentue légèrement le bouton au survol. */
+  background: var(--color-white);
+  border-color: rgba(5, 150, 105, 0.24);
+  box-shadow: var(--shadow-sm);
+}
+
+.profitability-market-settings {
+  /* Déplie les paramètres avancés dans la grille du formulaire. */
+  grid-column: 1 / -1;
+  /* Organise les hypothèses en deux colonnes. */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Espace les champs avancés. */
+  gap: var(--spacing-sm);
+  /* Ajoute une séparation visuelle douce. */
+  padding: var(--spacing-md);
+  /* Fond très léger. */
+  background: var(--color-gray-50);
+  /* Bordure subtile. */
+  border: 1px solid var(--color-gray-200);
+  /* Rayon cohérent. */
+  border-radius: var(--border-radius-lg);
+}
+
+.profitability-calculate-button {
+  /* Place le bouton de calcul sur toute la largeur du panneau. */
+  grid-column: 1 / -1;
+  /* Centre le libellé du bouton. */
+  justify-content: center;
+  /* Garde une respiration après les champs. */
+  margin-top: var(--spacing-xs);
+}
+
+.profitability-calculate-button:disabled {
+  /* Signale que le calcul serveur est en cours. */
+  opacity: 0.72;
+  /* Évite l'impression d'une action disponible. */
+  cursor: wait;
+}
+
+.profitability-field {
+  /* Empile label et contrôle. */
+  display: flex;
+  flex-direction: column;
+  /* Garde le label proche. */
+  gap: var(--spacing-xs);
+}
+
+.profitability-option-field {
+  /* Donne toute la largeur au choix principal pour éviter l'aspect menu natif. */
+  grid-column: 1 / -1;
+}
+
+.profitability-option-grid {
+  /* Présente les cultures ou élevages comme un contrôle segmenté moderne. */
+  display: grid;
+  /* Quatre choix équilibrés sur desktop. */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* Fond de capsule légère. */
+  background: var(--color-gray-100);
+  /* Petite respiration interne. */
+  padding: 5px;
+  /* Arrondit le groupe. */
+  border-radius: var(--border-radius-xl);
+  /* Bordure subtile pour cadrer le contrôle. */
+  border: 1px solid var(--color-gray-200);
+  /* Espace très léger entre les boutons. */
+  gap: 4px;
+}
+
+.profitability-option-grid button {
+  /* Transforme chaque option en bouton propre. */
+  min-height: 40px;
+  /* Fond transparent au repos. */
+  background: transparent;
+  /* Texte secondaire au repos. */
+  color: var(--color-gray-600);
+  /* Coins doux. */
+  border-radius: var(--border-radius-lg);
+  /* Texte fort mais compact. */
+  font-weight: 800;
+  /* Taille compatible avec les petits libellés. */
+  font-size: var(--font-size-sm);
+}
+
+.profitability-option-grid button:hover {
+  /* Fait ressortir l'option au survol. */
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--color-primary-dark);
+}
+
+.profitability-option-grid .profitability-option-active {
+  /* Met en avant l'option sélectionnée. */
+  background: var(--color-white);
+  /* Couleur de marque. */
+  color: var(--color-primary-dark);
+  /* Ombre cohérente avec les autres contrôles. */
+  box-shadow: var(--shadow-sm);
+}
+
+.profitability-field span {
+  /* Style des libellés de champs. */
+  color: var(--color-gray-700);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.profitability-field input,
+.profitability-field select {
+  /* Taille confortable des entrées. */
+  min-height: 40px;
+  /* Espacement intérieur. */
+  padding: 0 var(--spacing-md);
+  /* Bordure cohérente avec les formulaires existants. */
+  border: 1px solid var(--color-gray-300);
+  /* Rayon mesuré. */
+  border-radius: var(--border-radius-lg);
+  /* Fond blanc. */
+  background: var(--color-white);
+  /* Typographie héritée. */
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  /* Couleur principale. */
+  color: var(--color-gray-900);
+}
+
+.profitability-field input:focus,
+.profitability-field select:focus {
+  /* Supprime le contour natif. */
+  outline: none;
+  /* Bordure de marque au focus. */
+  border-color: var(--color-primary);
+  /* Halo accessible. */
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.12);
+}
+
+.profitability-error {
+  /* Message d'erreur compact. */
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--border-radius-lg);
+  color: #991b1b;
+}
+
+.profitability-result {
+  /* Espace le résultat des contrôles. */
+  margin-top: var(--spacing-md);
+  /* Animation douce quand les chiffres se mettent à jour. */
+  transition: opacity var(--transition-base) ease;
+}
+
+.profitability-result-loading {
+  /* Indique qu'un nouveau calcul est en cours sans masquer le résultat précédent. */
+  opacity: 0.72;
+}
+
+.profitability-result-main {
+  /* Carte principale de marge. */
+  padding: var(--spacing-lg);
+  /* Dégradé financier cohérent avec TerraLoop. */
+  background:
+    radial-gradient(circle at top right, rgba(245, 158, 11, 0.24), transparent 34%),
+    linear-gradient(135deg, #052e2b 0%, #0f766e 58%, #16a34a 100%);
+  /* Arrondit la carte. */
+  border-radius: var(--border-radius-xl);
+  /* Texte blanc. */
+  color: var(--color-white);
+  /* Ombre douce. */
+  box-shadow: var(--shadow-lg);
+}
+
+.profitability-result-main span {
+  /* Label de la carte principale. */
+  display: block;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  margin-bottom: var(--spacing-sm);
+}
+
+.profitability-result-main strong {
+  /* Montant principal. */
+  display: block;
+  font-size: var(--font-size-3xl);
+  line-height: 1;
+  margin-bottom: var(--spacing-sm);
+}
+
+.profitability-result-main em {
+  /* Taux de marge. */
+  color: rgba(255, 255, 255, 0.84);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.profitability-bars {
+  /* Empile les deux barres financières. */
+  display: grid;
+  gap: var(--spacing-sm);
+  /* Espace les barres de la marge. */
+  margin-top: var(--spacing-md);
+}
+
+.profitability-bars div {
+  /* Cadre de chaque barre. */
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--border-radius-lg);
+}
+
+.profitability-bars span,
+.profitability-metrics span {
+  /* Libellés des indicateurs. */
+  display: block;
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.profitability-bars strong,
+.profitability-metrics strong {
+  /* Valeurs des indicateurs. */
+  display: block;
+  color: var(--color-gray-900);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.profitability-bars i {
+  /* Barre de chiffre d'affaires. */
+  display: block;
+  height: 9px;
+  background: linear-gradient(90deg, var(--color-primary), #34d399);
+  border-radius: 999px;
+  /* Rend le mouvement des barres plus doux pendant le calcul animé. */
+  transition: width 80ms linear;
+}
+
+.profitability-bars .profitability-cost-bar {
+  /* Barre des coûts. */
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+}
+
+.profitability-metrics {
+  /* Mini dashboard des volumes et seuils. */
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.profitability-metrics div {
+  /* Tuiles de métriques secondaires. */
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--border-radius-lg);
+}
+
 .simulation-modal {
   /* Agrandit la pop-up par rapport à la modale générique. */
   max-width: 720px;
@@ -1911,6 +2404,20 @@ img {
   justify-content: flex-end;
 }
 
+.site-footer-logos a {
+  /* Permet de cliquer sur chaque logo sans changer leur alignement. */
+  display: inline-flex;
+  /* Centre les images dans leur zone de lien. */
+  align-items: center;
+  /* Garde une transition douce au survol. */
+  transition: opacity var(--transition-base) ease;
+}
+
+.site-footer-logos a:hover {
+  /* Signale sobrement que les logos sont cliquables. */
+  opacity: 0.78;
+}
+
 .site-footer-logo {
   /* Préserve le ratio original du logo. */
   height: auto;
@@ -1923,6 +2430,8 @@ img {
   width: min(192px, 30vw);
   /* Empêche le logo horizontal de devenir trop haut. */
   max-height: 62px;
+  /* Remonte légèrement Paris-Saclay pour l'aligner optiquement avec les autres logos. */
+  transform: translateY(-3px);
 }
 
 .site-footer-logo-apt {
@@ -2135,6 +2644,11 @@ img {
     line-height: 1.08;
   }
 
+  .hero-title-secondary {
+    /* Garde la deuxième ligne lisible sur mobile. */
+    font-size: 0.72em;
+  }
+
   /* Réduit la hauteur minimale réservée à l'animation du hero. */
   .hero-image {
     min-height: 360px;
@@ -2331,6 +2845,48 @@ img {
   .simulation-result-amount {
     /* Réduit le montant pour éviter tout débordement sur petit écran. */
     font-size: var(--font-size-3xl);
+  }
+
+  .profitability-grid {
+    /* Empile le récit et le simulateur de rentabilité sur mobile. */
+    grid-template-columns: 1fr;
+    /* Réduit l'espace vertical entre les blocs. */
+    gap: var(--spacing-xl);
+  }
+
+  .profitability-animation {
+    /* Réduit l'animation Finance sur mobile. */
+    height: 220px;
+  }
+
+  .profitability-panel {
+    /* Réduit le padding du dashboard sur mobile. */
+    padding: var(--spacing-lg);
+  }
+
+  .profitability-controls {
+    /* Empile les champs pour éviter les colonnes trop étroites. */
+    grid-template-columns: 1fr;
+  }
+
+  .profitability-option-grid {
+    /* Garde les options lisibles sur mobile. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profitability-market-settings {
+    /* Empile les paramètres avancés sur mobile. */
+    grid-template-columns: 1fr;
+  }
+
+  .profitability-result-main strong {
+    /* Réduit le montant principal sur mobile. */
+    font-size: var(--font-size-3xl);
+  }
+
+  .profitability-metrics {
+    /* Affiche les métriques sur deux colonnes compactes. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .features-grid,

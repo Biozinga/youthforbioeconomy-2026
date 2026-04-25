@@ -7,6 +7,8 @@
 import Image from 'next/image';
 // Import du header simple affiché en haut de page.
 import { Header } from '@/components/sections/Header';
+// Import du composant invisible qui anime les titres au scroll.
+import { ScrollReveal } from '@/components/ScrollReveal';
 // Import de la section d'accueil, qui contient le titre principal et l'animation de la boucle.
 import { Hero } from '@/components/sections/Hero';
 // Import de la section listant les étapes principales de la plateforme.
@@ -17,6 +19,8 @@ import { BioConversion } from '@/components/sections/BioConversion';
 import { Molecules } from '@/components/sections/Molecules';
 // Import de la section finale de simulation de revalorisation.
 import { Simulation } from '@/components/sections/Simulation';
+// Import de la section interactive de rentabilité économique.
+import { Profitability } from '@/components/sections/Profitability';
 
 /**
  * Composant racine de la page d'accueil
@@ -29,6 +33,8 @@ export default function Home() {
     <>
       {/* Header simple avec le nom du projet et la navigation principale */}
       <Header />
+      {/* Animation douce des titres et sous-titres au scroll */}
+      <ScrollReveal />
 
       {/* Zone principale de la page, réservée au contenu éditorial et fonctionnel. */}
       <main>
@@ -46,6 +52,9 @@ export default function Home() {
 
         {/* Dernière section permettant de simuler une revalorisation de déchet */}
         <Simulation />
+
+        {/* Section de pilotage économique de la rentabilité plateforme */}
+        <Profitability />
       </main>
 
       {/* Pied de page institutionnel affiché sous le contenu principal. */}
@@ -65,45 +74,51 @@ export default function Home() {
           </p>
           {/* Groupe des logos partenaires stockés dans le dossier public/images. */}
           <div className="site-footer-logos">
-            {/* Logo de l'Université Paris-Saclay. */}
-            <Image
-              // Chemin public du logo, servi directement depuis le dossier public de Next.js.
-              src="/images/Logo_Université_Paris-Saclay_2019-12.svg.png"
-              // Texte alternatif lu par les lecteurs d'écran et affiché si l'image ne charge pas.
-              alt="Université Paris-Saclay"
-              // Largeur réelle du fichier source, utilisée par Next.js pour calculer le ratio d'image.
-              width={1280}
-              // Hauteur réelle du fichier source, utilisée avec la largeur pour préserver les proportions.
-              height={450}
-              // Classe CSS qui contrôle la taille visuelle du logo dans le footer.
-              className="site-footer-logo site-footer-logo-saclay"
-            />
-            {/* Logo AgroParisTech. */}
-            <Image
-              // Chemin public du logo AgroParisTech, servi depuis le dossier public de Next.js.
-              src="/images/APT_Logo_RVB_Positif.png"
-              // Texte alternatif lu par les lecteurs d'écran et affiché si l'image ne charge pas.
-              alt="AgroParisTech"
-              // Largeur réelle du fichier source, utilisée par Next.js pour calculer le ratio d'image.
-              width={1280}
-              // Hauteur réelle du fichier source, utilisée avec la largeur pour préserver les proportions.
-              height={355}
-              // Classe CSS qui contrôle la taille visuelle du logo dans le footer.
-              className="site-footer-logo site-footer-logo-apt"
-            />
-            {/* Logo AGPB. */}
-            <Image
-              // Chemin public du logo AGPB, servi depuis le dossier public de Next.js.
-              src="/images/logo_agpb.png"
-              // Texte alternatif lu par les lecteurs d'écran et affiché si l'image ne charge pas.
-              alt="AGPB"
-              // Largeur réelle du fichier source, utilisée par Next.js pour calculer le ratio d'image.
-              width={175}
-              // Hauteur réelle du fichier source, utilisée avec la largeur pour préserver les proportions.
-              height={171}
-              // Classe CSS qui contrôle la taille visuelle du logo dans le footer.
-              className="site-footer-logo site-footer-logo-agpb"
-            />
+            {/* Logo cliquable de l'Université Paris-Saclay. */}
+            <a href="https://www.universite-paris-saclay.fr" target="_blank" rel="noreferrer">
+              <Image
+                // Chemin public du logo, servi directement depuis le dossier public de Next.js.
+                src="/images/Logo_Université_Paris-Saclay_2019-12.svg.png"
+                // Texte alternatif lu par les lecteurs d'écran et affiché si l'image ne charge pas.
+                alt="Université Paris-Saclay"
+                // Largeur réelle du fichier source, utilisée par Next.js pour calculer le ratio d'image.
+                width={1280}
+                // Hauteur réelle du fichier source, utilisée avec la largeur pour préserver les proportions.
+                height={450}
+                // Classe CSS qui contrôle la taille visuelle du logo dans le footer.
+                className="site-footer-logo site-footer-logo-saclay"
+              />
+            </a>
+            {/* Logo cliquable AgroParisTech. */}
+            <a href="https://www.agroparistech.fr" target="_blank" rel="noreferrer">
+              <Image
+                // Chemin public du logo AgroParisTech, servi depuis le dossier public de Next.js.
+                src="/images/APT_Logo_RVB_Positif.png"
+                // Texte alternatif lu par les lecteurs d'écran et affiché si l'image ne charge pas.
+                alt="AgroParisTech"
+                // Largeur réelle du fichier source, utilisée par Next.js pour calculer le ratio d'image.
+                width={1280}
+                // Hauteur réelle du fichier source, utilisée avec la largeur pour préserver les proportions.
+                height={355}
+                // Classe CSS qui contrôle la taille visuelle du logo dans le footer.
+                className="site-footer-logo site-footer-logo-apt"
+              />
+            </a>
+            {/* Logo cliquable AGPB. */}
+            <a href="https://agpb.fr" target="_blank" rel="noreferrer">
+              <Image
+                // Chemin public du logo AGPB, servi depuis le dossier public de Next.js.
+                src="/images/logo_agpb.png"
+                // Texte alternatif lu par les lecteurs d'écran et affiché si l'image ne charge pas.
+                alt="AGPB"
+                // Largeur réelle du fichier source, utilisée par Next.js pour calculer le ratio d'image.
+                width={175}
+                // Hauteur réelle du fichier source, utilisée avec la largeur pour préserver les proportions.
+                height={171}
+                // Classe CSS qui contrôle la taille visuelle du logo dans le footer.
+                className="site-footer-logo site-footer-logo-agpb"
+              />
+            </a>
           </div>
         </div>
       </footer>
