@@ -85,6 +85,7 @@ function MoleculeViewer({ molecule }: { molecule: Molecule }) {
       // Crée le viewer dans la carte.
       viewer = threeDmol.createViewer(container, {
         backgroundColor: 'rgba(0,0,0,0)',
+        nomouse: true,
       });
       // Force 3Dmol.js à reprendre les dimensions réelles de la carte avant d'ajouter le modèle.
       viewer.resize();

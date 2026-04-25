@@ -756,8 +756,8 @@ img {
   background: linear-gradient(
     90deg,
     rgba(17, 24, 39, 0.9) 0%,
-    rgba(17, 24, 39, 0.68) 48%,
-    rgba(17, 24, 39, 0.18) 100%
+    rgba(17, 24, 39, 0.78) 52%,
+    rgba(17, 24, 39, 0.42) 100%
   );
   /* Remplit toute la hauteur de la section parent. */
   min-height: 620px;
@@ -767,10 +767,19 @@ img {
 }
 
 .bio-conversion-content {
+  /* Place le texte à gauche et le graphique à droite. */
+  display: grid;
+  /* Donne davantage de place au texte tout en réservant une colonne graphique. */
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.75fr);
+  /* Espace les deux zones. */
+  gap: var(--spacing-3xl);
+  /* Centre verticalement le texte et le graphique. */
+  align-items: center;
+}
+
+.bio-conversion-copy {
   /* Limite la largeur du texte pour garder des lignes lisibles. */
   max-width: 720px;
-  /* Place le texte à gauche dans l'image. */
-  margin-left: 0;
 }
 
 .bio-conversion-kicker {
@@ -782,8 +791,8 @@ img {
   font-size: var(--font-size-sm);
   /* Met le texte en capitales pour créer un repère visuel. */
   text-transform: uppercase;
-  /* Aère les lettres du libellé. */
-  letter-spacing: 0.08em;
+  /* Garde un espacement neutre pour respecter la typographie du site. */
+  letter-spacing: 0;
   /* Espace le libellé du titre. */
   margin-bottom: var(--spacing-md);
 }
@@ -806,6 +815,200 @@ img {
   margin-bottom: var(--spacing-md);
 }
 
+.bio-absorption-card {
+  /* Crée un module graphique lisible sur la photo de fond. */
+  padding: var(--spacing-xl);
+  /* Fond sombre vitré pour garder l'immersion tout en protégeant les données. */
+  background: rgba(15, 23, 42, 0.74);
+  /* Bordure claire très subtile. */
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  /* Rayon cohérent avec les cartes modernes du site. */
+  border-radius: var(--border-radius-2xl);
+  /* Ombre profonde pour détacher le graphique. */
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+  /* Flou de fond pour donner un aspect tableau de bord. */
+  backdrop-filter: blur(18px);
+}
+
+.bio-absorption-header {
+  /* Aligne le titre du graphique et la durée. */
+  display: flex;
+  /* Répartit les deux informations aux extrémités. */
+  justify-content: space-between;
+  /* Centre verticalement les textes. */
+  align-items: center;
+  /* Espace l'en-tête du graphique. */
+  margin-bottom: var(--spacing-lg);
+  /* Garde un espace si les libellés passent sur deux lignes. */
+  gap: var(--spacing-md);
+}
+
+.bio-absorption-header span {
+  /* Renforce le titre du graphique. */
+  color: var(--color-white);
+  /* Donne du poids au libellé. */
+  font-weight: 700;
+}
+
+.bio-absorption-header strong {
+  /* Présente la durée comme une pastille. */
+  padding: var(--spacing-xs) var(--spacing-sm);
+  /* Fond vert translucide. */
+  background: rgba(16, 185, 129, 0.16);
+  /* Bordure verte discrète. */
+  border: 1px solid rgba(167, 243, 208, 0.24);
+  /* Arrondit la pastille. */
+  border-radius: 999px;
+  /* Couleur claire avec rappel végétal. */
+  color: #a7f3d0;
+  /* Taille compacte. */
+  font-size: var(--font-size-sm);
+}
+
+.bio-absorption-chart {
+  /* Crée un cadre stable pour le SVG. */
+  width: 100%;
+  /* Garde le ratio du graphique. */
+  aspect-ratio: 1.62;
+}
+
+.bio-absorption-chart svg {
+  /* Le graphique remplit son cadre. */
+  width: 100%;
+  height: 100%;
+  /* Évite les débordements de traits animés. */
+  overflow: visible;
+}
+
+.bio-chart-grid line {
+  /* Style des lignes de grille. */
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1;
+}
+
+.bio-chart-axis {
+  /* Style des axes du graphique. */
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 2;
+}
+
+.bio-chart-line {
+  /* Les courbes ne sont pas remplies. */
+  fill: none;
+  /* Arrondit les courbes pour un rendu premium. */
+  stroke-linecap: round;
+  /* Arrondit les jonctions. */
+  stroke-linejoin: round;
+  /* Épaisseur visible sans lourdeur. */
+  stroke-width: 5;
+  /* Prépare l'animation de dessin de courbe. */
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+  /* Anime l'apparition de la courbe. */
+  animation: bio-chart-draw 2.8s ease-in-out infinite alternate;
+}
+
+.bio-chart-line-living {
+  /* Courbe avec bioconversion par larves. */
+  stroke: #34d399;
+  /* Halo doux autour de la courbe vivante. */
+  filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.48));
+}
+
+.bio-chart-line-passive {
+  /* Courbe de dégradation passive. */
+  stroke: rgba(255, 255, 255, 0.56);
+  /* Animation légèrement plus lente pour marquer le contraste. */
+  animation-duration: 3.4s;
+}
+
+.bio-chart-value {
+  /* Style des valeurs numériques. */
+  font-weight: 800;
+  /* Taille lisible dans le SVG. */
+  font-size: 24px;
+}
+
+.bio-chart-value-living {
+  /* Couleur de la valeur avec larves. */
+  fill: #a7f3d0;
+}
+
+.bio-chart-value-passive {
+  /* Couleur de la valeur passive. */
+  fill: rgba(255, 255, 255, 0.72);
+}
+
+.bio-chart-label {
+  /* Style des labels de temps. */
+  fill: rgba(255, 255, 255, 0.58);
+  /* Taille compacte dans le SVG. */
+  font-size: 14px;
+}
+
+.bio-absorption-legend {
+  /* Aligne les deux légendes sous le graphique. */
+  display: flex;
+  /* Autorise le retour à la ligne si la carte se resserre. */
+  flex-wrap: wrap;
+  /* Espace les légendes. */
+  gap: var(--spacing-md);
+  /* Espace la légende du SVG. */
+  margin-top: var(--spacing-md);
+}
+
+.bio-absorption-legend span {
+  /* Aligne les pastilles et les textes. */
+  display: inline-flex;
+  align-items: center;
+  /* Espace la pastille du texte. */
+  gap: var(--spacing-sm);
+  /* Couleur secondaire lisible. */
+  color: rgba(255, 255, 255, 0.78);
+  /* Taille compacte. */
+  font-size: var(--font-size-sm);
+}
+
+.bio-absorption-legend i {
+  /* Forme commune des pastilles de légende. */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.bio-legend-living {
+  /* Couleur de la légende vivante. */
+  background: #34d399;
+}
+
+.bio-legend-passive {
+  /* Couleur de la légende passive. */
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.bio-absorption-note {
+  /* Note courte sous le graphique. */
+  margin-top: var(--spacing-lg);
+  /* Supprime la marge basse héritée du style général de la section. */
+  margin-bottom: 0;
+  /* Taille plus discrète que le texte principal. */
+  font-size: var(--font-size-sm);
+  /* Couleur adoucie. */
+  color: rgba(255, 255, 255, 0.68);
+  /* Ligne confortable. */
+  line-height: 1.6;
+}
+
+@keyframes bio-chart-draw {
+  from {
+    stroke-dashoffset: 520;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* MOLECULES SECTION */
 .molecules {
   /* Crée une section de transition entre l'image immersive et le simulateur. */
@@ -824,8 +1027,12 @@ img {
 .molecules-header {
   /* Limite la largeur du récit pour garder une lecture élégante. */
   max-width: 880px;
+  /* Place le texte à droite pour alterner avec la section précédente. */
+  margin-left: auto;
   /* Espace l'en-tête de la grille moléculaire. */
   margin-bottom: var(--spacing-2xl);
+  /* Aligne le texte à droite pour créer une respiration différente. */
+  text-align: right;
 }
 
 .section-badge {
@@ -1998,6 +2205,13 @@ img {
     padding: var(--spacing-3xl) 0;
   }
 
+  .bio-conversion-content {
+    /* Empile le texte et le graphique sur mobile. */
+    grid-template-columns: 1fr;
+    /* Réduit l'écart vertical entre les deux blocs. */
+    gap: var(--spacing-2xl);
+  }
+
   .bio-conversion h2 {
     /* Réduit le titre de la section image sur mobile. */
     font-size: var(--font-size-2xl);
@@ -2008,9 +2222,25 @@ img {
     font-size: var(--font-size-base);
   }
 
+  .bio-absorption-card {
+    /* Réduit le padding du graphique sur mobile. */
+    padding: var(--spacing-lg);
+  }
+
+  .bio-absorption-header {
+    /* Empile le titre et la durée sur les petits écrans. */
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .molecules-grid {
     /* Empile les structures 3D sur mobile pour garder leur lisibilité. */
     grid-template-columns: 1fr;
+  }
+
+  .molecules-header {
+    /* Re-centre le texte sur mobile pour une lecture plus naturelle. */
+    text-align: center;
   }
 
   .molecule-viewer {
