@@ -1,6 +1,6 @@
-# Plateforme de Revalorisation Agricole
+# TerraLoop
 
-**Site vitrine Next.js pour une plateforme bio-circulaire territoriale qui transforme les coproduits du blé en protéines pour volailles et en fertilisants organiques.**
+**Site vitrine Next.js pour TerraLoop, une plateforme bio-circulaire territoriale qui transforme les coproduits du blé en protéines pour volailles et en fertilisants organiques.**
 
 Le projet a été présenté dans le cadre du hackathon **HACKATHON #YOUTHFORBIOECONOMY 2026**.
 

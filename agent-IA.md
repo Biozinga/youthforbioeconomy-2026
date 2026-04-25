@@ -1,8 +1,8 @@
-# Agent IA - Plateforme de Revalorisation Agricole
+# Agent IA - TerraLoop
 
 ## Vue d'ensemble
 
-Cet agent IA assiste le développement et la maintenance du site vitrine de la **plateforme de revalorisation agricole Youth for Bioeconomy 2026**.
+Cet agent IA assiste le développement et la maintenance du site vitrine de **TerraLoop**, plateforme de revalorisation agricole Youth for Bioeconomy 2026.
 
 Le projet présente une boucle bio-circulaire appliquée à l'agriculture céréalière :
 

@@ -15,7 +15,7 @@ export function Header() {
         {/* Lien de marque qui ramène vers le haut de la page. */}
         <a className="site-brand" href="#top">
           {/* Pastille visuelle courte pour donner un repère graphique au nom du projet. */}
-          <span className="site-brand-mark">YB</span>
+          <span className="site-brand-mark">TL</span>
           {/* Nom public du site depuis la configuration globale. */}
           <span>{siteConfig.name}</span>
         </a>

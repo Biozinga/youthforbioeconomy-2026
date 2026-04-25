@@ -63,16 +63,9 @@ const nextConfig = {
   // Active la compression HTTP intégrée de Next.js pour alléger les réponses.
   compress: true,
 
-  // Demande la minification par SWC; cette option est héritée d'anciennes versions de Next.js.
-  swcMinify: true,
+  // La minification SWC est automatique avec Next.js 15; aucune option legacy n'est nécessaire.
 
-  // Configure les langues prévues par le site pour le routeur historique Pages Router.
-  i18n: {
-    // Liste des locales disponibles dans l'application.
-    locales: ['fr', 'en'],
-    // Locale utilisée par défaut lorsque l'URL ne précise pas de langue.
-    defaultLocale: 'fr',
-  },
+  // L'internationalisation sera gérée plus tard avec des segments App Router si besoin.
 };
 
 // Exporte la configuration pour que Next.js puisse l'importer au lancement.

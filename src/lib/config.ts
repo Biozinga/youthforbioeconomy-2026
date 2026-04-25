@@ -6,21 +6,21 @@
 // Configuration principale du site
 export const siteConfig = {
   // Nom du site affiché dans le titre
-  name: 'Plateforme de Revalorisation Agricole',
+  name: 'TerraLoop',
   // Description courte pour SEO
   description: 'Bioconversion des coproduits du blé en protéines avicoles et fertilisants',
   // URL de base du site
-  url: 'https://revalorisation-agricole.com',
+  url: 'https://terraloop.bio',
   // Image pour les réseaux sociaux
-  ogImage: 'https://revalorisation-agricole.com/og-image.png',
+  ogImage: 'https://terraloop.bio/og-image.png',
   // Liens vers les réseaux sociaux
   links: {
     // URL du compte Twitter/X associé au projet.
-    twitter: 'https://twitter.com/revalo_agri',
+    twitter: 'https://twitter.com/terraloop',
     // URL du dépôt GitHub associé au projet.
-    github: 'https://github.com/revalorisation-agricole',
+    github: 'https://github.com/Biozinga/youthforbioeconomy-2026',
     // URL de la page LinkedIn associée au projet.
-    linkedin: 'https://linkedin.com/company/revalorisation-agricole',
+    linkedin: 'https://linkedin.com/company/terraloop',
   },
 };
 

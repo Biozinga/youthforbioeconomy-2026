@@ -5,61 +5,64 @@
 
 :root {
   /* Couleurs principales du thème */
-  --color-primary: #059669;        /* Vert principal */
-  --color-primary-dark: #047857;   /* Vert foncé pour les hover */
-  --color-primary-light: #10b981;  /* Vert clair pour les accents */
-  --color-secondary: #6366f1;      /* Bleu secondaire */
-  --color-accent: #f59e0b;         /* Orange pour les accents */
+  --color-primary: #059669; /* Vert principal */
+  --color-primary-dark: #047857; /* Vert foncé pour les hover */
+  --color-primary-light: #10b981; /* Vert clair pour les accents */
+  --color-secondary: #6366f1; /* Bleu secondaire */
+  --color-accent: #f59e0b; /* Orange pour les accents */
 
   /* Palette de gris */
-  --color-gray-50: #f9fafb;        /* Très clair */
-  --color-gray-100: #f3f4f6;       /* Clair */
-  --color-gray-200: #e5e7eb;       /* Moyen-clair */
-  --color-gray-300: #d1d5db;       /* Moyen */
-  --color-gray-400: #9ca3af;       /* Moyen-foncé */
-  --color-gray-500: #6b7280;       /* Fonçé */
-  --color-gray-600: #4b5563;       /* Très foncé */
-  --color-gray-700: #374151;       /* Noir-gris */
-  --color-gray-800: #1f2937;       /* Noir-gris foncé */
-  --color-gray-900: #111827;       /* Noir-gris très foncé */
-  --color-white: #ffffff;          /* Blanc */
+  --color-gray-50: #f9fafb; /* Très clair */
+  --color-gray-100: #f3f4f6; /* Clair */
+  --color-gray-200: #e5e7eb; /* Moyen-clair */
+  --color-gray-300: #d1d5db; /* Moyen */
+  --color-gray-400: #9ca3af; /* Moyen-foncé */
+  --color-gray-500: #6b7280; /* Fonçé */
+  --color-gray-600: #4b5563; /* Très foncé */
+  --color-gray-700: #374151; /* Noir-gris */
+  --color-gray-800: #1f2937; /* Noir-gris foncé */
+  --color-gray-900: #111827; /* Noir-gris très foncé */
+  --color-white: #ffffff; /* Blanc */
 
   /* Espacement */
-  --spacing-xs: 0.25rem;           /* Très petit */
-  --spacing-sm: 0.5rem;            /* Petit */
-  --spacing-md: 1rem;              /* Moyen */
-  --spacing-lg: 1.5rem;            /* Large */
-  --spacing-xl: 2rem;              /* Très large */
-  --spacing-2xl: 3rem;             /* Extra large */
-  --spacing-3xl: 4rem;             /* Ultra large */
+  --spacing-xs: 0.25rem; /* Très petit */
+  --spacing-sm: 0.5rem; /* Petit */
+  --spacing-md: 1rem; /* Moyen */
+  --spacing-lg: 1.5rem; /* Large */
+  --spacing-xl: 2rem; /* Très large */
+  --spacing-2xl: 3rem; /* Extra large */
+  --spacing-3xl: 4rem; /* Ultra large */
 
   /* Tailles de police */
-  --font-size-xs: 0.75rem;         /* Très petite */
-  --font-size-sm: 0.875rem;        /* Petite */
-  --font-size-base: 1rem;          /* Normale */
-  --font-size-lg: 1.125rem;        /* Large */
-  --font-size-xl: 1.25rem;         /* Très large */
-  --font-size-2xl: 1.5rem;         /* Extra large */
-  --font-size-3xl: 1.875rem;       /* Ultra large */
-  --font-size-4xl: 2.25rem;        /* Géante */
+  --font-size-xs: 0.75rem; /* Très petite */
+  --font-size-sm: 0.875rem; /* Petite */
+  --font-size-base: 1rem; /* Normale */
+  --font-size-lg: 1.125rem; /* Large */
+  --font-size-xl: 1.25rem; /* Très large */
+  --font-size-2xl: 1.5rem; /* Extra large */
+  --font-size-3xl: 1.875rem; /* Ultra large */
+  --font-size-4xl: 2.25rem; /* Géante */
 
   /* Rayons de bordure */
-  --border-radius-sm: 0.25rem;     /* Petit */
-  --border-radius-md: 0.375rem;    /* Moyen */
-  --border-radius-lg: 0.5rem;      /* Large */
-  --border-radius-xl: 0.75rem;     /* Très large */
-  --border-radius-2xl: 1rem;       /* Extra large */
+  --border-radius-sm: 0.25rem; /* Petit */
+  --border-radius-md: 0.375rem; /* Moyen */
+  --border-radius-lg: 0.5rem; /* Large */
+  --border-radius-xl: 0.75rem; /* Très large */
+  --border-radius-2xl: 1rem; /* Extra large */
 
   /* Transitions */
-  --transition-fast: 150ms;        /* Rapide */
-  --transition-base: 200ms;        /* Normale */
-  --transition-slow: 300ms;        /* Lente */
+  --transition-fast: 150ms; /* Rapide */
+  --transition-base: 200ms; /* Normale */
+  --transition-slow: 300ms; /* Lente */
 
   /* Ombres */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);     /* Petite ombre */
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Ombre moyenne */
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Grande ombre */
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Très grande ombre */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Petite ombre */
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Ombre moyenne */
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Grande ombre */
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Très grande ombre */
 }
 
 * {
@@ -78,8 +81,9 @@ html {
 
 body {
   /* Définit une pile de polices système rapide et lisible. */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   /* Améliore le rendu des polices sur les navigateurs WebKit. */
   -webkit-font-smoothing: antialiased;
   /* Améliore le rendu des polices sur Firefox/macOS. */
@@ -271,30 +275,89 @@ img {
 
 /* HERO SECTION */
 .hero {
-  /* Ajoute de l'espace vertical autour de la section d'accueil. */
-  padding: var(--spacing-3xl) 0;
-  /* Crée un fond clair légèrement contrasté. */
-  background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-gray-100) 100%);
+  /* Ajoute de l'espace vertical généreux autour de la section d'accueil. */
+  padding: calc(var(--spacing-3xl) + var(--spacing-xl)) 0 var(--spacing-3xl);
+  /* Crée un fond éditorial clair avec des touches végétales et céréalières. */
+  background:
+    radial-gradient(circle at 88% 18%, rgba(245, 158, 11, 0.2), transparent 28%),
+    radial-gradient(circle at 12% 18%, rgba(16, 185, 129, 0.16), transparent 30%),
+    linear-gradient(135deg, #f8fafc 0%, #ecfdf5 48%, #fff7ed 100%);
   /* Masque tout débordement visuel éventuel de l'animation. */
   overflow: hidden;
+  /* Sert de repère aux effets visuels de fond. */
+  position: relative;
+}
+
+.hero::before {
+  /* Ajoute une trame discrète qui donne du relief sans détourner l'attention. */
+  content: '';
+  /* Place la trame derrière le contenu. */
+  position: absolute;
+  /* Étend la trame sur toute la section. */
+  inset: 0;
+  /* Dessine une grille très légère évoquant les flux pilotés par la plateforme. */
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  /* Espacement large pour rester subtil. */
+  background-size: 72px 72px;
+  /* Rend la trame très discrète. */
+  opacity: 0.45;
 }
 
 .hero-content {
   /* Place le texte et l'illustration sur une grille. */
   display: grid;
-  /* Répartit la grille en deux colonnes égales sur grand écran. */
-  grid-template-columns: 1fr 1fr;
+  /* Donne davantage de place au récit sans réduire l'animation. */
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
   /* Espace les deux colonnes. */
   gap: var(--spacing-3xl);
   /* Centre verticalement le contenu de chaque colonne. */
   align-items: center;
+  /* Replace le contenu au-dessus de la trame de fond. */
+  position: relative;
+  /* Garantit que le contenu passe devant le pseudo-élément. */
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  /* Affiche un label de contexte avant le titre. */
+  display: inline-flex;
+  /* Centre le texte du label. */
+  align-items: center;
+  /* Ajoute une respiration horizontale. */
+  padding: var(--spacing-xs) var(--spacing-md);
+  /* Espace le label du titre. */
+  margin-bottom: var(--spacing-lg);
+  /* Fond blanc translucide pour un effet premium. */
+  background: rgba(255, 255, 255, 0.74);
+  /* Bordure fine qui détache le label du fond. */
+  border: 1px solid rgba(5, 150, 105, 0.18);
+  /* Arrondit le label en pilule. */
+  border-radius: 999px;
+  /* Couleur de marque lisible. */
+  color: var(--color-primary-dark);
+  /* Renforce le label sans le rendre massif. */
+  font-weight: 700;
+  /* Taille compacte de label. */
+  font-size: var(--font-size-sm);
+  /* Ajoute une ombre très douce. */
+  box-shadow: var(--shadow-sm);
 }
 
 .hero-text h1 {
   /* Espace le titre principal du sous-titre. */
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
   /* Applique une couleur très lisible au titre. */
   color: var(--color-gray-900);
+  /* Donne au titre une largeur confortable. */
+  max-width: 760px;
+  /* Rend le hero plus spectaculaire que les autres sections sur desktop. */
+  font-size: 4.75rem;
+  /* Resserre le titre pour un effet éditorial. */
+  line-height: 0.95;
+  /* Évite les espacements artificiels. */
+  letter-spacing: 0;
 }
 
 .hero-subtitle {
@@ -308,19 +371,53 @@ img {
   line-height: 1.6;
 }
 
-.hero-features {
-  display: flex;
-  gap: var(--spacing-xl);
+.hero-manifesto {
+  /* Met en avant la phrase conceptuelle du hero. */
+  max-width: 680px;
+  /* Ajoute une respiration avant les indicateurs. */
   margin-bottom: var(--spacing-xl);
+  /* Utilise une couleur plus sombre que le sous-titre pour porter l'idée. */
+  color: var(--color-gray-800);
+  /* Taille intermédiaire pour une lecture premium. */
+  font-size: var(--font-size-lg);
+  /* Garde un rythme de lecture confortable. */
+  line-height: 1.7;
+}
+
+.hero-features {
+  /* Affiche les preuves rapides sur une ligne flexible. */
+  display: flex;
+  /* Espace les indicateurs. */
+  gap: var(--spacing-xl);
+  /* Espace les indicateurs du CTA. */
+  margin-bottom: var(--spacing-xl);
+  /* Autorise le retour à la ligne. */
   flex-wrap: wrap;
 }
 
 .hero-features span {
+  /* Aligne chaque indicateur avec une puce visuelle. */
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  font-weight: 500;
-  color: var(--color-primary);
+  /* Renforce le texte des indicateurs. */
+  font-weight: 700;
+  /* Couleur sombre pour rester lisible. */
+  color: var(--color-gray-800);
+}
+
+.hero-features span::before {
+  /* Ajoute une puce visuelle sans alourdir le HTML. */
+  content: '';
+  /* Taille stable de la puce. */
+  width: 10px;
+  height: 10px;
+  /* Forme ronde de la puce. */
+  border-radius: 50%;
+  /* Couleur chaude pour équilibrer le vert dominant. */
+  background: #f59e0b;
+  /* Effet de halo léger. */
+  box-shadow: 0 0 0 5px rgba(245, 158, 11, 0.16);
 }
 
 .hero-buttons {
@@ -338,16 +435,105 @@ img {
   align-items: center;
   justify-content: center;
   /* Réserve une hauteur minimale pour stabiliser la section. */
-  min-height: 400px;
+  min-height: 520px;
+}
+
+.hero-visual-card {
+  /* Encadre l'animation comme un module central de plateforme. */
+  width: min(100%, 520px);
+  /* Ajoute de l'espace intérieur autour de l'animation. */
+  padding: var(--spacing-xl);
+  /* Fond blanc vitré pour contraster avec le fond éditorial. */
+  background: rgba(255, 255, 255, 0.82);
+  /* Bordure subtile façon interface moderne. */
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  /* Rayon généreux mais contenu. */
+  border-radius: var(--border-radius-2xl);
+  /* Ombre profonde pour faire émerger la carte. */
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.16);
+  /* Ajoute un flou de fond si le navigateur le supporte. */
+  backdrop-filter: blur(18px);
+}
+
+.hero-visual-label {
+  /* Affiche le chemin de transformation au-dessus de l'animation. */
+  display: flex;
+  /* Autorise le retour à la ligne si la carte rétrécit. */
+  flex-wrap: wrap;
+  /* Espace les labels. */
+  gap: var(--spacing-sm);
+  /* Espace le bandeau de l'animation. */
+  margin-bottom: var(--spacing-md);
+}
+
+.hero-visual-label span {
+  /* Crée des tags discrets pour chaque étape de la boucle. */
+  padding: var(--spacing-xs) var(--spacing-sm);
+  /* Fond clair légèrement chaud. */
+  background: #fff7ed;
+  /* Bordure assortie au fond. */
+  border: 1px solid #fed7aa;
+  /* Arrondit les tags. */
+  border-radius: 999px;
+  /* Couleur lisible et chaleureuse. */
+  color: #9a3412;
+  /* Taille compacte. */
+  font-size: var(--font-size-xs);
+  /* Renforce les tags. */
+  font-weight: 700;
 }
 
 .cycle-visualization {
   /* Sert de repère de positionnement pour les animations internes. */
   position: relative;
   /* Largeur stable de la visualisation agricole à droite du hero. */
-  width: 420px;
+  width: 100%;
   /* Hauteur stable de la visualisation agricole à droite du hero. */
-  height: 420px;
+  height: 400px;
+  /* Centre l'animation dans sa carte. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-visual-stats {
+  /* Présente les trois étapes sous forme de mini tableau. */
+  display: grid;
+  /* Trois colonnes équilibrées. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Espace les tuiles. */
+  gap: var(--spacing-sm);
+}
+
+.hero-visual-stats div {
+  /* Crée une tuile compacte pour chaque étape. */
+  padding: var(--spacing-md);
+  /* Fond neutre pour l'aspect dashboard. */
+  background: var(--color-gray-50);
+  /* Bordure légère. */
+  border: 1px solid var(--color-gray-200);
+  /* Rayon contenu. */
+  border-radius: var(--border-radius-lg);
+}
+
+.hero-visual-stats strong {
+  /* Affiche le numéro d'étape sur une ligne dédiée. */
+  display: block;
+  /* Couleur verte pour relier les étapes à la bioéconomie. */
+  color: var(--color-primary);
+  /* Taille claire pour le numéro. */
+  font-size: var(--font-size-lg);
+}
+
+.hero-visual-stats span {
+  /* Affiche le verbe d'action sous le numéro. */
+  display: block;
+  /* Couleur secondaire. */
+  color: var(--color-gray-600);
+  /* Taille compacte. */
+  font-size: var(--font-size-sm);
+  /* Renforce légèrement le verbe. */
+  font-weight: 600;
 }
 
 .cycle-core {
@@ -392,11 +578,16 @@ img {
 }
 
 @keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 0 30px rgba(5, 150, 105, 0.5), 0 0 60px rgba(5, 150, 105, 0.2);
+  0%,
+  100% {
+    box-shadow:
+      0 0 30px rgba(5, 150, 105, 0.5),
+      0 0 60px rgba(5, 150, 105, 0.2);
   }
   50% {
-    box-shadow: 0 0 50px rgba(5, 150, 105, 0.8), 0 0 80px rgba(5, 150, 105, 0.3);
+    box-shadow:
+      0 0 50px rgba(5, 150, 105, 0.8),
+      0 0 80px rgba(5, 150, 105, 0.3);
   }
 }
 
@@ -562,7 +753,12 @@ img {
 
 .bio-conversion-overlay {
   /* Ajoute un voile sombre pour rendre le texte lisible sur la photo. */
-  background: linear-gradient(90deg, rgba(17, 24, 39, 0.9) 0%, rgba(17, 24, 39, 0.68) 48%, rgba(17, 24, 39, 0.18) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(17, 24, 39, 0.9) 0%,
+    rgba(17, 24, 39, 0.68) 48%,
+    rgba(17, 24, 39, 0.18) 100%
+  );
   /* Remplit toute la hauteur de la section parent. */
   min-height: 620px;
   /* Centre verticalement le contenu. */
@@ -608,6 +804,145 @@ img {
   font-size: var(--font-size-lg);
   /* Espace les paragraphes. */
   margin-bottom: var(--spacing-md);
+}
+
+/* MOLECULES SECTION */
+.molecules {
+  /* Crée une section de transition entre l'image immersive et le simulateur. */
+  padding: var(--spacing-3xl) 0;
+  /* Fond profond qui évoque un espace de visualisation scientifique. */
+  background:
+    radial-gradient(circle at 18% 18%, rgba(16, 185, 129, 0.22), transparent 28%),
+    radial-gradient(circle at 82% 12%, rgba(99, 102, 241, 0.24), transparent 30%),
+    linear-gradient(135deg, #06141f 0%, #0f172a 48%, #13251f 100%);
+  /* Couleur de texte par défaut pour la section sombre. */
+  color: var(--color-white);
+  /* Masque les débordements liés aux effets de fond. */
+  overflow: hidden;
+}
+
+.molecules-header {
+  /* Limite la largeur du récit pour garder une lecture élégante. */
+  max-width: 880px;
+  /* Espace l'en-tête de la grille moléculaire. */
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section-badge {
+  /* Affiche le badge de section en pilule. */
+  display: inline-flex;
+  /* Centre verticalement le texte. */
+  align-items: center;
+  /* Ajoute un espace intérieur compact. */
+  padding: var(--spacing-xs) var(--spacing-md);
+  /* Espace le badge du titre. */
+  margin-bottom: var(--spacing-lg);
+  /* Fond translucide adapté à la section sombre. */
+  background: rgba(255, 255, 255, 0.1);
+  /* Bordure claire très discrète. */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  /* Arrondit le badge. */
+  border-radius: 999px;
+  /* Couleur légèrement verte pour rappeler le vivant. */
+  color: #a7f3d0;
+  /* Renforce le libellé. */
+  font-weight: 700;
+  /* Taille compacte. */
+  font-size: var(--font-size-sm);
+}
+
+.molecules-header h2 {
+  /* Donne au titre un poids visuel fort avant les structures 3D. */
+  max-width: 820px;
+  /* Espace le titre du paragraphe. */
+  margin-bottom: var(--spacing-lg);
+  /* Couleur lumineuse sur fond sombre. */
+  color: var(--color-white);
+}
+
+.molecules-header p {
+  /* Garde le texte explicatif clair sans être trop lumineux. */
+  color: rgba(255, 255, 255, 0.78);
+  /* Taille confortable pour l'introduction. */
+  font-size: var(--font-size-lg);
+  /* Hauteur de ligne aérée. */
+  line-height: 1.75;
+}
+
+.molecules-grid {
+  /* Affiche les trois enzymes sur une grille équilibrée. */
+  display: grid;
+  /* Trois colonnes en desktop. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Espace les cartes moléculaires. */
+  gap: var(--spacing-xl);
+}
+
+.molecule-card {
+  /* Structure chaque molécule en visualisation puis texte. */
+  display: flex;
+  flex-direction: column;
+  /* Fond vitré qui laisse la section sombre respirer. */
+  background: rgba(255, 255, 255, 0.08);
+  /* Bordure subtile autour de chaque molécule. */
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  /* Rayon cohérent avec les autres modules du site. */
+  border-radius: var(--border-radius-2xl);
+  /* Cache les débordements du canvas. */
+  overflow: hidden;
+  /* Ajoute une profondeur légère. */
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+}
+
+.molecule-viewer {
+  /* Sert de repère de positionnement au canvas absolu injecté par 3Dmol.js. */
+  position: relative;
+  /* Force le viewer à occuper exactement la largeur de sa carte. */
+  width: 100%;
+  /* Donne une grande surface aux structures 3D. */
+  height: 320px;
+  /* Empêche le canvas WebGL de sortir de la carte. */
+  overflow: hidden;
+  /* Isole le rendu WebGL pour éviter les effets de superposition avec les cartes voisines. */
+  isolation: isolate;
+  /* Limite les recalculs de layout au bloc du viewer. */
+  contain: layout paint;
+  /* Fond sombre légèrement bleuté qui contraste avec les molécules. */
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.16), transparent 34%),
+    linear-gradient(145deg, rgba(15, 23, 42, 0.42), rgba(6, 20, 31, 0.88));
+}
+
+.molecule-viewer canvas {
+  /* Force le canvas 3Dmol.js à rester dans le viewer. */
+  position: absolute !important;
+  /* Colle le canvas aux bords du conteneur. */
+  inset: 0 !important;
+  /* Force le canvas 3Dmol.js à remplir son conteneur. */
+  display: block;
+  /* Utilise toute la largeur disponible. */
+  width: 100% !important;
+  /* Utilise toute la hauteur disponible. */
+  height: 100% !important;
+}
+
+.molecule-card-copy {
+  /* Ajoute l'espace texte sous la structure 3D. */
+  padding: var(--spacing-xl);
+}
+
+.molecule-card-copy h3 {
+  /* Espace le nom de l'enzyme de son explication. */
+  margin-bottom: var(--spacing-sm);
+  /* Couleur claire pour le titre de carte. */
+  color: var(--color-white);
+}
+
+.molecule-card-copy p {
+  /* Rend l'explication courte lisible sur fond sombre. */
+  color: rgba(255, 255, 255, 0.74);
+  /* Garde une bonne hauteur de ligne. */
+  line-height: 1.65;
 }
 
 /* SIMULATION SECTION */
@@ -749,6 +1084,258 @@ img {
   color: var(--color-gray-600);
   /* Garde une lecture confortable. */
   line-height: 1.6;
+}
+
+.simulation-back {
+  /* Affiche le retour comme une action légère en haut de la modale. */
+  display: inline-flex;
+  /* Centre verticalement le texte du bouton. */
+  align-items: center;
+  /* Ajoute une petite respiration avant le titre. */
+  margin-bottom: var(--spacing-md);
+  /* Supprime l'apparence native du bouton. */
+  border: none;
+  /* Supprime le fond pour garder une hiérarchie secondaire. */
+  background: transparent;
+  /* Utilise le vert de marque pour signaler une action. */
+  color: var(--color-primary);
+  /* Rend l'action facilement repérable. */
+  font-weight: 700;
+  /* Utilise la police du site. */
+  font-family: inherit;
+  /* Indique que l'élément est cliquable. */
+  cursor: pointer;
+}
+
+.simulation-form {
+  /* Empile les champs du simulateur dans un formulaire lisible. */
+  display: flex;
+  flex-direction: column;
+  /* Espace régulièrement les champs et le bouton. */
+  gap: var(--spacing-lg);
+}
+
+.simulation-field {
+  /* Empile le label et le contrôle associé. */
+  display: flex;
+  flex-direction: column;
+  /* Garde le label proche de son contrôle. */
+  gap: var(--spacing-sm);
+}
+
+.simulation-field-label {
+  /* Renforce les labels du formulaire. */
+  font-weight: 700;
+  /* Utilise une couleur sombre pour faciliter la lecture. */
+  color: var(--color-gray-900);
+}
+
+.simulation-segmented {
+  /* Affiche les deux cultures comme un contrôle segmenté moderne. */
+  display: grid;
+  /* Donne la même largeur aux deux choix. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Ajoute un fond discret autour des segments. */
+  background: var(--color-gray-100);
+  /* Crée une bordure interne confortable. */
+  padding: 4px;
+  /* Arrondit le contrôle entier. */
+  border-radius: var(--border-radius-xl);
+}
+
+.simulation-segment {
+  /* Transforme chaque culture en segment cliquable. */
+  padding: var(--spacing-md);
+  /* Supprime la bordure native. */
+  border: none;
+  /* Fond transparent au repos pour laisser voir le conteneur. */
+  background: transparent;
+  /* Arrondit chaque segment actif. */
+  border-radius: var(--border-radius-lg);
+  /* Utilise la police de l'interface. */
+  font-family: inherit;
+  /* Rend le texte lisible. */
+  font-weight: 700;
+  /* Couleur secondaire au repos. */
+  color: var(--color-gray-600);
+  /* Indique que le segment est interactif. */
+  cursor: pointer;
+}
+
+.simulation-segment-active {
+  /* Met en avant la culture sélectionnée. */
+  background: var(--color-white);
+  /* Applique la couleur de marque au segment actif. */
+  color: var(--color-primary);
+  /* Ajoute une profondeur légère au choix actif. */
+  box-shadow: var(--shadow-sm);
+}
+
+.simulation-input {
+  /* Ajoute une zone de saisie confortable pour les hectares. */
+  padding: var(--spacing-md);
+  /* Bordure sobre cohérente avec les autres champs. */
+  border: 1px solid var(--color-gray-300);
+  /* Arrondit le champ sans excès. */
+  border-radius: var(--border-radius-lg);
+  /* Utilise la police globale. */
+  font-family: inherit;
+  /* Taille lisible sur desktop et mobile. */
+  font-size: var(--font-size-base);
+}
+
+.simulation-input:focus {
+  /* Supprime le contour navigateur par défaut. */
+  outline: none;
+  /* Utilise le vert de marque au focus. */
+  border-color: var(--color-primary);
+  /* Ajoute un halo discret pour l'accessibilité visuelle. */
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.12);
+}
+
+.simulation-form-submit {
+  /* Le bouton du formulaire prend toute la largeur de la modale. */
+  width: 100%;
+  /* Centre son libellé. */
+  justify-content: center;
+}
+
+.simulation-form-submit:disabled {
+  /* Indique visuellement que le calcul serveur est en cours. */
+  opacity: 0.72;
+  /* Empêche l'impression d'un bouton disponible pendant le chargement. */
+  cursor: wait;
+}
+
+.simulation-error {
+  /* Affiche les erreurs de calcul sous forme de message compact. */
+  padding: var(--spacing-md);
+  /* Fond rouge très clair pour signaler le problème sans agressivité. */
+  background: #fef2f2;
+  /* Bordure rouge discrète. */
+  border: 1px solid #fecaca;
+  /* Arrondit le message. */
+  border-radius: var(--border-radius-lg);
+  /* Couleur lisible du message d'erreur. */
+  color: #991b1b;
+  /* Supprime une marge parasite éventuelle. */
+  margin: 0;
+}
+
+.simulation-result-card {
+  /* Crée une carte résultat plus visuelle que les cartes de choix. */
+  padding: var(--spacing-2xl);
+  /* Mélange un vert profond et un vert clair pour suggérer la valeur circulaire. */
+  background:
+    radial-gradient(circle at top right, rgba(16, 185, 129, 0.32), transparent 34%),
+    linear-gradient(135deg, #064e3b 0%, #0f766e 55%, #16a34a 100%);
+  /* Arrondit la carte principale. */
+  border-radius: var(--border-radius-2xl);
+  /* Texte clair pour contraster avec le fond. */
+  color: var(--color-white);
+  /* Ajoute une profondeur premium à la visualisation. */
+  box-shadow: var(--shadow-xl);
+  /* Cache le débordement de la barre interne. */
+  overflow: hidden;
+}
+
+.simulation-result-kicker {
+  /* Affiche un petit label au-dessus du montant. */
+  display: block;
+  /* Rend le label subtil mais lisible. */
+  color: rgba(255, 255, 255, 0.78);
+  /* Utilise une petite taille pour hiérarchiser. */
+  font-size: var(--font-size-sm);
+  /* Passe le label en majuscules pour l'aspect dashboard. */
+  text-transform: uppercase;
+  /* Garde un espacement neutre pour respecter la typographie du site. */
+  letter-spacing: 0;
+  /* Espace le label du montant. */
+  margin-bottom: var(--spacing-sm);
+}
+
+.simulation-result-amount {
+  /* Donne toute l'importance au montant estimé. */
+  display: block;
+  /* Grande taille de montant, sans dépendre de la largeur viewport. */
+  font-size: var(--font-size-4xl);
+  /* Hauteur compacte pour un rendu dashboard. */
+  line-height: 1;
+  /* Espace le montant de la note. */
+  margin-bottom: var(--spacing-md);
+}
+
+.simulation-result-note {
+  /* Affiche l'avertissement maquette sans casser l'esthétique. */
+  display: block;
+  /* Garde une couleur claire secondaire. */
+  color: rgba(255, 255, 255, 0.82);
+  /* Limite la longueur visuelle. */
+  max-width: 520px;
+}
+
+.simulation-result-meter {
+  /* Crée le rail de progression visuelle. */
+  height: 10px;
+  /* Espace la barre du texte. */
+  margin-top: var(--spacing-xl);
+  /* Fond translucide pour voir la progression. */
+  background: rgba(255, 255, 255, 0.22);
+  /* Arrondit complètement la barre. */
+  border-radius: 999px;
+  /* Cache le débordement de la progression. */
+  overflow: hidden;
+}
+
+.simulation-result-meter span {
+  /* Affiche le remplissage calculé depuis le montant temporaire. */
+  display: block;
+  /* Prend toute la hauteur du rail. */
+  height: 100%;
+  /* Fond clair pour contraster avec la carte verte. */
+  background: var(--color-white);
+  /* Arrondit le remplissage. */
+  border-radius: inherit;
+}
+
+.simulation-result-grid {
+  /* Présente les détails de calcul sous forme de mini dashboard. */
+  display: grid;
+  /* Trois indicateurs équilibrés sur desktop. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Espace les indicateurs. */
+  gap: var(--spacing-md);
+  /* Éloigne les indicateurs de la carte principale. */
+  margin-top: var(--spacing-lg);
+}
+
+.simulation-result-grid div {
+  /* Crée une tuile claire pour chaque indicateur. */
+  padding: var(--spacing-lg);
+  /* Fond neutre pour ne pas concurrencer le montant principal. */
+  background: var(--color-gray-50);
+  /* Bordure discrète de dashboard. */
+  border: 1px solid var(--color-gray-200);
+  /* Arrondit les tuiles. */
+  border-radius: var(--border-radius-xl);
+}
+
+.simulation-result-grid span {
+  /* Place le label d'indicateur sur une ligne dédiée. */
+  display: block;
+  /* Couleur secondaire. */
+  color: var(--color-gray-600);
+  /* Petite taille pour les labels. */
+  font-size: var(--font-size-sm);
+  /* Espace le label de la valeur. */
+  margin-bottom: var(--spacing-xs);
+}
+
+.simulation-result-grid strong {
+  /* Donne du poids aux valeurs secondaires. */
+  color: var(--color-gray-900);
+  /* Taille confortable pour les valeurs. */
+  font-size: var(--font-size-lg);
 }
 
 /* TECHNOLOGY SECTION */
@@ -1293,15 +1880,32 @@ img {
     grid-template-columns: 1fr;
   }
 
+  .hero-text h1 {
+    /* Réduit le grand titre hero sur mobile pour éviter tout débordement. */
+    font-size: var(--font-size-3xl);
+    /* Rend le titre plus lisible quand il occupe plusieurs lignes. */
+    line-height: 1.08;
+  }
+
   /* Réduit la hauteur minimale réservée à l'animation du hero. */
   .hero-image {
-    min-height: 300px;
+    min-height: 360px;
+  }
+
+  .hero-visual-card {
+    /* Réduit la carte visuelle du hero sur mobile. */
+    padding: var(--spacing-lg);
   }
 
   /* Réduit la zone de visualisation de la boucle sur mobile. */
   .cycle-visualization {
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 280px;
+  }
+
+  .hero-visual-stats {
+    /* Garde les trois étapes lisibles en colonne sur mobile. */
+    grid-template-columns: 1fr;
   }
 
   /* Empile les boutons du hero verticalement si plusieurs boutons sont affichés. */
@@ -1404,6 +2008,16 @@ img {
     font-size: var(--font-size-base);
   }
 
+  .molecules-grid {
+    /* Empile les structures 3D sur mobile pour garder leur lisibilité. */
+    grid-template-columns: 1fr;
+  }
+
+  .molecule-viewer {
+    /* Réduit légèrement la hauteur des scènes moléculaires sur mobile. */
+    height: 260px;
+  }
+
   .simulation-content {
     /* Empile le texte, l'animation et le bouton sur mobile. */
     grid-template-columns: 1fr;
@@ -1436,6 +2050,16 @@ img {
   .simulation-choice-card {
     /* Réduit la hauteur minimale pour éviter une pop-up trop longue. */
     min-height: auto;
+  }
+
+  .simulation-result-grid {
+    /* Empile les indicateurs du résultat dans la modale mobile. */
+    grid-template-columns: 1fr;
+  }
+
+  .simulation-result-amount {
+    /* Réduit le montant pour éviter tout débordement sur petit écran. */
+    font-size: var(--font-size-3xl);
   }
 
   .features-grid,

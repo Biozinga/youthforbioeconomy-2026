@@ -25,6 +25,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "3dmol": "^2.5.4",
     "lottie-react": "^2.4.1",
     "next": "^15.0.0",
     "react": "^19.0.0",

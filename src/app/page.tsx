@@ -13,6 +13,8 @@ import { Hero } from '@/components/sections/Hero';
 import { Features } from '@/components/sections/Features';
 // Import de la section expliquant la conversion biologique par les larves.
 import { BioConversion } from '@/components/sections/BioConversion';
+// Import de la section présentant les structures 3D des enzymes clés.
+import { Molecules } from '@/components/sections/Molecules';
 // Import de la section finale de simulation de revalorisation.
 import { Simulation } from '@/components/sections/Simulation';
 
@@ -38,6 +40,9 @@ export default function Home() {
 
         {/* Section de fond expliquant la conversion des biodéchets par le vivant */}
         <BioConversion />
+
+        {/* Section 3D présentant les biomolécules qui rendent la bioconversion possible */}
+        <Molecules />
 
         {/* Dernière section permettant de simuler une revalorisation de déchet */}
         <Simulation />

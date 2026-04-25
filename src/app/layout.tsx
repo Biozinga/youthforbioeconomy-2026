@@ -9,7 +9,7 @@ import './globals.css';
  */
 export const metadata: Metadata = {
   // Titre affiché dans l'onglet du navigateur et utilisé par les moteurs de recherche.
-  title: 'Revalorisation Agricole - Déchets, Larves et Engrais',
+  title: 'TerraLoop - Déchets agricoles, larves et engrais',
   // Description SEO courte du site.
   description:
     'Plateforme bio-circulaire territoriale qui transforme les coproduits du blé par insectes en protéines pour volailles et en fertilisants organiques.',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   // Métadonnées utilisées lors du partage du site sur les réseaux sociaux.
   openGraph: {
     // Titre OpenGraph affiché dans les aperçus de partage.
-    title: 'Revalorisation Agricole - Déchets, Larves et Engrais',
+    title: 'TerraLoop - Déchets agricoles, larves et engrais',
     // Description OpenGraph affichée dans les aperçus de partage.
     description:
       'Recycler, relier et relocaliser: une boucle territoriale qui convertit les coproduits végétaux en protéines avicoles et fertilisants organiques.',
