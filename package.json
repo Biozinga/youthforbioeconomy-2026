@@ -1,7 +1,7 @@
 {
-  "name": "youthforbioeconomy-2026",
+  "name": "pure-graine-app",
   "version": "1.0.0",
-  "description": "Site vitrine pour une plateforme de revalorisation agricole circulaire",
+  "description": "Site vitrine Pure Graine pour la détection rapide de la zéaralénone dans les céréales",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
@@ -15,18 +15,18 @@
   "keywords": [
     "youth",
     "bioeconomy",
-    "agriculture",
-    "revalorisation",
-    "dechets-agricoles",
-    "economie-circulaire",
+    "igem",
+    "zearalenone",
+    "zen",
+    "fusarium",
+    "aptamer",
+    "toehold-switch",
     "nextjs",
     "vitrine"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "3dmol": "^2.5.4",
-    "lottie-react": "^2.4.1",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

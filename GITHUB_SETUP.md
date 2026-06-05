@@ -8,7 +8,7 @@ Voici comment mettre votre projet sur GitHub et configurer tout pour la producti
 
 1. Allez sur [github.com/new](https://github.com/new)
 2. **Repository name** : `youthforbioeconomy-2026`
-3. **Description** : "Site vitrine Youth for Bioeconomy 2026 - Next.js sans backend"
+3. **Description** : "Site vitrine Youth for Bioeconomy 2026 - Next.js statique"
 4. **Visibilité** : Public (ou Private selon vos préférences)
 5. **Initialize** : Ne pas initialiser (you'll push existing repository)
 6. Cliquez **Create repository**
@@ -18,7 +18,7 @@ Voici comment mettre votre projet sur GitHub et configurer tout pour la producti
 ```bash
 gh repo create youthforbioeconomy-2026 \
   --public \
-  --description="Site vitrine Youth for Bioeconomy 2026 - Next.js sans backend" \
+  --description="Site vitrine Youth for Bioeconomy 2026 - Next.js statique" \
   --source=. \
   --remote=origin \
   --push

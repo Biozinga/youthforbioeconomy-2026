@@ -1,161 +1,42 @@
-// Directive Next.js: 3Dmol.js dépend du navigateur et doit rester côté client.
-'use client';
-
-// Import des hooks React nécessaires au montage du viewer moléculaire.
-import { useEffect } from 'react';
-// Import du hook qui attend l'arrivée de la carte dans le viewport.
-import { useInView } from '@/hooks/useInView';
-
-// Structure décrivant une enzyme affichée dans la section.
-type Molecule = {
-  name: string;
-  pdbPath: string;
-  role: string;
-  accent: string;
-};
-
-// Interface minimale du viewer 3Dmol.js utilisée par le composant.
-type ThreeDmolViewer = {
-  addModel: (data: string, format: string) => void;
-  setStyle: (selection: object, style: object) => void;
-  zoomTo: () => void;
-  render: () => void;
-  spin: (axis: string, speed: number) => void;
-  resize: () => void;
-  clear: () => void;
-};
-
-// Interface minimale du module 3Dmol.js chargé dynamiquement.
-type ThreeDmolModule = {
-  createViewer: (element: HTMLElement, config: object) => ThreeDmolViewer;
-};
-
-// Liste des trois enzymes fournies dans le dossier public.
-const molecules: Molecule[] = [
+const scienceModules = [
   {
-    name: 'Cellulase',
-    pdbPath: '/1EG1.pdb',
-    role: 'Elle ouvre les fibres de cellulose et rend les résidus végétaux plus accessibles à la bioconversion.',
-    accent: '#10b981',
+    name: 'Docking ZEN sur Z0',
+    tag: 'T17-T21 / C50',
+    metric: '-6.28 kcal/mol',
+    role: 'Le docking non ciblé identifie deux zones d’ancrage cohérentes avec la littérature. Le site T17-T21 sert de point de départ aux simulations de repliement induit.',
+    variant: 'docking',
   },
   {
-    name: 'Xylanase',
-    pdbPath: '/1ENX.pdb',
-    role: 'Elle fragmente les xylanes présents dans les coproduits céréaliers pour accélérer la bioconversion.',
-    accent: '#f59e0b',
+    name: 'Z1 original vs Z1 + 9 bases',
+    tag: 'NUPACK + SMD',
+    metric: '+9 bases',
+    role: 'L’extension de Z1 clarifie la recherche de switch et doit être comparée au Z1 original par dynamique moléculaire, stabilité sans force et hybridation trigger-switch.',
+    variant: 'switch',
   },
   {
-    name: 'Phytase',
-    pdbPath: '/3K4P.pdb',
-    role: 'Elle libère le phosphore piégé dans les végétaux et limite les pertes minérales.',
-    accent: '#6366f1',
+    name: 'Validation expérimentale',
+    tag: 'TXTL / LAMP',
+    metric: 'LOD / LOQ',
+    role: 'Le protocole prévoit la calibration mNeonGreen, le ratio Z0/Z1, le contrôle de fuite, la courbe standard ZEN et la spécificité face aux autres mycotoxines.',
+    variant: 'validation',
   },
 ];
 
-// Composant 3Dmol.js qui affiche une vraie structure protéique en rendu cartoon.
-function MoleculeViewer({ molecule }: { molecule: Molecule }) {
-  // Référence vers le conteneur DOM où 3Dmol.js injecte son canvas WebGL.
-  const { ref: containerRef, isInView } = useInView<HTMLDivElement>({
-    threshold: 0.35,
-    once: true,
-  });
-
-  // Monte le viewer moléculaire au rendu client.
-  useEffect(() => {
-    // Récupère le conteneur courant.
-    const container = containerRef.current;
-
-    // Stoppe si le conteneur n'est pas encore disponible.
-    if (!container) {
-      return;
-    }
-
-    // Attend que la carte moléculaire soit visible avant de charger et animer la structure.
-    if (!isInView) {
-      return;
-    }
-
-    // Indique si le composant est encore monté pendant les chargements asynchrones.
-    let isMounted = true;
-    // Référence mutable vers le viewer pour pouvoir le nettoyer.
-    let viewer: ThreeDmolViewer | null = null;
-
-    // Charge 3Dmol.js uniquement dans le navigateur pour éviter toute exécution côté serveur.
-    const mountViewer = async () => {
-      // Charge la librairie web moléculaire utilisée par des interfaces proches de PyMOL.
-      const threeDmol = (await import('3dmol')) as ThreeDmolModule;
-      // Charge le fichier PDB depuis le dossier public.
-      const pdbText = await fetch(molecule.pdbPath).then((response) => response.text());
-
-      // Stoppe si le composant a été démonté pendant le chargement.
-      if (!isMounted) {
-        return;
-      }
-
-      // Crée le viewer dans la carte.
-      viewer = threeDmol.createViewer(container, {
-        backgroundColor: 'rgba(0,0,0,0)',
-        nomouse: true,
-      });
-      // Force 3Dmol.js à reprendre les dimensions réelles de la carte avant d'ajouter le modèle.
-      viewer.resize();
-
-      // Ajoute le modèle PDB complet.
-      viewer.addModel(pdbText, 'pdb');
-      // Rendu cartoon: hélices alpha, feuillets bêta et boucles, comme dans les viewers moléculaires.
-      viewer.setStyle(
-        {},
-        {
-          cartoon: {
-            color: molecule.accent,
-            opacity: 0.96,
-          },
-        }
-      );
-      // Centre et zoome la protéine dans son cadre.
-      viewer.zoomTo();
-      // Lance une rotation lente autour de l'axe vertical.
-      viewer.spin('y', 0.35);
-      // Attend une frame pour laisser le layout CSS stabiliser la taille du canvas injecté.
-      requestAnimationFrame(() => {
-        // Ajuste une dernière fois la taille du viewer dans sa carte.
-        viewer?.resize();
-        // Effectue le premier rendu.
-        viewer?.render();
-      });
-    };
-
-    // Démarre le montage du viewer.
-    mountViewer();
-
-    // Ajuste le viewer si la carte change de taille.
-    const resizeObserver = new ResizeObserver(() => {
-      viewer?.resize();
-      viewer?.render();
-    });
-    // Observe le conteneur.
-    resizeObserver.observe(container);
-
-    // Nettoie le viewer au démontage.
-    return () => {
-      // Empêche les callbacks asynchrones d'écrire dans un composant démonté.
-      isMounted = false;
-      // Stoppe l'observation de taille.
-      resizeObserver.disconnect();
-      // Nettoie les modèles 3Dmol.js si le viewer existe.
-      viewer?.clear();
-      // Vide le conteneur, y compris le canvas créé par 3Dmol.js.
-      container.replaceChildren();
-    };
-  }, [containerRef, isInView, molecule]);
-
-  // Retourne le conteneur visuel de la molécule.
-  return <div className="molecule-viewer" ref={containerRef} aria-hidden="true" />;
+function ScienceGraphic({ variant }: { variant: string }) {
+  return (
+    <div className={`molecule-viewer science-card-graphic science-card-graphic-${variant}`}>
+      <span className="science-dna-strand science-dna-strand-one" />
+      <span className="science-dna-strand science-dna-strand-two" />
+      <span className="science-signal science-signal-one" />
+      <span className="science-signal science-signal-two" />
+      <span className="science-signal science-signal-three" />
+      <span className="science-core-dot" />
+    </div>
+  );
 }
 
-// Section présentant la machinerie moléculaire de la biologie.
+// Section présentant les briques scientifiques du projet ZEN.
 export function Molecules() {
-  // Retourne une section avant la simulation pour installer le récit biomoléculaire.
   return (
     <section className="molecules">
       {/* Conteneur aligné avec le reste de la page. */}
@@ -163,26 +44,25 @@ export function Molecules() {
         {/* En-tête éditorial de la section. */}
         <div className="molecules-header">
           {/* Titre de la section. */}
-          <h2>Des enzymes optimisées par l&apos;évolution pour transformer la matière.</h2>
-          {/* Texte court expliquant notre rôle dans la boucle. */}
+          <h2>Du modèle moléculaire au test exploitable.</h2>
+          {/* Texte court expliquant notre rôle dans la détection. */}
           <p>
-            Pendant des milliers d&apos;années, l&apos;évolution a optimisé des biomolécules
-            capables de découper, libérer et rendre disponible la matière organique. Notre
-            plateforme ne remplace pas cette intelligence: elle organise la rencontre entre les
-            humains, les flux agricoles et cette machinerie moléculaire.
+            La progression scientifique s’articule entre modélisation de l’aptamère, design du
+            toehold switch et validation expérimentale en conditions proches d’un échantillon
+            céréalier réel.
           </p>
         </div>
 
-        {/* Grille des trois structures 3D. */}
+        {/* Grille des trois modules scientifiques. */}
         <div className="molecules-grid">
-          {molecules.map((molecule) => (
-            <article className="molecule-card" key={molecule.name}>
-              {/* Structure 3D rotative issue du fichier PDB. */}
-              <MoleculeViewer molecule={molecule} />
-              {/* Texte de la carte. */}
+          {scienceModules.map((module) => (
+            <article className="molecule-card" key={module.name}>
+              <ScienceGraphic variant={module.variant} />
               <div className="molecule-card-copy">
-                <h3>{molecule.name}</h3>
-                <p>{molecule.role}</p>
+                <span className="science-module-tag">{module.tag}</span>
+                <h3>{module.name}</h3>
+                <strong className="science-module-metric">{module.metric}</strong>
+                <p>{module.role}</p>
               </div>
             </article>
           ))}

@@ -9,28 +9,28 @@ import './globals.css';
  */
 export const metadata: Metadata = {
   // Titre affiché dans l'onglet du navigateur et utilisé par les moteurs de recherche.
-  title: 'TerraLoop - Déchets agricoles, larves et engrais',
+  title: 'Pure Graine - Détection ZEN dans les céréales',
   // Description SEO courte du site.
   description:
-    'Plateforme bio-circulaire territoriale qui transforme les coproduits du blé par insectes en protéines pour volailles et en fertilisants organiques.',
+    'Projet iGEM Sorbonne Université dédié à la détection rapide de la zéaralénone par aptamère, toehold switch fluorescent et LAMP Fusarium.',
   // Mots-clés associés au sujet du site.
   keywords: [
-    // Mot-clé lié à la transformation des déchets agricoles.
-    'revalorisation agricole',
-    // Mot-clé lié à la filière céréalière visée.
-    'coproduits du blé',
-    // Mot-clé lié au mécanisme économique de la plateforme.
-    'bioconversion par insectes',
-    // Mot-clé lié aux produits générés par la boucle biologique.
-    'larves et engrais organiques',
+    // Mot-clé lié à la toxine cible.
+    'zéaralénone',
+    // Mot-clé lié au nom court de la mycotoxine.
+    'ZEN',
+    // Mot-clé lié au mécanisme de détection principal.
+    'aptamère toehold switch',
+    // Mot-clé lié à la source biologique ciblée.
+    'Fusarium céréales',
   ],
   // Métadonnées utilisées lors du partage du site sur les réseaux sociaux.
   openGraph: {
     // Titre OpenGraph affiché dans les aperçus de partage.
-    title: 'TerraLoop - Déchets agricoles, larves et engrais',
+    title: 'Pure Graine - Détection ZEN dans les céréales',
     // Description OpenGraph affichée dans les aperçus de partage.
     description:
-      'Recycler, relier et relocaliser: une boucle territoriale qui convertit les coproduits végétaux en protéines avicoles et fertilisants organiques.',
+      'Identifier rapidement la zéaralénone ou sa source grâce à un système aptamère Z0/Z1, un toehold switch fluorescent et une piste LAMP ciblant Fusarium.',
     // Type de contenu OpenGraph: ici un site web.
     type: 'website',
   },

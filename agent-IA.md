@@ -1,17 +1,14 @@
-# Agent IA - TerraLoop
+# Agent IA - Pure Graine
 
 ## Vue d'ensemble
 
-Cet agent IA assiste le développement et la maintenance du site vitrine de **TerraLoop**, plateforme de revalorisation agricole Youth for Bioeconomy 2026.
+Cet agent IA assiste le développement et la maintenance du site vitrine de **Pure Graine**, projet iGEM Sorbonne Université 2025-2026 consacré à la détection rapide de la zéaralénone (ZEN) dans les céréales.
 
-Le projet présente une boucle bio-circulaire appliquée à l'agriculture céréalière :
+Le projet présente trois pistes scientifiques :
 
-- collecte de coproduits du blé : paille, sons, issues de nettoyage ;
-- préparation de la biomasse végétale : broyage, humidification, fermentation légère ;
-- bioconversion par insectes dans une unité contrôlée ;
-- intégration de protéines d'insectes dans l'alimentation avicole locale ;
-- traitement des fientes en amendement organique sécurisé ;
-- retour de matière organique et d'azote aux sols céréaliers.
+- système aptamère Z0/Z1 couplé à un toehold switch fluorescent ;
+- aptazyme colorimétrique activée par ZEN ;
+- LAMP ciblant Fusarium via PKS4, ZEB1/PKS13 et ZEB2.
 
 ## Architecture du Projet
 
@@ -23,9 +20,10 @@ src/
 │   └── globals.css         # Styles globaux et responsive
 ├── components/
 │   └── sections/
-│       ├── Hero.tsx        # Section d'accueil avec animation de boucle
-│       ├── Features.tsx    # Étapes et avantages de la plateforme
-│       └── CTA.tsx         # Formulaire de contact réutilisable
+│       ├── Hero.tsx        # Vidéo et promesse de détection ZEN
+│       ├── Features.tsx    # Pistes scientifiques et schéma de détection
+│       ├── BioConversion.tsx # Graphique de réponse fluorescente
+│       └── Molecules.tsx   # Docking, SMD et validation expérimentale
 ├── lib/
 │   └── config.ts           # Configuration globale du site
 └── types/
@@ -38,33 +36,28 @@ src/
 - **React 19**
 - **TypeScript strict**
 - **CSS global avec variables**
-- **Lottie React** pour l'animation de boucle
 - **next/image** pour les logos institutionnels
 
 ## Règles de Développement
 
-1. Les commentaires de code doivent être rédigés en français.
-2. Le vocabulaire produit doit rester aligné avec la revalorisation agricole.
-3. Mettre l'accent sur le vivant comme moteur d'ingénierie, la bioconversion, les larves, les volailles et la fertilité des sols.
-4. Garder le site simple, responsive et compréhensible pour un jury de hackathon.
-5. Vérifier les changements avec `npm run type-check`, `npm run lint` et `npm run format:check`.
+1. Les commentaires de code doivent rester rédigés en français.
+2. Le vocabulaire produit doit rester aligné avec ZEN, Fusarium, aptamères, toehold switch, TXTL, LAMP, mNeonGreen et validation expérimentale.
+3. Garder un ton scientifique, clair et accessible pour un jury iGEM/hackathon.
+4. Vérifier les changements avec `npm run type-check`, `npm run format:check` et `npm run build`.
 
 ## Contenu Produit
 
 ### Promesse
 
-Recycler, relier et relocaliser : transformer les coproduits du blé en protéines pour volailles, puis restituer les nutriments aux sols sous forme d'amendement organique.
+Identifier rapidement la zéaralénone ou sa source dans les céréales avec un test moléculaire lisible par fluorescence ou colorimétrie.
 
-### Mécanisme économique
+### Points scientifiques à préserver
 
-Le modèle repose sur les coûts évités, soja importé, engrais chimiques, évacuation de déchets, et sur de nouveaux revenus locaux : volailles, œufs, fertilisants organiques et éventuels excédents de farine d'insectes.
-
-### Sections du Site
-
-- `Hero.tsx` : message principal, animation et bouton de contact.
-- `Features.tsx` : cartes expliquant la boucle de valeur.
-- `CTA.tsx` : formulaire de contact si la section est réactivée.
-- `page.tsx` : assemblage de la page et footer institutionnel.
+- ZEN est une mycotoxine produite par Fusarium.
+- Plan 1 : Z0/Z1 + toehold switch + reporter mNeonGreen/sfGFP.
+- Plan 2 : aptazyme colorimétrique.
+- Plan 3 : LAMP ciblant PKS4, ZEB1/PKS13 et ZEB2.
+- Validation : ON/OFF, fuite, Z0/Z1, courbe standard, LOD/LOQ, spécificité en farine mixte.
 
 ## Commandes Utiles
 
@@ -72,18 +65,10 @@ Le modèle repose sur les coûts évités, soja importé, engrais chimiques, év
 npm install
 npm run dev
 npm run type-check
-npm run lint
 npm run format:check
 npm run build
 ```
 
-## Maintenance
-
-- Mettre à jour `src/lib/config.ts` si le nom, les liens ou les métadonnées changent.
-- Mettre à jour `src/app/layout.tsx` pour tout changement SEO.
-- Conserver les logos dans `public/images/`.
-- Conserver l'animation de boucle dans `public/cycle-animation.json`.
-
 ---
 
-Agent IA développé pour **Youth for Bioeconomy 2026**.
+Agent IA développé pour **iGEM Sorbonne Université 2025-2026**.

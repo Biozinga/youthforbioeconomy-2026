@@ -1,6 +1,8 @@
 // Directive Next.js: le header réagit au scroll côté navigateur.
 'use client';
 
+// Import du composant Image de Next.js pour afficher le logo de marque proprement.
+import Image from 'next/image';
 // Import des hooks React pour suivre la direction du scroll.
 import { useEffect, useRef, useState } from 'react';
 // Import de la configuration globale du site et des liens de navigation.
@@ -58,8 +60,17 @@ export function Header() {
       <div className="container site-header-content">
         {/* Lien de marque qui ramène vers le haut de la page. */}
         <a className="site-brand" href="#top">
-          {/* Pastille visuelle courte pour donner un repère graphique au nom du projet. */}
-          <span className="site-brand-mark">TL</span>
+          {/* Logo Pure Graine affiché dans le header. */}
+          <span className="site-brand-mark" aria-hidden="true">
+            <Image
+              src="/images/pure-graine-logo.png"
+              alt=""
+              width={1047}
+              height={1050}
+              className="site-brand-logo"
+              priority
+            />
+          </span>
           {/* Nom public du site depuis la configuration globale. */}
           <span>{siteConfig.name}</span>
         </a>

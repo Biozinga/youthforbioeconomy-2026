@@ -1,5 +1,5 @@
 /**
- * Page d'accueil principale - Vitrine de la plateforme de revalorisation agricole
+ * Page d'accueil principale - Vitrine du projet de détection ZEN
  * Regroupe les sections Hero et Features pour une présentation complète
  */
 
@@ -13,14 +13,10 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import { Hero } from '@/components/sections/Hero';
 // Import de la section listant les étapes principales de la plateforme.
 import { Features } from '@/components/sections/Features';
-// Import de la section expliquant la conversion biologique par les larves.
+// Import de la section expliquant le signal fluorescent ZEN.
 import { BioConversion } from '@/components/sections/BioConversion';
-// Import de la section présentant les structures 3D des enzymes clés.
+// Import de la section présentant les modules scientifiques clés.
 import { Molecules } from '@/components/sections/Molecules';
-// Import de la section finale de simulation de revalorisation.
-import { Simulation } from '@/components/sections/Simulation';
-// Import de la section interactive de rentabilité économique.
-import { Profitability } from '@/components/sections/Profitability';
 
 /**
  * Composant racine de la page d'accueil
@@ -38,23 +34,17 @@ export default function Home() {
 
       {/* Zone principale de la page, réservée au contenu éditorial et fonctionnel. */}
       <main>
-        {/* Section d'accueil avec visualisation de la boucle de revalorisation */}
+        {/* Section d'accueil avec vidéo et promesse de détection */}
         <Hero />
 
         {/* Section des avantages et étapes de la plateforme */}
         <Features />
 
-        {/* Section de fond expliquant la conversion des biodéchets par le vivant */}
+        {/* Section de fond expliquant le mécanisme de détection */}
         <BioConversion />
 
-        {/* Section 3D présentant les biomolécules qui rendent la bioconversion possible */}
+        {/* Section présentant docking, SMD et validation expérimentale */}
         <Molecules />
-
-        {/* Dernière section permettant de simuler une revalorisation de déchet */}
-        <Simulation />
-
-        {/* Section de pilotage économique de la rentabilité plateforme */}
-        <Profitability />
       </main>
 
       {/* Pied de page institutionnel affiché sous le contenu principal. */}

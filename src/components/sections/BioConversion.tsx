@@ -6,7 +6,7 @@ import { useInView } from '@/hooks/useInView';
 
 /**
  * Composant BioConversion - Section éditoriale avec image de fond
- * Explique comment les biodéchets agricoles sont convertis en protéines par les larves
+ * Explique comment le système aptamère-toehold détecte ZEN
  */
 export function BioConversion() {
   // Observe la section pour déclencher les courbes uniquement quand l'utilisateur arrive dessus.
@@ -14,7 +14,7 @@ export function BioConversion() {
 
   // Retourne une section immersive avec texte posé sur l'image de fond.
   return (
-    // Section dédiée à la transformation biologique des déchets agricoles.
+    // Section dédiée au mécanisme moléculaire de détection.
     <section id="conversion" className={`bio-conversion ${isInView ? 'is-in-view' : ''}`} ref={ref}>
       {/* Voile sombre qui garantit la lisibilité du texte sur l'image. */}
       <div className="bio-conversion-overlay">
@@ -23,31 +23,32 @@ export function BioConversion() {
           {/* Colonne texte de la section immersive. */}
           <div className="bio-conversion-copy">
             {/* Petit libellé qui introduit le sujet de la section. */}
-            <p className="bio-conversion-kicker">La biologie comme moteur industriel</p>
+            <p className="bio-conversion-kicker">Plan 1 - toehold switch</p>
             {/* Titre principal de la section. */}
-            <h2>Une chaîne biotech pour transformer la biomasse</h2>
-            {/* Texte explicatif sur le rôle des larves dans la revalorisation. */}
+            <h2>Un signal fluorescent déclenché par la zéaralénone</h2>
+            {/* Texte explicatif sur le rôle du couple aptamère-trigger. */}
             <p>
-              Les coproduits végétaux sont broyés, humidifiés et préparés pour devenir un substrat
-              que les insectes savent convertir avec une efficacité biologique remarquable.
+              La cible scientifique est la zéaralénone, une mycotoxine produite par Fusarium et
+              retrouvée dans le blé, le maïs, l’avoine et d’autres céréales. Elle est étudiée ici
+              comme perturbateur endocrinien à détecter rapidement.
             </p>
-            {/* Texte positionnant la biologie comme technologie avancée. */}
+            {/* Texte positionnant le mécanisme de détection. */}
             <p>
-              Cette machinerie biologique, guidée par le code génétique, transforme une biomasse
-              sous-exploitée en protéines pour volailles, réduit la dépendance au soja importé et
-              referme la boucle avec un fertilisant organique restitué aux sols.
+              Le mécanisme proposé associe l’aptamère Z0, le trigger Z1 et un toehold switch
+              exprimant mNeonGreen ou sfGFP en système TXTL. La validation doit mesurer le ratio
+              ON/OFF, la fuite, la courbe standard, puis la spécificité en mélange de farine.
             </p>
           </div>
 
-          {/* Graphique animé comparant une dégradation passive et une bioconversion par larves. */}
+          {/* Graphique animé comparant le signal attendu avec et sans ZEN. */}
           <div
             className="bio-absorption-card"
-            aria-label="Graphique comparatif d'absorption des déchets"
+            aria-label="Graphique de réponse fluorescente attendue pour ZEN"
           >
             {/* En-tête court du graphique. */}
             <div className="bio-absorption-header">
-              <span>Absorption des déchets organiques</span>
-              <strong>14 jours</strong>
+              <span>Réponse fluorescente relative</span>
+              <strong>ON/OFF</strong>
             </div>
 
             {/* Zone du graphique dessinée en SVG pour garder un rendu net et léger. */}
@@ -55,7 +56,7 @@ export function BioConversion() {
               <svg
                 viewBox="0 0 420 260"
                 role="img"
-                aria-label="Courbe avec larves atteignant environ 70%, courbe sans larves atteignant environ 18%"
+                aria-label="Courbe de signal mNeonGreen avec ZEN au-dessus d'une ligne de fuite faible sans ZEN"
               >
                 {/* Lignes horizontales de lecture. */}
                 <g className="bio-chart-grid">
@@ -66,30 +67,30 @@ export function BioConversion() {
                 </g>
                 {/* Axe vertical simplifié. */}
                 <path className="bio-chart-axis" d="M48 30 V214 H390" />
-                {/* Courbe témoin sans machinerie moléculaire des larves. */}
+                {/* Courbe de fuite sans ZEN. */}
                 <path
                   className="bio-chart-line bio-chart-line-passive"
-                  d="M48 205 C116 199 174 190 232 180 C292 169 342 160 390 151"
+                  d="M48 202 C118 201 186 198 246 195 C304 192 350 190 390 188"
                 />
-                {/* Courbe avec bioconversion par larves. */}
+                {/* Courbe de fluorescence après activation par ZEN. */}
                 <path
                   className="bio-chart-line bio-chart-line-living"
-                  d="M48 205 C92 186 120 154 158 128 C212 91 280 70 390 60"
+                  d="M48 205 C92 196 118 176 148 146 C188 106 242 78 390 58"
                 />
-                {/* Libellé du taux avec larves. */}
-                <text className="bio-chart-value bio-chart-value-living" x="310" y="48">
-                  ≈70%
+                {/* Libellé du signal activé. */}
+                <text className="bio-chart-value bio-chart-value-living" x="286" y="48">
+                  ON
                 </text>
-                {/* Libellé du taux sans larves. */}
-                <text className="bio-chart-value bio-chart-value-passive" x="312" y="140">
-                  ≈18%
+                {/* Libellé de la fuite. */}
+                <text className="bio-chart-value bio-chart-value-passive" x="292" y="178">
+                  fuite faible
                 </text>
                 {/* Libellés des axes. */}
                 <text className="bio-chart-label" x="48" y="236">
-                  jour 0
+                  sans ZEN
                 </text>
-                <text className="bio-chart-label" x="342" y="236">
-                  jour 14
+                <text className="bio-chart-label" x="292" y="236">
+                  ZEN croissante
                 </text>
               </svg>
             </div>
@@ -98,18 +99,19 @@ export function BioConversion() {
             <div className="bio-absorption-legend">
               <span>
                 <i className="bio-legend-living" />
-                Avec larves et enzymes
+                ZEN libère Z1 puis active le reporter
               </span>
               <span>
                 <i className="bio-legend-passive" />
-                Dégradation passive
+                Contrôle sans ZEN
               </span>
             </div>
 
             {/* Note scientifique prudente sur l'ordre de grandeur. */}
             <p className="bio-absorption-note">
-              Ordre de grandeur indicatif: les larves de mouche soldat noire peuvent dépasser 70% de
-              réduction de certains déchets organiques, selon le substrat et les conditions.
+              Validation prévue: quantifier la fluorescence en fonction de la quantité de ZEN,
+              déterminer LOD/LOQ, tester d’autres mycotoxines et vérifier la robustesse en farine
+              mélangée.
             </p>
           </div>
         </div>

@@ -12,10 +12,6 @@ const REVEAL_SELECTOR = [
   '.bio-conversion-copy p',
   '.molecules-header h2',
   '.molecules-header p',
-  '.simulation-copy h2',
-  '.simulation-copy p',
-  '.profitability-copy h2',
-  '.profitability-copy p',
 ].join(', ');
 
 // Composant invisible qui ajoute les classes d'apparition aux titres et sous-titres.
